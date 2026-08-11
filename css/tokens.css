@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Tien Yan — Design tokens
+   Single source of truth. Every brand value lives here and nowhere else.
+   Values taken verbatim from Tien Yen_BrandGuide_Final.pdf p20 (Brand Colours).
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette --------------------------------------------------- */
+  /* Primary */
+  --c-fuchsia:        #d41367;  /* Imperial Fuchsia  · Pantone 214 C  */
+  --c-gold:           #88754b;  /* Signature Gold    · Pantone 871 C  */
+  /* Secondary */
+  --c-mulberry:       #72253d;  /* Deep Mulberry     · Pantone 209 C  */
+  --c-amber:          #e0a525;  /* Golden Amber      · Pantone 2007 C */
+  --c-blush:          #f8dbe1;  /* Blush Petal       · Pantone 705 C  */
+  --c-cream:          #f1e4b2;  /* Champagne Cream   · Pantone 7499 C */
+
+  /* Derived neutrals — not brand colours, kept deliberately few */
+  --c-ink:            #1a1416;  /* body text: warm near-black         */
+  --c-ink-soft:       #5c4c52;  /* secondary text, tinted from ground */
+  --c-paper:          #ffffff;
+  --c-paper-warm:     #fdfaf4;  /* faint warm field, from cream       */
+  --c-rule:           #e6dcc8;  /* hairlines on warm grounds          */
+  --c-rule-strong:    #c9b98f;
+
+  /* On dark (mulberry) grounds */
+  --c-on-dark:        #f7ecef;
+  --c-on-dark-soft:   #d3aeb8;  /* tinted from mulberry, never gray   */
+  --c-rule-dark:      rgba(241, 228, 178, 0.22);
+
+  /* ---- Type ------------------------------------------------------------ */
+  /* Grenda is commercially licensed and cannot be self-hosted.
+     Cormorant Garamond stands in. See FONTS.md to swap in real Grenda:
+     it is a one-line change to --font-display. */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body:    'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-cn:      'Noto Serif SC', 'Microsoft YaHei', '微软雅黑', serif;
+
+  /* Fluid scale — clamp(min, preferred, max). Display capped at 6rem. */
+  --t-display:  clamp(2.75rem, 1.6rem + 5.2vw, 6rem);
+  --t-h1:       clamp(2.25rem, 1.5rem + 3.4vw, 4.25rem);
+  --t-h2:       clamp(1.75rem, 1.3rem + 2.1vw, 3rem);
+  --t-h3:       clamp(1.3rem,  1.1rem + 0.9vw, 1.85rem);
+  --t-lead:     clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
+  --t-body:     1rem;
+  --t-small:    0.875rem;
+  --t-label:    0.75rem;   /* tracked small caps, gold */
+
+  --lh-display: 1.02;
+  --lh-heading: 1.14;
+  --lh-body:    1.65;
+
+  --tr-display: -0.025em;  /* tracking floor is -0.04em */
+  --tr-label:   0.18em;
+
+  --measure:    68ch;      /* body measure, 65–75ch */
+  --measure-sm: 46ch;
+
+  /* ---- Space — 4px base, modular ---------------------------------------- */
+  --s-1:  0.25rem;   --s-2:  0.5rem;    --s-3:  0.75rem;
+  --s-4:  1rem;      --s-5:  1.5rem;    --s-6:  2rem;
+  --s-7:  3rem;      --s-8:  4rem;      --s-9:  6rem;
+  --s-10: 8rem;      --s-11: 11rem;
+
+  /* Section rhythm */
+  --section-y:   clamp(4rem, 2rem + 8vw, 9rem);
+  --gutter:      clamp(1.25rem, 0.5rem + 3vw, 4rem);
+  --maxw:        78rem;
+  --maxw-narrow: 48rem;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  /* Short durations for UI feedback, longer for scroll reveals.
+     Entrances use ease-out; nothing eases in on arrival. */
+  --d-fast:   140ms;
+  --d-ui:     220ms;
+  --d-reveal: 720ms;
+  --d-slow:   1100ms;
+
+  --e-out:      cubic-bezier(0.16, 1, 0.3, 1);   /* exponential ease-out */
+  --e-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --e-inout:    cubic-bezier(0.65, 0, 0.35, 1);
+
+  --reveal-shift: 1.25rem;
+
+  /* ---- Depth — offset + soft blur, never a zero-offset halo ------------- */
+  --shadow-sm: 0 1px 2px rgba(26, 20, 22, 0.05),
+               0 2px 8px rgba(26, 20, 22, 0.04);
+  --shadow-md: 0 2px 4px rgba(26, 20, 22, 0.05),
+               0 8px 24px rgba(26, 20, 22, 0.07);
+  --shadow-lg: 0 4px 8px rgba(26, 20, 22, 0.06),
+               0 18px 48px rgba(26, 20, 22, 0.10);
+
+  --radius-sm: 2px;
+  --radius:    4px;
+  --radius-lg: 8px;
+
+  --focus-ring: 2px solid var(--c-fuchsia);
+  --focus-offset: 3px;
+}
+
+/* The brand is a single committed light world. The use scene is a sourcing
+   manager comparing suppliers on a desktop during a working day, often with
+   several tabs open — a light ground reads as documentation, which is what
+   this content is. No dark mode is offered, and the palette below keeps the
+   page stable if a client forces one. */
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: light; }
+}

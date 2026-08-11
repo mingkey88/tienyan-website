@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Pre-launch. Tien Yan brand is not yet public.
+# At sign-off: replace with "Allow: /" and remove the noindex meta from all 5 pages.
