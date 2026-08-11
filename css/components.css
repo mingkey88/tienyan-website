@@ -611,6 +611,8 @@
    ========================================================================== */
 
 .stats { display: grid; gap: var(--s-6) var(--s-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr)); }
+/* A photo below the figures belongs to the whole column, not to one stat. */
+.stats > .photo-slot { grid-column: 1 / -1; }
 .stat__value {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 1.6rem + 3vw, 4rem);
@@ -831,6 +833,56 @@
 .form__status.is-visible { display: block; }
 .form__status--ok { background: var(--c-blush); color: var(--c-mulberry); border: 1px solid var(--c-fuchsia); }
 .form__status--err { background: #fdecef; color: #8c0f32; border: 1px solid #b3123f; }
+
+/* ==========================================================================
+   WhatsApp floating action
+   ==========================================================================
+   Mulberry rather than WhatsApp green: the glyph carries the recognition on
+   its own, and a #25D366 disc against this palette reads as a bolted-on
+   widget. Fuchsia on hover and focus, matching every other primary action.
+
+   Ships hidden. js/whatsapp.js reveals it only once a real number replaces
+   the placeholder, the same refusal-to-pretend the enquiry form uses for its
+   Formspree endpoint. */
+
+.wa-fab {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2rem);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  z-index: 90;                 /* under the sticky header's 100 */
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--c-mulberry);
+  color: var(--c-cream);
+  box-shadow: var(--shadow-md);
+  transition: background var(--d-ui) var(--e-out),
+              transform var(--d-ui) var(--e-out),
+              box-shadow var(--d-ui) var(--e-out);
+}
+.wa-fab svg { width: 1.75rem; height: 1.75rem; display: block; }
+.wa-fab:hover,
+.wa-fab:focus-visible {
+  background: var(--c-fuchsia);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+/* The page beneath is unknown, so the ring needs its own contrast. */
+.wa-fab:focus-visible { outline: 2px solid var(--c-fuchsia); outline-offset: 3px; }
+
+/* Entrance, once. Skipped entirely under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .wa-fab { animation: wa-in var(--d-reveal) var(--e-out) both; }
+  @keyframes wa-in {
+    from { opacity: 0; transform: translateY(0.75rem) scale(0.9); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+@media print { .wa-fab { display: none; } }
 
 /* ==========================================================================
    Footer
