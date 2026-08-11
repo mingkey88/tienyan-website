@@ -92,6 +92,30 @@ The following do not exist in any supplied document and have **not** been invent
 
 ---
 
+## 6. The shot list — every marked slot now on the site
+
+The site has no Tien Yan photography folder behind it; almost every image was lifted from the
+client PDFs. Rather than leave gaps or recycle the one hero photograph, each place that wants real
+photography carries a **marked slot** naming the shot and its target size. The slots hold the final
+proportions, so dropping the real image in changes the picture and nothing else.
+
+**To swap one in:** replace the `<div class="photo-slot …">` with an `<img>` at the same aspect
+ratio, carrying `width`, `height`, `alt` and `loading="lazy"`. No CSS changes needed.
+
+| Page | Slot | Ratio | Target size | What it wants |
+|---|---|---|---|---|
+| `index.html` | The house today | 16:9 | 2000×1125+ | Packed trade cartons, the Jalan Kilang premises, or graded nests laid out for inspection. Should read as a working supplier, not a beauty shot. |
+| `about.html` | Heritage | 4:3 | 1600×1200+ | 19 North Canal Road, Fu An archive material, or the shophouse today. Deck p2 has a line drawing of this building — an original may exist. |
+| `about.html` | 6 portraits | 1:1 | 600×600+ | Head-and-shoulders of Dato Seri Elliot Lim, Anton Hoo Siswanto, Ian Hoo Siswanto, Louise Thean, Lena Thean, Randy Stanley. Consistent lighting and crop across all six. |
+| `why.html` | PT ESTA facility | 16:9 | 2000×1125+ | The Semarang plant exterior or a wide processing-floor shot. This is the evidence behind the value-chain claim; a swiftlet house would serve equally well. |
+| `products.html` | Royal Oval, Celestial | 4:3 | 800×600+ | The two grades with no photograph in any supplied file. Match the existing black-ground product shots. |
+
+**Also worth upgrading:** the seven QC process photographs are ~230×155 in the deck and are shown
+at 72–88px circles because that is the largest size at which they hold up. Higher-resolution
+originals would let that section carry real weight.
+
+---
+
 ## Housekeeping done during extraction
 
 - All logo PNGs had the PDF page's white background baked in. Removed via white-to-alpha

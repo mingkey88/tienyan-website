@@ -157,6 +157,16 @@ h2 + *, h3 + * { margin-top: var(--s-4); }
 .band--warm   { background: var(--c-paper-warm); }
 .band--cream  { background: var(--c-cream); }
 .band--blush  { background: var(--c-blush); }
+/* The sales deck sets its interior pages on a soft blush-to-cream wash rather
+   than a flat field (p2, p3, p4). Reproduced here at low saturation so it
+   stays a ground for documentation, not a gradient for its own sake. */
+.band--wash {
+  background:
+    linear-gradient(150deg,
+      rgba(248,219,225,0.55) 0%,
+      rgba(253,250,244,0.85) 42%,
+      rgba(241,228,178,0.42) 100%);
+}
 .band--deep   { background: var(--c-mulberry); color: var(--c-on-dark); }
 .band--deep p, .band--deep li { color: var(--c-on-dark); }
 .band--deep .lead { color: var(--c-on-dark); }
