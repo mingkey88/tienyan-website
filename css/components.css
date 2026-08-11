@@ -30,24 +30,25 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--s-5);
-  min-height: 6rem;
+  min-height: 5.5rem;
 }
 
-/* The logo is 480x243, so at 152px it rendered exactly 77px tall inside a 76px
-   header — filling the bar edge to edge with no clear space at all, which
-   brand guide p9 requires on every side. At 132px it stands 67px in a 96px
-   bar, leaving ~15px above and below. Going smaller than this costs the
-   TIENYAN wordmark its legibility before it buys much air; the height came
-   from the bar instead. Brand guide p11 sets the horizontal logo's display
-   floor at 85px — 132px, and 117px condensed, stay well clear of it. */
+/* The logo is 480x243, so at the original 152px it rendered exactly 77px tall
+   inside a 76px header — filling the bar edge to edge with no clear space at
+   all, which brand guide p9 requires on every side. At 112px it stands 57px in
+   an 88px bar, leaving ~16px above and below.
+   Brand guide p11 sets the horizontal logo's display floor at 85px. At 112px
+   resting and 104px condensed there is still headroom, but the margin is now
+   thin enough that the condense scale was eased from 0.89 to 0.93 — a deeper
+   shrink would push the scrolled state toward that floor. */
 .site-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
 .site-logo img {
-  width: 132px;
+  width: 112px;
   height: auto;
   transform-origin: left center;
   transition: transform var(--d-ui) var(--e-out);
 }
-.site-header.is-condensed .site-logo img { transform: scale(0.89); }
+.site-header.is-condensed .site-logo img { transform: scale(0.93); }
 
 .nav { display: none; }
 @media (min-width: 62rem) {
