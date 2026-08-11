@@ -30,14 +30,19 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--s-5);
-  min-height: 4.75rem;
+  min-height: 6rem;
 }
 
-/* Brand guide p10: horizontal logo minimum 85px display. This is 152px, and
-   135px condensed — both comfortably above the floor. */
+/* The logo is 480x243, so at 152px it rendered exactly 77px tall inside a 76px
+   header — filling the bar edge to edge with no clear space at all, which
+   brand guide p9 requires on every side. At 132px it stands 67px in a 96px
+   bar, leaving ~15px above and below. Going smaller than this costs the
+   TIENYAN wordmark its legibility before it buys much air; the height came
+   from the bar instead. Brand guide p11 sets the horizontal logo's display
+   floor at 85px — 132px, and 117px condensed, stay well clear of it. */
 .site-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
 .site-logo img {
-  width: 152px;
+  width: 132px;
   height: auto;
   transform-origin: left center;
   transition: transform var(--d-ui) var(--e-out);

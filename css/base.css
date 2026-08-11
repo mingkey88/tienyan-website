@@ -14,9 +14,9 @@ html {
   html { scroll-behavior: auto; }
 }
 
-/* The header is sticky at ~76px, so any anchored target — including the skip
+/* The header is sticky at 6rem, so any anchored target — including the skip
    link's #main — would otherwise land underneath it. */
-[id] { scroll-margin-top: 5.5rem; }
+[id] { scroll-margin-top: 7rem; }
 main:focus { outline: none; }
 
 body {
