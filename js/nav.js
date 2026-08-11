@@ -37,9 +37,14 @@
   var panel = document.getElementById('mobile-nav');
   if (!toggle || !panel) return;
 
+  // Desktop hides the panel with display:none, so its links leave the tab
+  // order on their own. Below that width the panel is only collapsed to a
+  // zero-height track, and `inert` is what actually keeps the five hidden
+  // links out of the tab order and off the accessibility tree.
   function setOpen(open) {
     toggle.setAttribute('aria-expanded', String(open));
     panel.classList.toggle('is-open', open);
+    panel.inert = !open;
     toggle.querySelector('.nav-toggle__text').textContent = open ? 'Close' : 'Menu';
   }
 

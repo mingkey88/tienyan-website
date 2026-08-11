@@ -83,7 +83,8 @@
   background: none;
   border: 1px solid var(--c-rule-strong);
   border-radius: var(--radius);
-  padding: var(--s-2) var(--s-4);
+  /* The only navigation control on mobile — clears 44px. */
+  padding: 0.7rem var(--s-4);
   cursor: pointer;
   font-size: var(--t-label);
   letter-spacing: var(--tr-label);
@@ -120,13 +121,26 @@
 .mobile-nav.is-open { grid-template-rows: 1fr; border-top-color: var(--c-rule); }
 @media (min-width: 62rem) { .mobile-nav { display: none; } }
 
+/* The collapsing grid item must carry NO padding of its own: a 0fr track
+   zeroes the content box, but padding survives it and overflow:hidden clips
+   to the padding box — so any padding here leaks that many pixels of the
+   first link out under the header. Breathing room lives on the inner list. */
 .mobile-nav__list {
   list-style: none;
-  padding: var(--s-4) 0 var(--s-6);
+  padding: 0;
   margin: 0;
   overflow: hidden;
   min-height: 0;
 }
+/* Breathing room lives on the end links, so the list itself stays padding-free. */
+.mobile-nav__list li:first-child a { padding-top: var(--s-5); }
+.mobile-nav__list li:last-child a { padding-bottom: var(--s-6); border-bottom: 0; }
+
+/* Closed, the panel is removed from the tab order entirely. Without this the
+   five links stay focusable while invisible and keyboard focus vanishes. */
+.mobile-nav:not(.is-open) .mobile-nav__list { visibility: hidden; }
+.mobile-nav__list { transition: visibility 0s linear var(--d-ui); }
+.mobile-nav.is-open .mobile-nav__list { transition-delay: 0s; }
 .mobile-nav__list li { margin: 0; }
 .mobile-nav__list a {
   display: block;
@@ -208,10 +222,14 @@
   letter-spacing: 0.03em;
   text-decoration: none;
   border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
+  /* Small text, so the row needs to clear 44px for a comfortable tap. */
+  padding-block: 0.6rem 0.4rem;
 }
 .link-arrow svg { transition: transform var(--d-ui) var(--e-out); }
 .link-arrow:hover svg { transform: translateX(3px); }
+/* Fuchsia on cream is 4.03:1 — fine for the large headings the band already
+   remaps, but this link is small text. Mulberry gives 8.05:1. */
+.band--cream .link-arrow { color: var(--c-mulberry); }
 
 /* ==========================================================================
    Hero
@@ -228,14 +246,18 @@
 /* Dark enough on the left to hold cream text at AA, open enough on the right
    that the photograph is actually visible — it is the only real atmosphere
    asset in the whole set. */
+/* Cream on mulberry is 8.05:1, so the left stop has contrast to spare — it was
+   set at 0.93, which held the type at a ratio nobody needed and erased the
+   nest entirely. Eased so the photograph reads while the text keeps a wide
+   margin over AA. */
 .hero__scrim {
   position: absolute; inset: 0; z-index: 1;
   background:
     linear-gradient(100deg,
-      rgba(114,37,61,0.93) 0%,
-      rgba(114,37,61,0.80) 30%,
-      rgba(114,37,61,0.42) 62%,
-      rgba(114,37,61,0.18) 100%),
+      rgba(114,37,61,0.84) 0%,
+      rgba(114,37,61,0.68) 34%,
+      rgba(114,37,61,0.30) 66%,
+      rgba(114,37,61,0.10) 100%),
     linear-gradient(to top, rgba(60,18,31,0.55), rgba(114,37,61,0) 50%);
 }
 @media (max-width: 48rem) {
@@ -252,14 +274,23 @@
   align-content: center;
   min-height: min(76vh, 44rem);
 }
-.hero__title { color: var(--c-cream); max-width: 16ch; }
+/* 20ch rather than 16ch so the Chinese line, now set at the same size as the
+   English, has room to sit on one line at the top of the clamp. */
+.hero__title { color: var(--c-cream); max-width: 20ch; }
+/* Brand guide p16: "The English and Chinese slogan must always be displayed at
+   the same font size to maintain visual balance and consistency." It inherits
+   --t-display from .t-display rather than setting a size of its own, so the
+   two can never drift apart. Tracking is trimmed from 0.12em because at
+   display size the brand's signature spacing would push the line past the
+   measure; the character size — which is what the rule governs — is untouched. */
 .hero__cn {
   display: block;
   font-family: var(--font-cn);
-  font-size: clamp(1.4rem, 0.9rem + 2vw, 2.4rem);
-  letter-spacing: 0.12em;
+  font-size: inherit;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
   color: var(--c-cream);
-  margin-top: var(--s-4);
+  margin-top: var(--s-5);
 }
 .hero__lead { color: var(--c-on-dark); max-width: 46ch; margin-top: var(--s-5); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s-4); margin-top: var(--s-7); }
@@ -311,8 +342,12 @@
    ========================================================================== */
 
 /* Explicit steps rather than auto-fill: auto-fill either strands one card per
-   row on a phone or shrinks them to thumbnails on a wide desktop. */
-.products { display: grid; gap: var(--s-5); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+   row on a phone or shrinks them to thumbnails on a wide desktop.
+   Below 30rem two columns leave a ~106px text box — roughly 15 characters a
+   line, which shreds the descriptions — so the smallest phones get one card
+   per row and a readable measure instead. */
+.products { display: grid; gap: var(--s-5); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 30rem) { .products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 40rem) { .products { gap: var(--s-6); grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (min-width: 64rem) { .products { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
@@ -391,9 +426,9 @@
 .process__num {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  color: var(--c-gold);
+  color: var(--c-gold-text);
   line-height: 1;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 /* The step photographs are ~230×155 in the source deck. Shown small and square,
@@ -432,10 +467,10 @@
    Certification register
    ========================================================================== */
 
-.certs { display: grid; gap: var(--s-5); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (min-width: 40rem) { .certs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 52rem) { .certs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-@media (min-width: 72rem) { .certs { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+/* auto-fit, not fixed steps: the homepage shows 4 certificates and the fixed
+   5-column step left a permanently empty track and a large void beside it.
+   auto-fit collapses to exactly as many tracks as there are certificates. */
+.certs { display: grid; gap: var(--s-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
 
 .cert {
   display: flex;
@@ -454,8 +489,29 @@
   transition: box-shadow var(--d-ui) var(--e-out), border-color var(--d-ui) var(--e-out);
 }
 .cert__frame img { width: 100%; height: 100%; object-fit: contain; object-position: top; }
-.cert:hover .cert__frame { box-shadow: var(--shadow-md); border-color: var(--c-rule-strong); }
+.cert:hover .cert__frame,
+.cert:focus-visible .cert__frame { box-shadow: var(--shadow-md); border-color: var(--c-rule-strong); }
 .cert__name { font-size: var(--t-small); line-height: 1.4; color: var(--c-ink); }
+/* The registration number is the part a buyer actually verifies, so it is set
+   as selectable, indexable text rather than living only inside the scan. */
+.cert__ref {
+  font-size: var(--t-label);
+  letter-spacing: 0.04em;
+  color: var(--c-ink-soft);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.cert__view {
+  font-size: var(--t-label);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-gold-text);
+  /* Names run to three lines on some certificates and one on others; anchoring
+     the affordance to the bottom keeps the row reading as a register. */
+  margin-top: auto;
+  padding-top: var(--s-2);
+}
+.cert:hover .cert__view { color: var(--c-fuchsia); }
 
 /* ==========================================================================
    Statistics — real figures only
@@ -510,9 +566,9 @@
 
 .contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-5); }
 .contact-list li { margin: 0; max-width: none; }
-.contact-list dt { font-size: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--c-gold); font-weight: 600; }
+.contact-list dt { font-size: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--c-gold-text); font-weight: 600; }
 .contact-list dd { margin: var(--s-2) 0 0; }
-.contact-list a { font-size: var(--t-lead); text-decoration: none; border-bottom: 1px solid currentColor; }
+.contact-list a { font-size: var(--t-lead); text-decoration: none; border-bottom: 1px solid currentColor; display: inline-block; padding-block: 0.3rem; }
 
 /* ==========================================================================
    Form
@@ -566,18 +622,22 @@
   width: 100%;
   padding: 0.75rem 0.9rem;
   background: #fff;
-  border: 1px solid var(--c-rule-strong);
+  border: 1px solid var(--c-rule-field);
   border-radius: var(--radius);
   font-size: var(--t-body);
   color: var(--c-ink);
   transition: border-color var(--d-ui) var(--e-out), box-shadow var(--d-ui) var(--e-out);
 }
 .field textarea { min-height: 8rem; resize: vertical; }
-.field input::placeholder, .field textarea::placeholder { color: #8a7a80; }
+/* 4.88:1 on white — placeholders are text and carry the format hint. */
+.field input::placeholder, .field textarea::placeholder { color: #7d6d73; }
 
 .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--c-gold); }
-.field input:focus, .field select:focus, .field textarea:focus {
-  outline: none;
+/* :focus-visible, not :focus — a bare :focus rule here outranks the global
+   ring in base.css and would leave keyboard users with only a hue shift and a
+   14%-alpha halo on the one page that converts. The ring is the indicator;
+   the border and halo reinforce it. */
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
   border-color: var(--c-fuchsia);
   box-shadow: 0 0 0 3px rgba(212, 19, 103, 0.14);
 }
@@ -589,17 +649,33 @@
 .field__error {
   font-size: var(--t-small);
   color: #b3123f;
-  display: none;
+  /* Not display:none. This element is an aria-describedby target, and
+     display:none takes it out of the accessibility tree entirely — the
+     control would announce "invalid" without ever saying why. Clipping to
+     zero height hides it visually but keeps it exposed. */
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
 }
-.field[data-invalid='true'] .field__error { display: block; }
+.field[data-invalid='true'] .field__error {
+  height: auto;
+  overflow: visible;
+  opacity: 1;
+  margin-top: var(--s-2);
+}
+/* Required marker — the asterisk is decorative; the label text carries the
+   word for assistive tech. */
+.field__req { color: #b3123f; margin-left: 0.15em; }
 
 /* Checkbox / radio groups */
 .choices { display: grid; gap: var(--s-3); }
 @media (min-width: 40rem) { .choices--2col { grid-template-columns: 1fr 1fr; } }
-.choice { display: flex; align-items: flex-start; gap: var(--s-3); font-size: var(--t-small); cursor: pointer; }
-.choice input { margin-top: 0.25em; accent-color: var(--c-fuchsia); width: 1rem; height: 1rem; flex-shrink: 0; }
+/* The whole label is the target, so it gets the height rather than the box. */
+.choice { display: flex; align-items: center; gap: var(--s-3); font-size: var(--t-small); cursor: pointer; min-height: 44px; }
+.choice input { accent-color: var(--c-fuchsia); width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
 
 .form__note { font-size: var(--t-small); color: var(--c-ink-soft); }
+.form__legend { font-size: var(--t-small); color: var(--c-ink-soft); margin-bottom: var(--s-6); }
 
 .form__status { display: none; padding: var(--s-5); border-radius: var(--radius); font-size: var(--t-small); }
 .form__status.is-visible { display: block; }
@@ -624,8 +700,10 @@
 .footer__slogan .cn { letter-spacing: 0.1em; margin-top: var(--s-1); }
 
 .footer__heading { font-size: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--c-cream); font-weight: 600; font-family: var(--font-body); }
-.footer__list { list-style: none; padding: 0; margin: var(--s-4) 0 0; display: grid; gap: var(--s-3); }
+.footer__list { list-style: none; padding: 0; margin: var(--s-4) 0 0; display: grid; gap: var(--s-2); }
 .footer__list li { margin: 0; max-width: none; font-size: var(--t-small); }
+/* Inline links in a tight column are the smallest targets on the page. */
+.footer__list a { display: inline-block; padding-block: 0.4rem; }
 
 .footer__legal {
   margin-top: var(--s-8);

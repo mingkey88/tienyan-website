@@ -11,6 +11,11 @@
   var form = document.getElementById('enquiry-form');
   if (!form) return;
 
+  // Suppress native validation bubbles only once we know JS is running to
+  // replace them. Left in the HTML it would strip validation from the no-JS
+  // path, where a 13-field form would POST completely unchecked.
+  form.setAttribute('novalidate', '');
+
   var status = document.getElementById('form-status');
   var submit = form.querySelector('[type="submit"]');
   var endpoint = form.getAttribute('action') || '';
@@ -60,11 +65,21 @@
 
   /* ---- Submission -------------------------------------------------------- */
 
+  // The label lives in its own span so changing it cannot destroy the arrow
+  // SVG that sits beside it inside the button.
+  var submitLabel = submit && submit.querySelector('.btn__label');
+  function setSubmitLabel(text) {
+    if (submitLabel) submitLabel.textContent = text;
+    else if (submit) submit.textContent = text;
+  }
+
   function show(kind, message) {
     if (!status) return;
+    // role is set before the text so assistive tech is already watching the
+    // region when the message lands.
+    status.setAttribute('role', kind === 'err' ? 'alert' : 'status');
     status.className = 'form__status is-visible form__status--' + kind;
     status.textContent = message;
-    status.setAttribute('role', kind === 'err' ? 'alert' : 'status');
   }
 
   form.addEventListener('submit', function (e) {
@@ -90,7 +105,7 @@
 
     e.preventDefault();
     submit.disabled = true;
-    submit.textContent = 'Sending…';
+    setSubmitLabel('Sending…');
 
     fetch(endpoint, {
       method: 'POST',
@@ -101,12 +116,12 @@
         if (!res.ok) throw new Error('Request failed');
         form.reset();
         show('ok', 'Thank you — your enquiry has been sent. Lena Thean will be in touch shortly.');
-        submit.textContent = 'Sent';
+        setSubmitLabel('Sent');
       })
       .catch(function () {
         show('err', 'That did not send. Please email info@tienyan.com and we will respond directly.');
         submit.disabled = false;
-        submit.textContent = 'Send enquiry';
+        setSubmitLabel('Send enquiry');
       });
   });
 })();

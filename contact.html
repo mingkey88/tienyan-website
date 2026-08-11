@@ -12,6 +12,26 @@
 <link rel="apple-touch-icon" href="assets/logo/logo-mark-180.png">
 <meta name="theme-color" content="#72253d">
 
+<link rel="canonical" href="https://www.tienyan.com/contact.html">
+
+<!-- Link previews. The enquiry form asks for WhatsApp and WeChat, which is
+     exactly where a bare URL reads as untrustworthy. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tien Yan">
+<meta property="og:locale" content="en_SG">
+<meta property="og:url" content="https://www.tienyan.com/contact.html">
+<meta property="og:title" content="Contact Us — Partner with Tien Yan">
+<meta property="og:description" content="For retail, hospitality, wellness, and corporate sourcing enquiries. Speak with Lena Thean about trade pricing, bulk orders, OEM and B2B partnership.">
+<meta property="og:image" content="https://www.tienyan.com/assets/hero/hero-nest.jpg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1360">
+<meta property="og:image:alt" content="Three edible bird's nests arranged on volcanic rock with a flowering branch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us — Partner with Tien Yan">
+<meta name="twitter:description" content="For retail, hospitality, wellness, and corporate sourcing enquiries. Speak with Lena Thean about trade pricing, bulk orders, OEM and B2B partnership.">
+<meta name="twitter:image" content="https://www.tienyan.com/assets/hero/hero-nest.jpg">
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Karla:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
@@ -103,6 +123,7 @@
           <div>
             <dt>Contact Person</dt>
             <dd style="font-family: var(--font-display); font-size: var(--t-h3); color: var(--c-mulberry);">Lena Thean</dd>
+            <dd class="muted" style="font-size: var(--t-small); margin-top: var(--s-1);">Co-Founder &amp; Chief Operating Officer</dd>
           </div>
           <div>
             <dt>Email</dt>
@@ -120,15 +141,11 @@
           <div>
             <dt>Address</dt>
             <dd style="font-size: var(--t-body);">
-              Tien Yan Pte. Ltd. <span class="cn">天燕珍品有限公司</span><br>
+              Tien Yan Pte. Ltd. <span class="cn" lang="zh-Hans">天燕珍品有限公司</span><br>
               10 Jalan Kilang #04-06<br>
               Bukit Merah Enterprise Centre<br>
               Singapore 159410
             </dd>
-          </div>
-          <div>
-            <dt>Website</dt>
-            <dd><a href="https://www.tienyan.com">www.tienyan.com</a></dd>
           </div>
         </dl>
       </div>
@@ -143,11 +160,15 @@
         The more you can tell us here, the more useful our first reply will be.
       </p>
 
-      <div class="form__status" id="form-status"></div>
+      <!-- role/aria-live are static: setting them at the same moment the text
+           is written usually means the update is never announced. -->
+      <div class="form__status" id="form-status" role="status" aria-live="polite"></div>
 
       <form class="form" id="enquiry-form" method="POST"
             action="https://formspree.io/f/FORMSPREE_ID"
-            style="margin-top: var(--s-8);" novalidate data-reveal data-reveal-delay="2">
+            style="margin-top: var(--s-8);" data-reveal data-reveal-delay="2">
+
+        <p class="form__legend">Fields marked <span class="field__req" aria-hidden="true">*</span> are required. Everything else is optional and helps us route your enquiry.</p>
 
         <!-- 1. Primary Contact Information -->
         <fieldset class="fieldset">
@@ -155,31 +176,31 @@
 
           <div class="field-row">
             <div class="field">
-              <label for="full-name">Full Name</label>
-              <input type="text" id="full-name" name="Full Name" autocomplete="name" required
+              <label for="full-name">Full Name<span class="visually-hidden"> (required)</span><span class="field__req" aria-hidden="true">*</span></label>
+              <input type="text" id="full-name" aria-describedby="full-name-error" name="Full Name" autocomplete="name" required
                      data-msg-required="Please tell us your name.">
-              <p class="field__error" aria-live="polite"></p>
+              <p class="field__error" id="full-name-error" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="job-title">Job Title / Position</label>
-              <input type="text" id="job-title" name="Job Title" autocomplete="organization-title" required
+              <label for="job-title">Job Title / Position<span class="visually-hidden"> (required)</span><span class="field__req" aria-hidden="true">*</span></label>
+              <input type="text" id="job-title" aria-describedby="job-title-error" name="Job Title" autocomplete="organization-title" required
                      data-msg-required="Please tell us your role.">
-              <p class="field__error" aria-live="polite"></p>
+              <p class="field__error" id="job-title-error" aria-live="polite"></p>
             </div>
           </div>
 
           <div class="field-row">
             <div class="field">
-              <label for="email">Business Email Address</label>
-              <input type="email" id="email" name="Business Email" autocomplete="email" required
+              <label for="email">Business Email Address<span class="visually-hidden"> (required)</span><span class="field__req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" aria-describedby="email-error" name="Business Email" autocomplete="email" required
                      data-msg-required="We need an email address to reply to you.">
-              <p class="field__error" aria-live="polite"></p>
+              <p class="field__error" id="email-error" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="phone">Phone Number / WhatsApp / WeChat</label>
-              <input type="tel" id="phone" name="Phone / WhatsApp / WeChat" autocomplete="tel" required
+              <label for="phone">Phone Number / WhatsApp / WeChat<span class="visually-hidden"> (required)</span><span class="field__req" aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" aria-describedby="phone-error" name="Phone / WhatsApp / WeChat" autocomplete="tel" required
                      data-msg-required="Please give us a number we can reach you on.">
-              <p class="field__error" aria-live="polite"></p>
+              <p class="field__error" id="phone-error" aria-live="polite"></p>
             </div>
           </div>
         </fieldset>
@@ -190,35 +211,35 @@
 
           <div class="field-row">
             <div class="field">
-              <label for="company">Company Name</label>
-              <input type="text" id="company" name="Company Name" autocomplete="organization" required
+              <label for="company">Company Name<span class="visually-hidden"> (required)</span><span class="field__req" aria-hidden="true">*</span></label>
+              <input type="text" id="company" aria-describedby="company-error" name="Company Name" autocomplete="organization" required
                      data-msg-required="Please tell us your company name.">
-              <p class="field__error" aria-live="polite"></p>
+              <p class="field__error" id="company-error" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="country">Country / Region of Operation</label>
-              <input type="text" id="country" name="Country / Region" autocomplete="country-name" required
+              <label for="country">Country / Region of Operation<span class="visually-hidden"> (required)</span><span class="field__req" aria-hidden="true">*</span></label>
+              <input type="text" id="country" aria-describedby="country-error" name="Country / Region" autocomplete="country-name" required
                      data-msg-required="Please tell us where you operate.">
-              <p class="field__error" aria-live="polite"></p>
+              <p class="field__error" id="country-error" aria-live="polite"></p>
             </div>
           </div>
 
           <div class="field-row">
             <div class="field">
               <label for="website">Company Website or Social Media Page</label>
-              <input type="url" id="website" name="Website / Social" placeholder="https://">
-              <p class="field__error" aria-live="polite"></p>
+              <input type="url" id="website" aria-describedby="website-error" name="Website / Social" placeholder="https://">
+              <p class="field__error" id="website-error" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="registration">Business Registration / License Number <span class="field__optional">(Optional)</span></label>
-              <input type="text" id="registration" name="Business Registration Number">
-              <p class="field__error" aria-live="polite"></p>
+              <label for="registration">Business Registration / License Number</label>
+              <input type="text" id="registration" aria-describedby="registration-error" name="Business Registration Number">
+              <p class="field__error" id="registration-error" aria-live="polite"></p>
             </div>
           </div>
 
           <div class="field">
-            <label for="business-type">Type of Business</label>
-            <select id="business-type" name="Type of Business" required
+            <label for="business-type">Type of Business<span class="visually-hidden"> (required)</span><span class="field__req" aria-hidden="true">*</span></label>
+            <select id="business-type" aria-describedby="business-type-error" name="Type of Business" required
                     data-msg-required="Please choose the closest description.">
               <option value="">Please select…</option>
               <option>Wholesaler</option>
@@ -228,7 +249,7 @@
               <option>F&amp;B / Hospitality</option>
               <option>Other</option>
             </select>
-            <p class="field__error" aria-live="polite"></p>
+            <p class="field__error" id="business-type-error" aria-live="polite"></p>
           </div>
         </fieldset>
 
@@ -248,18 +269,18 @@
           <div class="field-row">
             <div class="field">
               <label for="years">Years in Business</label>
-              <input type="number" id="years" name="Years in Business" min="0" max="200" step="1" inputmode="numeric">
-              <p class="field__error" aria-live="polite"></p>
+              <input type="number" id="years" aria-describedby="years-error" name="Years in Business" min="0" max="200" step="1" inputmode="numeric">
+              <p class="field__error" id="years-error" aria-live="polite"></p>
             </div>
             <div class="field">
               <label for="licenses">Do you currently possess food/agricultural import licenses?</label>
-              <select id="licenses" name="Import Licenses">
+              <select id="licenses" aria-describedby="licenses-error" name="Import Licenses">
                 <option value="">Please select…</option>
                 <option>Yes</option>
                 <option>No</option>
                 <option>In Progress</option>
               </select>
-              <p class="field__error" aria-live="polite"></p>
+              <p class="field__error" id="licenses-error" aria-live="polite"></p>
             </div>
           </div>
         </fieldset>
@@ -280,27 +301,27 @@
 
           <div class="field">
             <label for="volume">Estimated Monthly Order Volume</label>
-            <select id="volume" name="Estimated Monthly Order Volume">
+            <select id="volume" aria-describedby="volume-error" name="Estimated Monthly Order Volume">
               <option value="">Please select…</option>
               <option>Less than 10kg</option>
               <option>10kg – 50kg</option>
               <option>50kg – 100kg</option>
               <option>More than 100kg</option>
             </select>
-            <p class="field__error" aria-live="polite"></p>
+            <p class="field__error" id="volume-error" aria-live="polite"></p>
           </div>
 
           <div class="field">
             <label for="message">Message / Additional Inquiry</label>
-            <textarea id="message" name="Message" rows="6"
+            <textarea id="message" aria-describedby="message-error" name="Message" rows="6"
                       placeholder="Tell us about your business or ask a specific question."></textarea>
-            <p class="field__error" aria-live="polite"></p>
+            <p class="field__error" id="message-error" aria-live="polite"></p>
           </div>
         </fieldset>
 
         <div>
           <button class="btn btn--primary" type="submit">
-            Send enquiry
+            <span class="btn__label">Send enquiry</span>
             <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <p class="form__note" style="margin-top: var(--s-4);">
@@ -323,7 +344,7 @@
         </div>
         <p class="footer__slogan">
           <span>Nature's Gift, Beyond Generations</span>
-          <span class="cn">天赐珍燕,世代传承</span>
+          <span class="cn" lang="zh-Hans">天赐珍燕,世代传承</span>
         </p>
       </div>
       <div>
@@ -339,7 +360,7 @@
       <div>
         <h2 class="footer__heading">Contact</h2>
         <ul class="footer__list">
-          <li>Tien Yan Pte. Ltd. <span class="cn">天燕珍品有限公司</span></li>
+          <li>Tien Yan Pte. Ltd. <span class="cn" lang="zh-Hans">天燕珍品有限公司</span></li>
           <li>10 Jalan Kilang #04-06<br>Bukit Merah Enterprise Centre<br>Singapore 159410</li>
           <li><a href="mailto:info@tienyan.com">info@tienyan.com</a></li>
         </ul>

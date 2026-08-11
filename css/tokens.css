@@ -15,6 +15,13 @@
   --c-blush:          #f8dbe1;  /* Blush Petal       · Pantone 705 C  */
   --c-cream:          #f1e4b2;  /* Champagne Cream   · Pantone 7499 C */
 
+  /* Signature Gold at brand value measures 4.47:1 on white and 3.51:1 on
+     cream — both fail WCAG AA for text. --c-gold stays exact for hairlines,
+     rules and the QC rail, where the 3:1 non-text threshold applies. Text set
+     in gold uses the shade below: 5.76:1 on white, 5.52:1 on paper-warm,
+     4.52:1 on cream. Same hue family, same Pantone 871 C character. */
+  --c-gold-text:      #75643e;
+
   /* Derived neutrals — not brand colours, kept deliberately few */
   --c-ink:            #1a1416;  /* body text: warm near-black         */
   --c-ink-soft:       #5c4c52;  /* secondary text, tinted from ground */
@@ -22,6 +29,11 @@
   --c-paper-warm:     #fdfaf4;  /* faint warm field, from cream       */
   --c-rule:           #e6dcc8;  /* hairlines on warm grounds          */
   --c-rule-strong:    #c9b98f;
+  /* Form control borders carry the whole affordance — the white input
+     interior sits at 1.04:1 against paper-warm, so the border is the only
+     thing marking the control. 3.37:1 on white, 3.24:1 on paper-warm,
+     clearing SC 1.4.11 Non-text Contrast. */
+  --c-rule-field:     #9e8a57;
 
   /* On dark (mulberry) grounds */
   --c-on-dark:        #f7ecef;

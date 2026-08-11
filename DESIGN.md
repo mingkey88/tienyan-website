@@ -20,14 +20,23 @@ All six brand colours are declared in `css/tokens.css` with their Pantone refere
 |---|---|---|
 | `--c-fuchsia` | `#d41367` | Display headings on white and cream, primary button, nav active state, focus rings on light grounds |
 | `--c-mulberry` | `#72253d` | Hero ground, CTA bands, footer, headings on cream, product and process names |
-| `--c-gold` | `#88754b` | Hairline rules, tracked uppercase labels, step numbers, quality-control rail |
+| `--c-gold` | `#88754b` | Hairline rules, quality-control rail — non-text only |
 | `--c-cream` | `#f1e4b2` | Section field, and all type reversed out on mulberry |
 | `--c-amber` | `#e0a525` | Present in the secondary graphic's gradient only |
 | `--c-blush` | `#f8dbe1` | Form success state |
 
+**Gold splits in two.** Signature Gold at its brand value measures 4.47:1 on white and 3.51:1 on
+cream — both fail WCAG AA for text. `--c-gold` therefore keeps the exact brand hex and is used only
+where the 3:1 non-text threshold applies: hairlines, the QC rail, hover borders. Every piece of gold
+*text* — tracked uppercase labels, step numbers, contact-list terms, the certificate affordance —
+uses `--c-gold-text #75643e`, which reads 5.76:1 on white, 5.52:1 on paper-warm and 4.52:1 on cream
+while staying in the Pantone 871 C family. The brand colour is not altered; it is scoped.
+
 Derived neutrals are few and deliberately warm: `--c-ink #1a1416` for body, `--c-ink-soft #5c4c52`
 for secondary. On mulberry, secondary text is `--c-on-dark-soft #d3aeb8` — tinted from the ground,
-never grey.
+never grey. Form control borders use `--c-rule-field #9e8a57` (3.37:1) rather than the lighter
+`--c-rule-strong`: the white input interior sits at 1.04:1 against the warm band, so the border is
+the entire affordance and has to clear SC 1.4.11 on its own.
 
 **Band system.** `.band--paper`, `.band--warm`, `.band--cream`, `.band--blush`, `.band--deep`. The
 band class carries its own type, rule and button colours, so a section changes ground by swapping
@@ -50,7 +59,12 @@ Headings are `font-weight: 400` — the display face carries presence through si
 weight.
 
 Chinese is set at the same size as its English counterpart wherever they appear together, which the
-brand guide (p16) requires of the slogan.
+brand guide (p16) requires of the slogan: *"The English and Chinese slogan must always be displayed
+at the same font size to maintain visual balance and consistency."* In the hero, `.hero__cn` takes
+`font-size: inherit` from `.t-display` rather than declaring a size of its own, so the two cannot
+drift apart under any future edit. Its tracking is trimmed from the brand's 0.12em to 0.04em because
+at display size the signature spacing pushes the line past the measure — the rule governs character
+size, which is untouched.
 
 ## Composition
 
