@@ -140,7 +140,11 @@ lands on a page headed *About Us*. Either the labels or the page headings need t
 Note the frame's own footer disagrees with its own nav: the footer Company column says
 **About Us** and **Why Tien Yan**, the nav says **Our Story** and **Partnership**.
 
-> **Needs a ruling.** Which set of names is correct?
+**Resolved 20 Aug 2026.** The other Figma frames settle it: the designer renamed the *pages*, not
+just the links — the frames are named `Our Story` and `Partnership`. So this is a page rename, and
+the nav is already correct. `about.html` → Our Story, `why.html` → Partnership.
+
+> **Action, not a question:** rename the pages and their headings to match.
 
 ## 10. The withheld phone number is published in this frame
 
@@ -167,7 +171,22 @@ placeholder, but the larger question is prior to it: the rest of the site is bui
 supplier record that routes buyers to an enquiry form, and published per-kilo pricing is a
 commercial decision, not a design one.
 
-> **Two rulings needed:** should prices appear at all, and if so, what are they?
+**Partly resolved 20 Aug 2026.** The Figma's **Products** frame (`70:159`) carries real, distinct
+prices for all twelve grades, so the homepage's identical `$100/kg` is definitely placeholder:
+
+| Grade | Price | | Grade | Price |
+|---|---|---|---|---|
+| Tien Yan Royal | $150 | | Imperial | $85 |
+| Tien Yan Noble | $130 | | Sky Valley | $80 |
+| Royal Oval | $120 | | Sky River | $75 |
+| Celestial | $110 | | Sky Stream | $60 |
+| Heritage Classic | $100 | | Sky Pearl | $55 |
+| Heritage | $90 | | Sky Crystal | $50 |
+
+The three homepage cards should therefore read **$150 / $130 / $85**, not $100/kg each.
+
+> **Still needs a ruling:** should prices be public on a B2B supplier site at all? And the unit is
+> inconsistent — the Products frame writes bare `$150`, the homepage writes `$100/kg`.
 
 ## 13. The frame is set in Grenda throughout
 
@@ -209,6 +228,20 @@ separate signature tier. `products.html` currently carries twelve grades.
 
 > **Needs clarification** before the *View All Products* link can point anywhere more precise than
 > the products index.
+
+## 17. Is `$` Singapore dollars or US dollars?
+
+Every price in the Figma is written with a bare `$` — `$150`, `$100/kg`. Tien Yan is a Singapore
+company (`Tien Yan Pte. Ltd.`, 10 Jalan Kilang) selling into export markets, so `$` is genuinely
+ambiguous between **SGD** and **USD**, and the difference is roughly 35%.
+
+The new Wix site currently defaults to USD, and the previous build never displayed a price at all,
+so nothing has been assumed either way.
+
+> **Needs a ruling** before any price is published. If both currencies are needed for different
+> markets, that is a CMS field, not a copy decision.
+
+---
 
 ---
 
