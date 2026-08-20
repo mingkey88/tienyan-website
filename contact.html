@@ -52,9 +52,11 @@
   The frame draws four. Built as drawn; all thirteen are preserved in
   CONTENT-QUERIES.md Q25, with a recommendation to reinstate.
 
-  The five "Speak with our team about" cards have icons in the frame that
-  could not be exported. The cards ship without them rather than with
-  substitutes that mean something different. Q26.
+  Values below are the frame's own, confirmed in a second pass: the category
+  cards are Blush Petal at 60% with 20px labels; the form is NOT a card (the
+  frame gives it and the page the same ground, so the white inputs define it);
+  and the submit button is Golden Amber with black text — the only non-fuchsia
+  action in the whole design.
 -->
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -99,18 +101,28 @@
       <h2 class="speak__title" data-reveal>Speak with our team about:</h2>
       <ul class="speak__grid" role="list">
           <li class="speak-card" data-reveal data-reveal-delay="1">
+            <img class="speak-card__icon" src="assets/figma/contact/ic-catalogue.webp"
+                 alt="" aria-hidden="true" width="200" height="136" loading="lazy" decoding="async">
             <p class="speak-card__label">Product Catalogue</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="2">
+            <img class="speak-card__icon" src="assets/figma/contact/ic-pricing.webp"
+                 alt="" aria-hidden="true" width="200" height="172" loading="lazy" decoding="async">
             <p class="speak-card__label">Trade Pricing and Bulk Orders</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="3">
+            <img class="speak-card__icon" src="assets/figma/contact/ic-custom.webp"
+                 alt="" aria-hidden="true" width="200" height="193" loading="lazy" decoding="async">
             <p class="speak-card__label">Customization for B2B Partnership</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="4">
+            <img class="speak-card__icon" src="assets/figma/contact/ic-gifting.webp"
+                 alt="" aria-hidden="true" width="200" height="215" loading="lazy" decoding="async">
             <p class="speak-card__label">Premium Wellness Gifting and Seasonal Partnerships</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="5">
+            <img class="speak-card__icon" src="assets/figma/contact/ic-collab.webp"
+                 alt="" aria-hidden="true" width="200" height="120" loading="lazy" decoding="async">
             <p class="speak-card__label">Collaboration Opportunities</p>
           </li>
       </ul>
@@ -158,7 +170,7 @@
           <p class="form__status" id="form-status" aria-live="polite"></p>
 
           <div class="enquiry__actions">
-            <button class="btn btn--primary btn--wide" type="submit">
+            <button class="btn btn--amber btn--wide" type="submit">
               <span class="btn__label">Send a Message</span>
             </button>
           </div>

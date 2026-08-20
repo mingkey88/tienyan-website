@@ -407,7 +407,11 @@
    Partnership — Certificates carousel · Figma frame 48:96
    ========================================================================== */
 
-.pt-certs { padding-block: var(--section-y); background: var(--c-page-warm); }
+.pt-certs {
+  padding-block: var(--section-y);
+  /* Frame: rgba(248,219,225,0.6) — Blush Petal at 60%. */
+  background: color-mix(in srgb, var(--c-blush) 60%, var(--c-paper));
+}
 
 .pt-certs__title {
   font-size: var(--t-sect-title);
@@ -428,13 +432,19 @@
   padding: 0;
   list-style: none;
 }
+/* The frame draws these as a FILTER, not as tags: four are grey #9c9a9a and
+   "Batch Quality Verification" is fuchsia — an active state. It is not built as
+   a working filter here because no mapping exists from the nine certificates to
+   these five categories, and guessing which regulatory document belongs to
+   which category is not a guess worth making. Rendered as the factual list of
+   certification types held, at the frame's 20px. See Q27. */
 .pt-certs__types li {
   margin: 0;
   max-width: none;
   padding: var(--s-2) var(--s-4);
   border: 1px solid var(--c-rule-strong);
   border-radius: 999px;
-  font-size: 1.125rem;
+  font-size: 1.25rem;             /* 20px */
   color: var(--c-ink);
   background: var(--c-paper);
 }
@@ -476,7 +486,7 @@
 .pt-slide__caption {
   margin-top: var(--s-4);
   font-family: var(--font-display);
-  font-size: var(--t-card-title);   /* 28px */
+  font-size: clamp(1.15rem, 1rem + 0.55vw, 1.5rem);   /* 24px */
   line-height: 1.25;
   color: var(--c-mulberry);
   text-wrap: balance;
@@ -503,14 +513,15 @@
   border: 1px solid var(--c-rule-strong);
   border-radius: 50%;
   background: var(--c-paper);
-  color: var(--c-mulberry);
+  /* Frame draws the < > glyphs in Imperial Fuchsia. */
+  color: var(--c-fuchsia);
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1;
   cursor: pointer;
   transition: background var(--d-fast) var(--e-out), color var(--d-fast) var(--e-out);
 }
-.pt-carousel__btn:hover:not(:disabled) { background: var(--c-mulberry); color: var(--c-cream); }
+.pt-carousel__btn:hover:not(:disabled) { background: var(--c-fuchsia); color: var(--c-paper); }
 .pt-carousel__btn:disabled { opacity: 0.35; cursor: default; }
 
 .pt-carousel__count {
@@ -574,18 +585,16 @@
 .pcard__name {
   margin-top: var(--s-5);
   font-family: var(--font-display);
-  font-size: var(--t-card-name);  /* 30px */
+  font-size: clamp(1.15rem, 1rem + 0.55vw, 1.5rem);   /* 24px */
   line-height: 1.15;
   color: var(--c-ink);
 }
 
-/* The frame sets the price at the same 30px as the name. Kept at that size —
-   the hierarchy comes from the face, not the scale: the name is the display
-   serif, the price the body sans. */
+/* Frame values: name 24px black, price 20px Deep Mulberry. */
 .pcard__price {
   margin-top: var(--s-2);
   font-family: var(--font-body);
-  font-size: var(--t-card-name);
+  font-size: 1.25rem;             /* 20px */
   line-height: 1.2;
   color: var(--c-mulberry);
   font-variant-numeric: tabular-nums;
@@ -630,14 +639,22 @@
   min-height: 14.3rem;            /* 229px in the frame */
   margin: 0;
   padding: var(--s-5) var(--s-4);
-  background: var(--c-card-wash);
+  /* Frame: rgba(248,219,225,0.6) — Blush Petal at 60%, same ground as the
+     Health Benefits band. Not the white wash used on the Our Story cards. */
+  background: color-mix(in srgb, var(--c-blush) 60%, var(--c-paper));
   text-align: center;
   max-width: none;
 }
 
+.speak-card__icon {
+  width: auto;
+  height: 3.5rem;                 /* 55-80px in the frame */
+  object-fit: contain;
+}
+
 .speak-card__label {
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 1.25rem;             /* 20px */
+  line-height: 1.25;              /* 25/20 */
   color: var(--c-ink);
   text-wrap: balance;
 }
@@ -648,11 +665,13 @@
 
 .enquiry { padding-block: var(--section-y); }
 
+/* Not a card. The frame gives the form region and the page behind it the
+   identical value (Champagne Cream at 20%), so there is no surface to see —
+   the white inputs are what define the form. Built with a white card and a
+   shadow first; the accuracy pass corrected it. */
 .enquiry__card {
-  padding: clamp(1.5rem, 0.9rem + 2.6vw, 3.5rem);
-  background: var(--c-paper);
-  border-radius: 16px;
-  box-shadow: var(--shadow-sm);
+  padding: clamp(1.5rem, 0.9rem + 2.6vw, 3.5rem) 0;
+  background: transparent;
 }
 
 .enquiry__title {

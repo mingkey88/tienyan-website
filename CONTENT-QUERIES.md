@@ -428,6 +428,58 @@ implies a category the brand has not chosen.
 
 ---
 
+## 27. The certificate "chips" are a filter in the frame, not a list
+
+The Partnership certificates section draws five category labels, four in grey `#9c9a9a` and
+**Batch Quality Verification** in Imperial Fuchsia — an active state. It is a filter, not a list of
+tags, and the certificate shown below it is the one matching the active category.
+
+Not built as a working filter. Doing so needs a mapping from the ten certificates to these five
+categories, and no such mapping exists in any supplied document. Guessing which regulatory document
+counts as "China Export Registration" versus "Certificate of Appointment" is not a guess worth
+making — a misfiled certificate is worse than an unfiltered list. The five are rendered as the
+factual list of certification types held, at the frame's 20px, above a carousel of all ten.
+
+Note also that the inactive grey is the same `#9c9a9a` recorded in Q21, at 2.8:1.
+
+> **To build the filter, supply the mapping** — which of the ten certificates belongs under each
+> of the five headings. It is then a small change.
+
+## 28. The featured certificate is captioned as the wrong document
+
+The frame captions the certificate in its carousel **"Bird Nest Authority Certificate"**.
+
+The document in the image is not that. It is a **PT ESTA Indonesia Certificate of Analysis,
+Finished Product** — a batch quality report for invoice 002/INV/ESTA/2026 dated 30 January 2026,
+recording sialic acid at 10.9%, moisture at 17.2%, sulphur dioxide not detected, conclusion
+"Passed tested".
+
+Two things follow. First, the frame's own active filter is **Batch Quality Verification**, which is
+exactly what a certificate of analysis is — so the filter and the image agree and only the caption
+is wrong. Second, this document is **not among the nine certificate scans in the repository**; it
+came only from the design file, and has been added to the carousel as a tenth.
+
+Built with the document's own title, "Certificate of Analysis — Finished Product".
+
+> **Confirm the caption.** A certificate of analysis and an authenticity certificate are different
+> documents with different evidential weight, and this page exists to be evidence.
+
+---
+
+## 29. The frame reuses one photograph for three different grades
+
+Q4 records that Royal Oval and Celestial have no photography. The Products frame works around it by
+using **Tien Yan Royal's photograph in all three slots** — Tien Yan Royal, Royal Oval and Celestial
+share a single asset.
+
+Not reproduced. On a page where a sourcing manager selects a grade partly by how the nest looks,
+showing the same nest under three names and three prices — $150, $120 and $110 — tells the buyer
+something untrue about the product. Both slots read "Photography to follow" instead.
+
+> **One line each to change** if the intent was deliberate. But the fix is two photographs.
+
+---
+
 ---
 
 ## Internal notes that were deliberately *not* published
