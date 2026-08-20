@@ -243,3 +243,280 @@
   line-height: 1.5;
   color: var(--c-ink-soft);
 }
+
+/* ==========================================================================
+   Partnership — hero · Figma frame 48:92
+   ========================================================================== */
+
+.pt-hero { padding-block: var(--section-y); }
+
+.pt-hero__grid {
+  display: grid;
+  gap: var(--s-7);
+  align-items: center;
+}
+@media (min-width: 60rem) {
+  /* 474 : 664 in the frame. */
+  .pt-hero__grid { grid-template-columns: minmax(0, 474fr) minmax(0, 664fr); gap: var(--s-8); }
+}
+
+.pt-hero__title {
+  font-size: var(--t-page-title);
+  line-height: 1.12;
+  color: var(--c-mulberry);
+  text-wrap: balance;
+}
+
+.pt-hero__body {
+  margin-top: var(--s-6);
+  max-width: 40ch;
+  font-size: var(--t-sect-sub);
+  line-height: 1.25;              /* 35/28 */
+  color: var(--c-ink);
+}
+
+.pt-hero__photo {
+  width: 100%;
+  aspect-ratio: 664 / 562;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Partnership — End-to-End Value Chain · Figma frame 48:93
+
+   A four-tab interface. Only "Quality Assurance" is populated in the frame —
+   the other three panels have no content at all, so they are built as real
+   tabs with their copy marked pending rather than invented. Q20.
+   ========================================================================== */
+
+.chain { padding-block: var(--section-y); }
+
+.chain__title {
+  font-size: var(--t-sect-title);
+  line-height: 1.1;
+  color: var(--c-mulberry);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* DERIVED — the frame lays the four tabs on one 1219px row. Below that they
+   wrap; below 40rem the row scrolls horizontally rather than stacking into a
+   four-line block, which would push the panel off the first screen. */
+.js-tabs .chain__tabs { display: flex; }
+
+.chain__tabs {
+  /* Hidden until js/tabs.js confirms it can switch panels. Without JavaScript
+     every panel is visible and stacked under its own heading, so a tablist
+     that cannot tab would be pure noise. */
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-4) var(--s-6);
+  margin-top: var(--s-8);
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 40rem) {
+  .chain__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chain__tabs li { flex: none; scroll-snap-align: start; }
+}
+
+.chain__tab {
+  padding: var(--s-2) 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 1.25rem;             /* 20px */
+  line-height: 1.3;
+  /* The frame greys inactive tabs to #9c9a9a — 2.8:1 on white, which fails
+     even the 3:1 non-text threshold. Raised to Ink Soft: same "recessive"
+     reading, 8:1, and it still sits clearly behind the active tab. Q21. */
+  color: var(--c-ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--d-ui) var(--e-out), border-color var(--d-ui) var(--e-out);
+}
+.chain__tab:hover { color: var(--c-ink); }
+.chain__tab[aria-selected="true"] {
+  color: var(--c-ink);
+  border-bottom-color: var(--c-fuchsia);
+  font-weight: 600;
+}
+
+.chain__panel {
+  display: grid;
+  gap: var(--s-6);
+  align-items: center;
+  margin-top: var(--s-6);
+  padding: var(--s-7);
+  background: var(--c-cream-warm);
+  border-radius: 24px;            /* Figma rounded-[24px] */
+}
+@media (min-width: 60rem) {
+  /* Copy left, photograph right — 1219 panel with a 608 image. Only panels
+     that actually have a photograph get the second column; the three whose
+     copy is still pending would otherwise reserve a large empty gap. */
+  .chain__panel:has(.chain__panel-photo) {
+    /* 1219px panel minus the 608px image and its padding leaves ~550 for the
+       copy. Both tracks must be expressed in the SAME unit — `1fr 608fr` is a
+       1:608 ratio, which crushes the copy to a few pixels. */
+    grid-template-columns: minmax(0, 550fr) minmax(0, 608fr);
+    gap: var(--s-8);
+  }
+}
+.chain__panel[hidden] { display: none; }
+
+.chain__panel-title {
+  font-size: clamp(1.375rem, 1.1rem + 1.1vw, 2rem);   /* 32px */
+  line-height: 1.15;
+  color: var(--c-mulberry);
+}
+
+.chain__panel-body {
+  margin-top: var(--s-4);
+  max-width: 38ch;
+  font-size: var(--t-list);       /* 24px */
+  line-height: 1.45;
+  color: var(--c-ink);
+}
+
+.chain__panel-photo {
+  width: 100%;
+  aspect-ratio: 608 / 410;
+  object-fit: cover;
+  border-radius: 26px;            /* Figma rounded-[26px] */
+}
+
+.chain__pending {
+  margin-top: var(--s-4);
+  max-width: 38ch;
+  font-size: var(--t-body);
+  line-height: 1.6;
+  color: var(--c-ink-soft);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Partnership — Certificates carousel · Figma frame 48:96
+   ========================================================================== */
+
+.pt-certs { padding-block: var(--section-y); background: var(--c-page-warm); }
+
+.pt-certs__title {
+  font-size: var(--t-sect-title);
+  line-height: 1.1;
+  color: var(--c-mulberry);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Five certification types, set as a centred two-row list in the frame. */
+.pt-certs__types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-3) var(--s-5);
+  margin: var(--s-6) auto 0;
+  max-width: 60rem;
+  padding: 0;
+  list-style: none;
+}
+.pt-certs__types li {
+  margin: 0;
+  max-width: none;
+  padding: var(--s-2) var(--s-4);
+  border: 1px solid var(--c-rule-strong);
+  border-radius: 999px;
+  font-size: 1.125rem;
+  color: var(--c-ink);
+  background: var(--c-paper);
+}
+
+/* The carousel. Without JavaScript this is a horizontally scrollable row of
+   every certificate — complete, usable, and the controls stay hidden. Same
+   contract as the product-card disclosure. */
+.pt-carousel { margin-top: var(--s-8); }
+
+.pt-carousel__viewport {
+  display: flex;
+  gap: var(--s-6);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--s-4);
+  -webkit-overflow-scrolling: touch;
+}
+.pt-carousel__viewport::-webkit-scrollbar { height: 6px; }
+.pt-carousel__viewport::-webkit-scrollbar-thumb {
+  background: var(--c-rule-strong); border-radius: 3px;
+}
+
+.pt-slide {
+  flex: none;
+  width: min(432px, 78vw);
+  scroll-snap-align: center;
+  text-align: center;
+}
+
+.pt-slide__img {
+  width: 100%;
+  aspect-ratio: 432 / 639;
+  object-fit: contain;
+  background: var(--c-paper);
+  border: 1px solid var(--c-rule);
+  box-shadow: var(--shadow-sm);
+}
+
+.pt-slide__caption {
+  margin-top: var(--s-4);
+  font-family: var(--font-display);
+  font-size: var(--t-card-title);   /* 28px */
+  line-height: 1.25;
+  color: var(--c-mulberry);
+  text-wrap: balance;
+}
+
+/* Controls are injected/revealed by js/carousel.js only once it can drive the
+   viewport. The frame draws bare "<" and ">" glyphs with no target; built at
+   44px minimum (SC 2.5.8). */
+.pt-carousel__controls {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+}
+.js-carousel .pt-carousel__controls { display: flex; }
+
+.pt-carousel__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--c-rule-strong);
+  border-radius: 50%;
+  background: var(--c-paper);
+  color: var(--c-mulberry);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--d-fast) var(--e-out), color var(--d-fast) var(--e-out);
+}
+.pt-carousel__btn:hover:not(:disabled) { background: var(--c-mulberry); color: var(--c-cream); }
+.pt-carousel__btn:disabled { opacity: 0.35; cursor: default; }
+
+.pt-carousel__count {
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+  font-variant-numeric: tabular-nums;
+  min-width: 4.5rem;
+  text-align: center;
+}

@@ -282,6 +282,64 @@ Nothing was merged in unilaterally — the frame was built as drawn.
 
 ---
 
+## 20. Three of the four value-chain tabs have no content — **blocks the page**
+
+The End-to-End Value Chain section (frame 48:93) is a four-tab interface:
+
+| Tab | Content in the frame |
+|---|---|
+| Regulatory & Export Readiness | *none* |
+| Integrated Supply Chain | *none* |
+| Quality Assurance | heading, one paragraph, one photograph |
+| Custom Product Solutions | *none* |
+
+Only Quality Assurance is drawn. The other three tabs exist as labels with nothing behind them.
+
+Built as a real tablist with all four tabs present and the three empty panels reading
+"Copy for this panel is not in the supplied design and has not been written." Nothing was invented.
+
+> **Needs copy for three panels.** These are four claimed advantages of working with Tien Yan and
+> three of them currently say nothing — on the page whose whole job is to win partners.
+
+## 21. Inactive tab colour fails contrast
+
+The frame greys the three inactive tabs to **`#9c9a9a`**, which measures **2.8:1** on white. That
+fails WCAG AA for text (4.5:1) and fails even the 3:1 non-text threshold.
+
+Built with Ink Soft `#5c4c52` instead — same recessive reading, 8:1, and still clearly behind the
+active tab, which additionally carries a fuchsia underline and heavier weight so the state is not
+signalled by colour alone.
+
+> **Flagging, not asking.** The build will not ship text at 2.8:1. If the AD wants a lighter grey,
+> anything at or above 4.5:1 on white is fine.
+
+## 22. Two Partnership photographs are placeholders
+
+The hero (664×562) and the Quality Assurance panel (608×410) need photographs that exist only in
+the Figma. They could not be exported — the Figma MCP quota ran out mid-build — so the nearest
+equivalents already in the repo stand in at roughly a quarter of the required resolution:
+
+| Slot | Standing in | Needed |
+|---|---|---|
+| Partnership hero | `assets/process/03-feather-removal.jpg` (238×159) | 664×562 |
+| Quality Assurance panel | `assets/process/05-grading.jpg` (232×155) | 608×410 |
+
+Both are marked `PLACEHOLDER-IMAGE` in `partnership.html`. Swapping each is a one-line `src`
+change. The nine certificate scans in the carousel are full resolution and need no replacement.
+
+## 23. Two more copy inconsistencies inside the Figma itself
+
+- **Certification heading.** The homepage frame reads "Built on Quality**.** Backed by
+  Certification**.**" (two sentences). The Partnership frame reads "Built on Quality**,** Backed by
+  Certification" (one clause, no full stop). Both built as drawn, so the site currently shows both.
+- **Certificate name.** The Partnership frame captions the carousel "Bird Nest **Authority**
+  Certificate". Every supplied content document, and the previous build, calls it the
+  "Bird Nest **Authenticity** Certificate". The documents' name was used.
+
+> Related to Q3, which already records a certificate name differing between source documents.
+
+---
+
 ---
 
 ## Internal notes that were deliberately *not* published
