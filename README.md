@@ -23,7 +23,7 @@ Then open <http://localhost:8000>. There is nothing to install and nothing to bu
 ## Structure
 
 ```
-index.html      Home       hero · heritage · featured products · certifications · CTA
+index.html      Home       hero · heritage · collection · certifications · CTA  (Figma redesign)
 about.html      About Us   who we are · vision · story · founding team
 why.html        Why        PT ESTA partnership · 7-step QC process · 9 certifications
 products.html   Products   12 grades
@@ -32,11 +32,13 @@ contact.html    Contact    details · B2B enquiry form
 css/tokens.css       Brand variables — the single source of truth
 css/base.css         Reset, typography, layout primitives
 css/components.css   Nav, footer, cards, form, process, certificates
+css/home.css         Homepage only — the Figma redesign. Port target for Wix.
 css/motion.css       Scroll reveals + reduced-motion
 
 js/nav.js            Sticky header, mobile menu
 js/reveal.js         IntersectionObserver reveals, count-up figures
 js/form.js           Validation + Formspree submission
+js/product-card.js   Homepage product card disclosure ("+")
 
 assets/logo/         Logo variations (SVG sources in source/)
 assets/hero/         Hero photograph
@@ -45,8 +47,13 @@ assets/process/      8 quality-control photographs
 assets/certs/        9 certificate scans
 ```
 
-Four small CSS files rather than one large one, so `tokens.css` stays the only place brand values
-live. That is what makes the planned Webflow migration mechanical rather than archaeological.
+Five small CSS files rather than one large one, so `tokens.css` stays the only place brand values
+live. That is what makes the platform migration mechanical rather than archaeological.
+
+`home.css` is deliberately separate. The homepage has been rebuilt to the art director's Figma and
+is the pilot for the **Wix Studio** migration; keeping it in one file means the port has a single
+stylesheet to translate rather than a diff against `components.css`. The other four pages are
+untouched and still render from `components.css`.
 
 ---
 
@@ -89,16 +96,21 @@ Restrained by intent — the audience is a sourcing manager comparing suppliers,
 as confidence in this category. Everything is `IntersectionObserver` + CSS transitions; there are no
 libraries.
 
-Each effect has a native Webflow Interactions equivalent, which is the point:
+No effect depends on JavaScript for its meaning, which is what makes the set portable to a visual
+builder. Each one is a standard primitive rather than something bespoke:
 
-| Effect | Webflow equivalent |
+| Effect | What the target platform needs to provide |
 |---|---|
-| Staggered rise + fade on entry | Scroll into view |
-| Hero photograph settling on load | Page load animation |
-| Quality-control rail drawing top→bottom | Scroll into view |
-| Count-up on 1950 / 12 / 9 | Custom code |
-| Header condensing on scroll | Scroll animation |
-| Secondary graphic rotating | Loop animation |
+| Staggered rise + fade on entry | Scroll-into-view trigger with a per-element delay |
+| Hero photograph settling on load | Page-load animation |
+| Quality-control rail drawing top→bottom | Scroll-into-view trigger on a scaled element |
+| Product card "+" disclosure | Toggle / accordion interaction |
+| Count-up on 1950 / 12 / 9 | Custom code — no builder does this natively |
+| Header condensing on scroll | Scroll-position trigger |
+| Secondary graphic rotating | Looping animation |
+
+The exact Wix Studio equivalents are confirmed in Phase 2 of the migration, not assumed here.
+Anything Wix cannot reproduce gets reported rather than silently dropped.
 
 Content is visible by default. `js/reveal.js` only hides elements once it has confirmed it can also
 show them again, so a JavaScript failure never leaves a blank page.
@@ -131,11 +143,15 @@ Currently pre-launch. To publish:
 
 1. Delete `<meta name="robots" content="noindex, nofollow">` from all five HTML files.
 2. Replace `Disallow: /` with `Allow: /` in `robots.txt`.
-3. Uncomment the phone number blocks in `contact.html` and the footer of all five pages
-   (search for `withheld pending sign-off`).
+3. Uncomment the phone number blocks in `contact.html` and the footer of the four pages that
+   still hide it (search for `withheld pending sign-off`). The redesigned homepage already
+   publishes it, because the supplied Figma frame does — see CONTENT-QUERIES.md Q10.
 4. Connect the Formspree endpoint (above).
-5. Resolve the items in **[CONTENT-QUERIES.md](CONTENT-QUERIES.md)** — one of them is visible to
-   any visitor who reads two pages.
+5. Write `privacy.html`, `terms.html` and `cookies.html`, or remove the three links to them from
+   the homepage footer. They are dead links today — see CONTENT-QUERIES.md Q15.
+6. Resolve the items in **[CONTENT-QUERIES.md](CONTENT-QUERIES.md)** — sixteen now. One is visible
+   to any visitor who reads two pages; four block the homepage (placeholder card copy, the
+   identical `$100/kg` on every grade, the nav labels, and the Grenda licence).
 
 ---
 

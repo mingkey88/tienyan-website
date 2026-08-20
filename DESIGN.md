@@ -125,3 +125,64 @@ lose contrast.
    that is not in the source documents. Where an asset is missing, mark it missing.
 4. **Copy is not the builder's to author.** Discrepancies go to `CONTENT-QUERIES.md`; they are not
    silently harmonised.
+
+---
+
+# Homepage redesign — derived responsive behaviour
+
+**Added 20 Aug 2026.** Source: Figma `0K2glnwVTs6E7C6yAJlXrz`, frame `1:4 HomePage`.
+
+The supplied frame is a fixed 1440px canvas with **no auto-layout and no variables**. It specifies
+exactly one viewport. Everything below 1440px was decided here, not by the art director, and every
+decision is listed so it can be approved or overruled. All of them live in `css/home.css`, marked
+`DERIVED`.
+
+| Section | ≥1440px (as drawn) | Derived behaviour below |
+|---|---|---|
+| Container | Insets vary 102–178px per section | Normalised to one 75rem container (120px margins at 1440px) |
+| Hero | Copy overlaid on a full-bleed photograph | Below 46rem: stops being an overlay. Copy on a flat ground, photograph beneath at 4:3 |
+| Hero photograph | Full-bleed cover | `object-position: 70%` so the nests stay in frame as the viewport narrows |
+| Heritage | Illustration left, copy right | Single column below 60rem, illustration first |
+| Collection | Three cards across | `auto-fit` from a 17rem floor — three, then two, then one |
+| Certificates | Three scans at their own widths, 480px tall | Equal heights, natural widths, wrapping and centred |
+| Footer | Brand block + four columns | Two columns below 68rem, one below 48rem |
+
+## Decisions worth challenging
+
+**The hero stops being an overlay below 46rem.** The alternative was keeping the overlay and
+darkening the photograph behind the copy. Rejected: a scrim would sit over the product, and the
+product is the reason the photograph is there. The cost is that the hero is taller on a phone.
+
+**The container was normalised.** The frame insets its five sections at 102, 125, 142 and 178px —
+the signature of a file without auto-layout. Reproducing all four would bake the inconsistency into
+the Wix build, where it becomes four different section paddings to maintain. One container instead.
+
+**Buttons are pinned to 238px.** Every primary action in the frame is drawn at that width whatever
+the label, and the equal width is what makes the pairs read as a set. Below the point where 238px
+no longer fits beside the gutters they go full width.
+
+**Footer body type raised from 12px to 13px.** The frame's smallest text is 12px reversed on
+Deep Mulberry. The site holds a WCAG 2.2 AA commitment and this is the least legible text on the
+page; 13px costs nothing visually. Contrast measures 5.14:1 either way.
+
+## Verified, not assumed
+
+Measured in-browser on 20 Aug 2026 at 1440 / 768 / 390px:
+
+- **Contrast** — 14 foreground/ground pairs, all pass AA. The hero sets type directly on a
+  photograph, so the ground was sampled per-pixel behind each text block rather than assumed:
+  worst case 6.62:1 for the headline, 6.48:1 for the Chinese slogan, 10.94:1 for the lead.
+- **No horizontal overflow** at any of the three widths.
+- **All 20 scroll reveals fire**, and content is visible with JavaScript disabled.
+- **The card disclosure is keyboard-operable** — `aria-expanded` tracks state, Escape closes the
+  focused card and returns focus to its button, and the control is removed entirely if its panel
+  is missing.
+- **Zero console errors or warnings.**
+
+## Assets
+
+Re-exported from the Figma frame into `assets/figma/`. The originals came out at 4096px
+(18.5 MB total) and were downscaled to 2× display size and converted to WebP — **404 KB total**.
+The hero photograph is horizontally flipped, reproducing the `rotate-180 + scale-y-100` transform
+the frame applies to it; without the flip the nests land on the wrong side and the headline sits
+on top of them.

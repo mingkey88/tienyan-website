@@ -24,62 +24,74 @@
 <meta property="og:url" content="https://www.tienyan.com/">
 <meta property="og:title" content="Tien Yan — Premium Edible Bird's Nest for Trade Partners">
 <meta property="og:description" content="Tien Yan supplies premium Indonesian edible bird's nest to retail, hospitality and wellness partners worldwide. Singapore heritage since 1950, produced with PT ESTA Indonesia.">
-<meta property="og:image" content="https://www.tienyan.com/assets/hero/hero-nest.jpg">
-<meta property="og:image:width" content="1800">
-<meta property="og:image:height" content="1360">
-<meta property="og:image:alt" content="Three edible bird's nests arranged on volcanic rock with a flowering branch">
+<meta property="og:image" content="https://www.tienyan.com/assets/figma/hero-bg-2560.webp">
+<meta property="og:image:alt" content="Edible bird's nests arranged on driftwood with a flowering branch">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tien Yan — Premium Edible Bird's Nest for Trade Partners">
 <meta name="twitter:description" content="Tien Yan supplies premium Indonesian edible bird's nest to retail, hospitality and wellness partners worldwide. Singapore heritage since 1950, produced with PT ESTA Indonesia.">
-<meta name="twitter:image" content="https://www.tienyan.com/assets/hero/hero-nest.jpg">
-
+<meta name="twitter:image" content="https://www.tienyan.com/assets/figma/hero-bg-2560.webp">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Karla:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 
+<!-- The hero photograph is the LCP element on every viewport. Preloaded so it
+     is not discovered late in the parse. -->
+<link rel="preload" as="image" href="assets/figma/hero-bg-2560.webp"
+      imagesrcset="assets/figma/hero-bg-1280.webp 1280w, assets/figma/hero-bg-2560.webp 2560w"
+      imagesizes="100vw">
+
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/motion.css">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
 </head>
 <body>
 <!--
-  DIRECTION CONTRACT · seed 07eb697a · surface/persuade
-  THESIS: A supplier record, not a brochure. This page refuses the wellness-ecommerce
-    arrangement (lifestyle hero, benefit icons, soft gradients) and presents Tien Yan as
-    trade documentation: named provenance, dated assay, numbered certifications.
-  OWN-WORLD: Deep Mulberry grounds and Champagne Cream fields from the brand guide;
-    Imperial Fuchsia reserved for display type and one primary action; Signature Gold for
-    hairline rules and tracked labels; the gold secondary graphic rotating at low opacity.
-    Cormorant Garamond display over Karla body; 天燕 set in Noto Serif SC at matching size.
-  STORY: A sceptical sourcing manager learns this is a 1950 Singapore house with access to
-    PT ESTA production, sees the grades and the certifications are real, and emails Lena.
-  FIRST VIEWPORT: Full-bleed nest photograph under a mulberry scrim, bilingual slogan set
-    large at left, lead beneath, two actions — Explore Products (primary) and Contact Us.
-  FORM: Given sitemap and copy, verbatim, per client instruction; composed inside the brand
-    guide's own visual world. Copy is not the builder's to author.
-  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review,
-    the verdict, and DESIGN.md
+  DIRECTION CONTRACT · homepage · Figma redesign
+  SOURCE: Figma "Tien Yan" 0K2glnwVTs6E7C6yAJlXrz, frame 1:4 "HomePage", supplied
+    by the client's art director. Desktop-only (fixed 1440px, no auto-layout, no
+    variables). Every viewport below 1440px is DERIVED here and marked as such in
+    css/home.css; those calls need the designer's sign-off, not the builder's.
+  THESIS: unchanged from the previous build — a supplier record, not a brochure.
+    The redesign softens the ground (warm taupe and amber wash replace the deep
+    mulberry bands) but keeps the evidential spine: named grades, real certificate
+    scans, a real address.
+  DEVIATIONS FROM THE FIGMA, all logged in CONTENT-QUERIES.md:
+    · Grenda is specified throughout the frame and is not licensed to this project.
+      Cormorant Garamond stands in for display, Karla for body. FONTS.md documents
+      the swap.
+    · Card copy reads "lorem ipsum" and every grade is priced "$100/kg" in the
+      frame. Rendered verbatim and marked data-placeholder. Not the builder's to
+      author, and pricing is a commercial decision besides.
+    · Nav labels (Our Story, Partnership) do not match the page names they point at
+      (About Us, Why Tien Yan).
+    · The phone number the previous build withheld pending sign-off is published in
+      this frame. Included, and flagged.
+  PORT TARGET: Wix Studio. Each <section> below is one Wix section; css/home.css is
+    the single stylesheet to translate.
 -->
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="wrap site-header__inner">
+<header class="site-header site-header--home">
+  <div class="home-wrap site-header__inner">
     <a class="site-logo" href="index.html" aria-label="Tien Yan — home">
-      <img src="assets/logo/logo-horizontal.png"
-           srcset="assets/logo/logo-horizontal.png 480w, assets/logo/logo-horizontal-960.png 960w"
-           sizes="112px" alt="Tien Yan 天燕" width="480" height="243">
+      <img src="assets/figma/logo-nav.webp" alt="Tien Yan 天燕"
+           width="561" height="281" style="width: 107px;">
     </a>
 
+    <!-- Labels follow the Figma. The hrefs follow the pages that actually exist:
+         Our Story → about.html, Partnership → why.html, Enquiry → contact.html.
+         See CONTENT-QUERIES.md Q9 — this mismatch needs a ruling. -->
     <nav class="nav" aria-label="Primary">
       <a class="nav__link" href="index.html" aria-current="page">Home</a>
-      <a class="nav__link" href="about.html">About Us</a>
-      <a class="nav__link" href="why.html">Why Tien Yan</a>
-      <a class="nav__link" href="products.html">Our Products</a>
-      <a class="btn btn--primary nav__cta" href="contact.html">Contact Us</a>
+      <a class="nav__link" href="about.html">Our Story</a>
+      <a class="nav__link" href="why.html">Partnership</a>
+      <a class="nav__link" href="products.html">Products</a>
+      <a class="btn btn--primary nav__cta" href="contact.html">Enquiry</a>
     </nav>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
@@ -91,261 +103,296 @@
   <div class="mobile-nav" id="mobile-nav">
     <ul class="mobile-nav__list">
       <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="why.html">Why Tien Yan</a></li>
-      <li><a href="products.html">Our Products</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="why.html">Partnership</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Enquiry</a></li>
     </ul>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- ===================== Hero ===================== -->
-  <section class="hero">
-    <div class="hero__media">
-      <img src="assets/hero/hero-nest.jpg" alt="Three edible bird's nests arranged on volcanic rock with a flowering branch" width="1800" height="1360" fetchpriority="high">
-    </div>
-    <div class="hero__scrim"></div>
-    <img class="deco deco--hero deco--spin" src="assets/logo/secondary-graphic.png" alt="" aria-hidden="true" width="1200" height="1200">
+  <!-- ===================== Hero · Figma 48:79 ===================== -->
+  <section class="home-hero">
+    <img class="home-hero__bg"
+         src="assets/figma/hero-bg-2560.webp"
+         srcset="assets/figma/hero-bg-1280.webp 1280w, assets/figma/hero-bg-2560.webp 2560w"
+         sizes="100vw"
+         alt="Edible bird's nests resting on driftwood beside a flowering branch"
+         width="2560" height="1046" fetchpriority="high" decoding="async">
 
-    <div class="wrap hero__inner">
-      <h1 class="t-display hero__title" data-reveal>
-        Nature's Gift, Beyond Generations
-        <span class="hero__cn cn" lang="zh-Hans">天赐珍燕,世代传承</span>
-      </h1>
-      <p class="lead hero__lead" data-reveal data-reveal-delay="1">
-        Premium Bird's Nest prepared to meet the highest standards for retail, hospitality, and wellness partners.
-      </p>
-      <div class="hero__actions" data-reveal data-reveal-delay="2">
-        <a class="btn btn--primary" href="products.html">
-          Explore Products
-          <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="btn btn--ghost" href="contact.html">Contact Us</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== Heritage ===================== -->
-  <section class="section band--paper">
-    <div class="wrap split">
-      <div class="stack--lg stack">
-        <h2 data-reveal>Premium Bird's Nest. Trusted Heritage. Global Supply</h2>
-        <p class="lead" data-reveal data-reveal-delay="1">
-          Tien Yan traces its roots to Fu An Bird's Nest, a trusted Singapore name established at 19 North Canal Road in 1950.
+    <div class="home-wrap">
+      <div class="home-hero__inner">
+        <h1 class="home-hero__title" data-reveal>
+          Nature's Gift,<br>Beyond Generations
+        </h1>
+        <p class="home-hero__cn cn" lang="zh-Hans" data-reveal>天赐珍燕，世代传承</p>
+        <p class="home-hero__lead" data-reveal>
+          Premium Bird's Nest prepared to meet the highest standards for retail,
+          hospitality, and wellness partners.
         </p>
-        <p data-reveal data-reveal-delay="2">
-          Today, we combine this heritage with PT ESTA Indonesia's integrated sourcing and production capabilities to deliver authentic, export-ready Indonesian bird's nest to partners worldwide.
-        </p>
-        <p data-reveal data-reveal-delay="3">
-          <a class="link-arrow" href="about.html">
-            Learn more about Tien Yan
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="home-hero__actions" data-reveal>
+          <a class="btn btn--primary" href="products.html">Explore Products</a>
+          <!-- Number taken from the footer of the supplied Figma frame. The
+               previous build withheld it pending sign-off — see CONTENT-QUERIES.md Q10. -->
+          <a class="btn btn--primary" href="https://wa.me/6598007226" rel="noopener">
+            WhatsApp Us
           </a>
-        </p>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="stats" data-reveal="media">
-        <div class="stat">
-          <div class="stat__value"><span data-count-to="1950">1950</span></div>
-          <p class="stat__label">Founded on North Canal Road, Singapore</p>
-        </div>
-        <div class="stat">
-          <div class="stat__value"><span data-count-to="12">12</span></div>
-          <p class="stat__label">Grades of edible bird's nest</p>
-        </div>
-        <div class="stat">
-          <div class="stat__value"><span data-count-to="9">9</span></div>
-          <p class="stat__label">Internationally recognised certifications</p>
-        </div>
+  <!-- ===================== Heritage · Figma 48:80 ===================== -->
+  <section class="home-heritage">
+    <div class="home-wrap">
+      <div class="home-heritage__grid">
+        <img class="home-heritage__art" src="assets/figma/shophouse.webp"
+             alt="Line drawing of the Singapore shophouse the Tien Yan business was founded in"
+             width="1199" height="597" loading="lazy" decoding="async" data-reveal="media">
 
-        <!-- The stat column ran out ~700px above the text column, leaving the
-             section bottom-heavy on one side. A photograph belongs here on both
-             counts. -->
-        <div class="photo-slot photo-slot--wide" style="margin-top: var(--s-6);">
-          <div class="photo-slot__inner">
-            <span class="photo-slot__tag">Photography to follow</span>
-            <span class="photo-slot__what">The house today</span>
-            <span class="photo-slot__spec">Landscape 16:9, 2000&times;1125 or larger. Packed trade cartons, the Jalan Kilang premises, or graded nests laid out for inspection &mdash; something that reads as a working supplier rather than a product beauty shot.</span>
+        <div>
+          <h2 class="home-heritage__title" data-reveal>
+            Premium Bird's Nest.<br>Trusted Heritage.<br>Global Supply.
+          </h2>
+          <p class="home-heritage__body" data-reveal>
+            From a trusted Singapore heritage brand to premium Indonesian sourcing,
+            discover how Tien Yan continues a legacy of quality, authenticity, and
+            trusted partnerships.
+          </p>
+          <div class="home-heritage__cta" data-reveal>
+            <a class="btn btn--primary" href="about.html">Learn Our Story</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== Featured products ===================== -->
-  <section class="section band--warm">
-    <div class="wrap">
-      <div class="stack">
-        <h2 data-reveal>Featured Products</h2>
-        <p class="lead" data-reveal data-reveal-delay="1">Premium Bird's Nest for Every Market</p>
+  <!-- ===================== Collection · Figma 66:250 ===================== -->
+  <section class="home-collection">
+    <div class="home-wrap">
+      <div class="home-collection__head">
+        <h2 class="home-collection__title" data-reveal>Tradition Reimagined</h2>
+        <p class="home-collection__sub" data-reveal>Tien Yan's Signature Raw Nest Collection</p>
       </div>
 
-      <div class="products" style="margin-top: var(--s-7);">
-        <article class="product" data-reveal data-reveal-delay="1">
-          <div class="product__media">
-            <img src="assets/products/tien-yan-royal.jpg" alt="Tien Yan Royal — a cup-shaped bird's nest, natural beige, photographed on black" width="386" height="314" loading="lazy">
-          </div>
-          <div class="product__body">
-            <h3 class="product__name">Tien Yan Royal</h3>
-            <p class="product__desc">Tien Yan Royal Nest comes from Kalimantan. A natural beige color with &gt;3.5 cm in height.</p>
-          </div>
-        </article>
+      <!-- PLACEHOLDER COPY. Descriptions read "lorem ipsum" and all three grades
+           are priced "$100/kg" in the supplied frame. Rendered verbatim rather
+           than invented; every one is marked data-placeholder so they are
+           greppable before launch. CONTENT-QUERIES.md Q11 and Q12. -->
+      <ul class="home-collection__grid" role="list">
 
-        <article class="product" data-reveal data-reveal-delay="2">
-          <div class="product__media">
-            <img src="assets/products/tien-yan-noble.jpg" alt="Tien Yan Noble — a bird's nest, natural beige, photographed on black" width="437" height="316" loading="lazy">
+        <li class="product-card" data-reveal data-reveal-delay="1">
+          <img class="product-card__media" src="assets/figma/card-royal.webp"
+               alt="Tien Yan Royal raw bird's nest, a dense cup-shaped nest on a dark ground"
+               width="760" height="564" loading="lazy" decoding="async">
+          <div class="product-card__body">
+            <h3 class="product-card__name">Tien Yan Royal</h3>
+            <p class="product-card__desc" data-placeholder="true">lorem ipsum</p>
+            <div class="product-card__foot">
+              <span class="product-card__price" data-placeholder="true">$100/kg</span>
+              <button class="product-card__toggle" type="button"
+                      aria-expanded="false" aria-controls="detail-royal">
+                <span aria-hidden="true">+</span>
+                <span class="visually-hidden">More about Tien Yan Royal</span>
+              </button>
+            </div>
+            <div class="product-card__detail" id="detail-royal" data-placeholder="true">
+              Grade detail to be supplied.
+            </div>
           </div>
-          <div class="product__body">
-            <h3 class="product__name">Tien Yan Noble</h3>
-            <p class="product__desc">Tien Yan Noble Nest comes from Kalimantan. A natural beige color with 3 cm to 3.5 cm in height.</p>
-          </div>
-        </article>
+        </li>
 
-        <article class="product" data-reveal data-reveal-delay="3">
-          <div class="product__media">
-            <img src="assets/products/imperial.jpg" alt="Imperial — a cup-shaped bird's nest, natural beige, photographed on black" width="534" height="356" loading="lazy">
+        <li class="product-card" data-reveal data-reveal-delay="2">
+          <img class="product-card__media" src="assets/figma/card-noble.webp"
+               alt="Tien Yan Noble raw bird's nest, a cup-shaped nest with visible strand structure"
+               width="760" height="564" loading="lazy" decoding="async">
+          <div class="product-card__body">
+            <h3 class="product-card__name">Tien Yan Noble</h3>
+            <p class="product-card__desc" data-placeholder="true">lorem ipsum</p>
+            <div class="product-card__foot">
+              <span class="product-card__price" data-placeholder="true">$100/kg</span>
+              <button class="product-card__toggle" type="button"
+                      aria-expanded="false" aria-controls="detail-noble">
+                <span aria-hidden="true">+</span>
+                <span class="visually-hidden">More about Tien Yan Noble</span>
+              </button>
+            </div>
+            <div class="product-card__detail" id="detail-noble" data-placeholder="true">
+              Grade detail to be supplied.
+            </div>
           </div>
-          <div class="product__body">
-            <h3 class="product__name">Imperial</h3>
-            <p class="product__desc">Imperial comes from Kalimantan. A natural beige color cup shape with &gt;5 cm in height.</p>
-          </div>
-        </article>
-      </div>
+        </li>
 
-      <p style="margin-top: var(--s-7);" data-reveal>
-        <a class="link-arrow" href="products.html">
-          View All Products
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <li class="product-card" data-reveal data-reveal-delay="3">
+          <img class="product-card__media" src="assets/figma/card-imperial.webp"
+               alt="Tien Yan Imperial raw bird's nest, a rounded nest with fine open strands"
+               width="760" height="564" loading="lazy" decoding="async">
+          <div class="product-card__body">
+            <h3 class="product-card__name">Tien Yan Imperial</h3>
+            <p class="product-card__desc" data-placeholder="true">lorem ipsum</p>
+            <div class="product-card__foot">
+              <span class="product-card__price" data-placeholder="true">$100/kg</span>
+              <button class="product-card__toggle" type="button"
+                      aria-expanded="false" aria-controls="detail-imperial">
+                <span aria-hidden="true">+</span>
+                <span class="visually-hidden">More about Tien Yan Imperial</span>
+              </button>
+            </div>
+            <div class="product-card__detail" id="detail-imperial" data-placeholder="true">
+              Grade detail to be supplied.
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+      <div class="arrow-link__row">
+        <a class="arrow-link" href="products.html">
+          <span>View All Products</span>
+          <img class="arrow-link__icon" src="assets/figma/icons/arrow.svg" alt="" aria-hidden="true"
+               width="52" height="8">
         </a>
-      </p>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== Quality ===================== -->
-  <section class="section band--cream" style="position: relative; overflow: clip;">
-    <img class="deco deco--section deco--spin-reverse" src="assets/logo/secondary-graphic.png" alt="" aria-hidden="true" width="1200" height="1200" style="left: -6rem; bottom: -8rem;">
-    <div class="wrap" style="position: relative; z-index: 2;">
-      <div class="stack">
-        <h2 data-reveal>Quality You Can Trust</h2>
-        <p class="lead" data-reveal data-reveal-delay="1">Backed by internationally recognised certifications and quality verification.</p>
+  <!-- ===================== Certificates · Figma 48:82 ===================== -->
+  <section class="home-certs">
+    <div class="home-wrap">
+      <h2 class="home-certs__title" data-reveal>Built on Quality. Backed by Certification.</h2>
+
+      <div class="home-certs__row">
+        <img class="home-certs__item" src="assets/figma/cert-1.webp"
+             alt="Halal certificate issued to PT ESTA Indonesia by the Republic of Indonesia"
+             width="521" height="733" loading="lazy" decoding="async" data-reveal data-reveal-delay="1">
+        <img class="home-certs__item" src="assets/figma/cert-2.webp"
+             alt="SGS HACCP certification issued to PT ESTA Indonesia"
+             width="556" height="733" loading="lazy" decoding="async" data-reveal data-reveal-delay="2">
+        <img class="home-certs__item" src="assets/figma/cert-3.webp"
+             alt="PT ESTA Indonesia quality control certificate of analysis for finished product"
+             width="492" height="728" loading="lazy" decoding="async" data-reveal data-reveal-delay="3">
       </div>
 
-      <div class="certs" style="margin-top: var(--s-7);">
-        <a class="cert" href="assets/certs/01-halal.jpg" target="_blank" rel="noopener" data-reveal data-reveal-delay="1">
-          <div class="cert__frame"><img src="assets/certs/01-halal.jpg" alt="Halal Certificate issued to PT ESTA Indonesia" width="620" height="887" loading="lazy"></div>
-          <h3 class="cert__name">Halal Certificate</h3>
-          <p class="cert__ref">Certificate No. ID00410016946140324</p>
-          <span class="cert__view">View<span class="visually-hidden"> Halal Certificate, opens in a new tab</span></span>
-        </a>
-        <a class="cert" href="assets/certs/07-haccp.jpg" target="_blank" rel="noopener" data-reveal data-reveal-delay="2">
-          <div class="cert__frame"><img src="assets/certs/07-haccp.jpg" alt="HACCP certification issued by SGS to PT ESTA Indonesia" width="620" height="863" loading="lazy"></div>
-          <h3 class="cert__name">HACCP Certification</h3>
-          <p class="cert__ref">Based upon SNI CXC 1:1969</p>
-          <span class="cert__view">View<span class="visually-hidden"> HACCP Certification, opens in a new tab</span></span>
-        </a>
-        <a class="cert" href="assets/certs/03-bird-nest-authenticity.jpg" target="_blank" rel="noopener" data-reveal data-reveal-delay="3">
-          <div class="cert__frame"><img src="assets/certs/03-bird-nest-authenticity.jpg" alt="Bird Nest Authenticity Certificate showing certificate of analysis results" width="620" height="935" loading="lazy"></div>
-          <h3 class="cert__name">Bird Nest Authenticity Certificate</h3>
-          <span class="cert__view">View<span class="visually-hidden"> Bird Nest Authenticity Certificate, opens in a new tab</span></span>
-        </a>
-        <a class="cert" href="assets/certs/09-cnca-registration-002.jpg" target="_blank" rel="noopener" data-reveal data-reveal-delay="4">
-          <div class="cert__frame"><img src="assets/certs/09-cnca-registration-002.jpg" alt="Certification and Accreditation Administration of the People's Republic of China, registration number 002" width="620" height="445" loading="lazy"></div>
-          <h3 class="cert__name">Certification and Accreditation Administration of the People's Republic of China, Registration No. 002</h3>
-          <p class="cert__ref">Registration No. 002</p>
-          <span class="cert__view">View<span class="visually-hidden"> Certification and Accreditation Administration of the People's Republic of China, Registration No. 002, opens in a new tab</span></span>
+      <div class="arrow-link__row">
+        <a class="arrow-link" href="why.html">
+          <span>View All Certifications</span>
+          <img class="arrow-link__icon" src="assets/figma/icons/arrow.svg" alt="" aria-hidden="true"
+               width="52" height="8">
         </a>
       </div>
-
-      <p style="margin-top: var(--s-7);" data-reveal>
-        <a class="link-arrow" href="why.html">
-          See Our Certifications
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </p>
     </div>
   </section>
 
-  <!-- ===================== Partner ===================== -->
-  <section class="section band--deep">
-    <div class="wrap wrap--narrow" style="text-align: center;">
-      <h2 data-reveal>Let's Partner</h2>
-      <p class="lead" data-reveal data-reveal-delay="1" style="margin-inline: auto; margin-top: var(--s-4);">
-        Whether you're sourcing, customising, or scaling, we're here to help.
+  <!-- ===================== Partner CTA · Figma 62:155 ===================== -->
+  <section class="home-partner">
+    <div class="home-wrap">
+      <h2 class="home-partner__title" data-reveal>Partner with Tien Yan</h2>
+      <p class="home-partner__lead" data-reveal>
+        For retail, hospitality, wellness, and corporate sourcing enquiries.
       </p>
-      <div style="margin-top: var(--s-7);" data-reveal data-reveal-delay="2">
-        <a class="btn btn--primary" href="contact.html">
-          Contact Us
-          <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <div class="home-partner__cta" data-reveal>
+        <a class="btn btn--primary" href="contact.html">Contact Us</a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <img class="deco deco--section deco--spin" src="assets/logo/secondary-graphic.png" alt="" aria-hidden="true" width="1200" height="1200" style="right: -7rem; top: -6rem; opacity: 0.10;">
-  <div class="wrap">
-    <div class="footer__grid">
+<!-- ===================== Footer · Figma 1:368 =====================
+     Scoped .site-footer--v2 so about/why/products/contact keep the existing
+     footer until they are ported too. -->
+<footer class="site-footer site-footer--v2">
+  <div class="home-wrap">
+    <div class="footer-v2__grid">
+
       <div>
-        <div class="footer__logo">
-          <img src="assets/logo/logo-vertical.png" alt="Tien Yan 天燕" width="400" height="615" loading="lazy" style="width: 92px;">
-        </div>
-        <p class="footer__slogan">
-          <span>Nature's Gift, Beyond Generations</span>
-          <span class="cn" lang="zh-Hans">天赐珍燕,世代传承</span>
+        <img class="footer-v2__logo" src="assets/figma/logo-footer.webp"
+             alt="Tien Yan 天燕" width="561" height="281" loading="lazy">
+        <p class="footer-v2__slogan">
+          Nature's Gift, Beyond Generations
+          <span class="cn" lang="zh-Hans">天赐珍燕，世代传承</span>
+        </p>
+        <p class="footer-v2__blurb">
+          Premium Indonesian Edible Bird's Nest for Global Retail,
+          Hospitality &amp; Wellness Partners.
         </p>
       </div>
 
       <div>
-        <h2 class="footer__heading">Pages</h2>
-        <ul class="footer__list">
-          <li><a href="index.html">Home</a></li>
+        <h2 class="footer-v2__heading">Company</h2>
+        <ul class="footer-v2__list">
           <li><a href="about.html">About Us</a></li>
           <li><a href="why.html">Why Tien Yan</a></li>
-          <li><a href="products.html">Our Products</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
 
       <div>
-        <h2 class="footer__heading">Contact</h2>
-        <ul class="footer__list">
-          <li>Tien Yan Pte. Ltd. <span class="cn" lang="zh-Hans">天燕珍品有限公司</span></li>
-          <li>10 Jalan Kilang #04-06<br>Bukit Merah Enterprise Centre<br>Singapore 159410</li>
-          <li><a href="mailto:info@tienyan.com">info@tienyan.com</a></li>
-          <!-- Direct line withheld pending sign-off. To enable, uncomment:
-          <li><a href="tel:+6598007226">+65 9800 7226</a></li>
-          -->
+        <h2 class="footer-v2__heading">Products</h2>
+        <ul class="footer-v2__list">
+          <li><a href="products.html">Royal Series</a></li>
+          <li><a href="products.html">Heritage Series</a></li>
+          <li><a href="products.html">Sky Series</a></li>
         </ul>
       </div>
+
+      <div>
+        <h2 class="footer-v2__heading">Quality</h2>
+        <ul class="footer-v2__list">
+          <li><a href="why.html">Certifications</a></li>
+          <li><a href="why.html">Quality Process</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-v2__heading">Contact Us</h2>
+        <ul class="footer-v2__contact">
+          <li>
+            <img src="assets/figma/icons/mail.webp" alt="" aria-hidden="true" width="16" height="11">
+            <a href="mailto:info@tienyan.com">info@tienyan.com</a>
+          </li>
+          <!-- Published in the supplied Figma frame; withheld by the previous
+               build pending sign-off. CONTENT-QUERIES.md Q10. -->
+          <li>
+            <img src="assets/figma/icons/phone.webp" alt="" aria-hidden="true" width="15" height="16">
+            <a href="tel:+6598007226">+65 9800 7226</a>
+          </li>
+          <li>
+            <img src="assets/figma/icons/pin.webp" alt="" aria-hidden="true" width="12" height="16">
+            <span>10 Jalan Kilang<br>#04-06 Bukit Merah Enterprise Centre<br>Singapore 159410</span>
+          </li>
+        </ul>
+
+        <ul class="footer-v2__social">
+          <li>
+            <a href="https://www.linkedin.com/company/tienyan" rel="noopener" aria-label="Tien Yan on LinkedIn">
+              <img src="assets/figma/icons/linkedin.webp" alt="" aria-hidden="true" width="22" height="22">
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/tienyan" rel="noopener" aria-label="Tien Yan on Instagram">
+              <img src="assets/figma/icons/instagram.webp" alt="" aria-hidden="true" width="22" height="22">
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
-    <div class="footer__legal">
-      <span>&copy; 2026 Tien Yan Pte. Ltd. All rights reserved.</span>
-      <span>UEN 202629510Z</span>
+    <div class="footer-v2__legal">
+      <span>&copy; 2026 Tien Yan Pte. Ltd. All Rights Reserved.</span>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+      </ul>
     </div>
   </div>
 </footer>
 
-<!-- Floating WhatsApp action. Hidden until a number is signed off: replace
-     WHATSAPP_NUMBER below with the international number, digits only and no
-     plus sign — e.g. data-wa-number="6598007226". js/whatsapp.js removes the
-     button entirely while the placeholder is in place, so no dead wa.me link
-     ever ships. -->
-<a class="wa-fab" hidden
-   data-wa-number="WHATSAPP_NUMBER"
-   data-wa-text="Hello Tien Yan, I would like to enquire about trade supply."
-   href="#"
-   target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-  <span class="visually-hidden">Message Tien Yan on WhatsApp (opens WhatsApp in a new tab)</span>
-</a>
-
 <script src="js/nav.js" defer></script>
 <script src="js/reveal.js" defer></script>
-<script src="js/whatsapp.js" defer></script>
+<script src="js/product-card.js" defer></script>
 </body>
 </html>

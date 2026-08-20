@@ -1,0 +1,590 @@
+/* ==========================================================================
+   Tien Yan — Homepage (Figma redesign)
+   Source: Figma "Tien Yan" file 0K2glnwVTs6E7C6yAJlXrz, frame 1:4 "HomePage".
+
+   Scoped to index.html only. The other four pages still use components.css;
+   nothing here overrides them. This file is the port target for Wix Studio —
+   every section below maps to one Wix section.
+
+   Every value traces to the Figma frame or to tokens.css. Where the Figma and
+   the brand guide disagree, the brand guide wins and the difference is noted
+   inline. Where the Figma is silent — every viewport below 1440px — the
+   decision is marked DERIVED and explained.
+   ========================================================================== */
+
+:root {
+  /* The Figma frame insets its sections inconsistently: hero copy at 142px,
+     heritage at 102px, product cards at 125px, certificates at 178px. That is
+     the signature of a file without auto-layout. Normalised to a single
+     container that splits the difference; at 1440px this yields 120px margins. */
+  --maxw-home: 75rem;
+
+  /* Type. The Figma specifies fixed px at 1440px only. Each clamp below lands
+     exactly on the Figma value at 1440px and scales down from there. */
+  --t-hero-title:   clamp(2.25rem,  1.25rem + 3.20vw, 3.4375rem);  /* 55px */
+  --t-hero-cn:      clamp(1.75rem,  0.95rem + 2.65vw, 3rem);       /* 48px */
+  --t-hero-lead:    clamp(1.0625rem, 0.90rem + 1.05vw, 1.75rem);   /* 28px */
+  --t-sect-title:   clamp(1.875rem, 1.15rem + 2.45vw, 3rem);       /* 48px */
+  --t-sect-sub:     clamp(1.125rem, 0.95rem + 0.95vw, 1.75rem);    /* 28px */
+  --t-heritage-body: clamp(1rem,    0.90rem + 0.70vw, 1.5rem);     /* 24px */
+  --t-card-name:    clamp(1.25rem,  1.05rem + 0.75vw, 1.875rem);   /* 30px */
+  --t-link-arrow:   1.25rem;                                       /* 20px */
+
+  /* Grounds sampled from the Figma frame. */
+  --c-collection-field: rgba(224, 165, 37, 0.10);  /* --c-amber @ 10% */
+}
+
+/* Every primary action in the frame is drawn at a uniform 238px, whatever the
+   label length — Explore Products, WhatsApp Us, Learn Our Story, Contact Us.
+   Matched here rather than letting the buttons size to their content, because
+   the equal width is what makes the pairs read as a set. Collapses to full
+   width once the viewport can no longer hold 238px beside the gutters. */
+.home-hero__actions .btn,
+.home-heritage__cta .btn,
+.home-partner__cta .btn {
+  min-width: min(238px, 100%);
+  /* The frame draws these square and at 18px; the site-wide .btn is 14px on a
+     4px radius. Homepage only — the other four pages keep the base button. */
+  padding-block: 0.65rem;
+  border-radius: 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+}
+
+/* Shared container for every homepage section. */
+.home-wrap {
+  width: 100%;
+  max-width: var(--maxw-home);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ==========================================================================
+   Header — Figma component "Navigation" (1:406)
+   White bar, 91px. Labels differ from the existing page names; see
+   CONTENT-QUERIES.md Q9. Links still resolve to the real pages.
+   ========================================================================== */
+
+.site-header--home {
+  background: var(--c-paper);
+  border-bottom: 0;
+}
+.site-header--home .site-header__inner { min-height: 91px; }
+
+.site-header--home .nav__link {
+  font-family: var(--font-body);
+  font-size: 1.125rem;             /* 18px */
+  color: var(--c-ink);
+  text-decoration: none;
+}
+.site-header--home .nav__link:hover,
+.site-header--home .nav__link:focus-visible { color: var(--c-fuchsia); }
+
+/* aria-current is the accessible signal; the rule is the visible one. */
+.site-header--home .nav__link[aria-current="page"] {
+  color: var(--c-fuchsia);
+  box-shadow: inset 0 -1px 0 currentColor;
+}
+
+/* The Enquiry pill: 134x35 at 18px in the Figma. Square, not rounded. */
+.site-header--home .nav__cta {
+  min-width: 134px;
+  padding-block: var(--s-2);
+  border-radius: 0;
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Hero — Figma frame "Premium Bird Nest" (48:79), 1440x768
+   ========================================================================== */
+
+.home-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* 768/1440 = 53.33vw. Floored so the copy never crushes on short viewports,
+     capped at the Figma height so it stops growing on wide monitors. */
+  min-height: clamp(30rem, 53.33vw, 48rem);
+  padding-block: var(--s-8);
+  overflow: hidden;
+  isolation: isolate;
+  background: #e8dccb;  /* matches the photograph's ground; covers the gap
+                           between paint and image decode */
+}
+
+.home-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The nests and the branch sit in the right third of the photograph. Anchoring
+     right keeps the subject in frame as the viewport narrows, and keeps the
+     empty ground on the left where the copy sits. */
+  object-position: 70% 50%;
+}
+
+.home-hero__inner { max-width: 46rem; }
+
+.home-hero__title {
+  font-size: var(--t-hero-title);
+  line-height: 1.09;              /* 60/55 */
+  color: var(--c-mulberry);       /* Figma #72253d — exact token match */
+  letter-spacing: var(--tr-display);
+  text-wrap: balance;
+}
+
+.home-hero__cn {
+  margin-top: var(--s-2);
+  font-family: var(--font-cn);
+  font-size: var(--t-hero-cn);
+  line-height: 1.3;
+  color: var(--c-mulberry);
+}
+
+.home-hero__lead {
+  margin-top: var(--s-5);
+  max-width: 34ch;
+  font-size: var(--t-hero-lead);
+  line-height: 1.25;              /* 35/28 */
+  color: var(--c-ink);
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-7);
+}
+
+/* DERIVED — the Figma stops at 1440px.
+   Below 46rem the photograph's empty left ground is no longer wide enough to
+   hold the copy without it crossing the nests, so the hero stops being an
+   overlay and becomes a stack: copy on a flat ground, photograph beneath at a
+   fixed ratio. Reversing this (keeping the overlay and darkening the image)
+   was rejected — it would put a scrim over the product, and the product is the
+   reason the photograph is there. */
+@media (max-width: 46rem) {
+  .home-hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-block: var(--s-7) 0;
+    background: #efe6d8;
+  }
+  /* The photograph is first in the DOM because it is the desktop background.
+     Ordered below the copy here so the headline and the two actions come first
+     on a phone — order, not DOM position, because the desktop layout depends
+     on the image preceding the text. */
+  .home-hero__bg {
+    order: 2;
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    margin-top: var(--s-7);
+    aspect-ratio: 4 / 3;
+    height: auto;
+    object-position: 60% 50%;
+  }
+  .home-hero > .home-wrap { order: 1; }
+  .home-hero__inner { max-width: none; }
+}
+
+/* ==========================================================================
+   Heritage — Figma frame "Trusted Heritage. Global Supply." (48:80)
+   Shophouse line illustration left, copy right.
+   ========================================================================== */
+
+.home-heritage { padding-block: var(--section-y); background: var(--c-paper-warm); }
+
+.home-heritage__grid {
+  display: grid;
+  gap: var(--s-7);
+  align-items: center;
+}
+@media (min-width: 60rem) {
+  .home-heritage__grid {
+    /* 748:471 in the Figma, rounded to a clean ratio. */
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: var(--s-9);
+  }
+}
+
+.home-heritage__art { width: 100%; height: auto; }
+
+.home-heritage__title {
+  font-size: var(--t-sect-title);
+  line-height: 1.04;              /* 50/48 */
+  color: var(--c-mulberry);
+  text-wrap: balance;
+}
+
+.home-heritage__body {
+  margin-top: var(--s-6);
+  max-width: 42ch;
+  font-size: var(--t-heritage-body);
+  line-height: 1.45;
+  color: var(--c-ink);
+}
+
+.home-heritage__cta { margin-top: var(--s-6); }
+
+/* ==========================================================================
+   Collection — Figma frame "Tradition Reimagined" (66:250)
+   ========================================================================== */
+
+.home-collection {
+  padding-block: var(--section-y);
+  background: var(--c-collection-field);
+}
+
+.home-collection__head { text-align: center; }
+
+.home-collection__title {
+  font-size: var(--t-sect-title);
+  color: var(--c-mulberry);
+  line-height: 1.1;
+}
+
+.home-collection__sub {
+  margin-top: var(--s-3);
+  margin-inline: auto;
+  max-width: 32ch;
+  font-size: var(--t-sect-sub);
+  line-height: 1.3;
+  color: var(--c-ink);
+}
+
+/* DERIVED — three across at 1440px in the Figma. Two across on tablet, one on
+   phone. minmax with a 17rem floor means the cards never compress below the
+   width at which the product photograph stops reading. */
+.home-collection__grid {
+  display: grid;
+  gap: var(--s-6);
+  margin-top: var(--s-8);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-paper);
+  border-radius: 18px;            /* Figma rounded-[18px] */
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--d-ui) var(--e-out),
+              box-shadow var(--d-ui) var(--e-out);
+}
+.product-card:hover,
+.product-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.product-card__media {
+  aspect-ratio: 380 / 282;        /* Figma image well */
+  width: 100%;
+  object-fit: cover;
+  background: #131313;            /* the photographs' own ground */
+}
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--s-5) var(--s-5) var(--s-4);
+}
+
+.product-card__name {
+  font-size: var(--t-card-name);
+  line-height: 1.15;
+  color: var(--c-ink);            /* Figma sets card names in black, not fuchsia */
+}
+
+.product-card__desc {
+  margin-top: var(--s-2);
+  font-size: 1rem;
+  color: var(--c-ink-soft);
+}
+
+.product-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  margin-top: auto;
+  padding-top: var(--s-6);
+}
+
+.product-card__price {
+  font-size: 1.25rem;             /* 20px */
+  color: var(--c-ink);
+}
+
+/* The Figma draws a bare "+" glyph with no target and no stated behaviour.
+   Built as a real button at a 44px minimum target (WCAG 2.2 SC 2.5.8). */
+.product-card__toggle {
+  /* Hidden until js/product-card.js confirms it can operate the panel — a
+     toggle that cannot toggle is a dead control. Same contract as reveal.js. */
+  display: none;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -0.5rem -0.5rem -0.5rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--c-mulberry);
+  font-family: var(--font-display);
+  font-size: 2.25rem;             /* 48px in the Figma, optically matched */
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--d-fast) var(--e-out),
+              transform var(--d-ui) var(--e-out);
+}
+.product-card__toggle:hover { background: rgba(114, 37, 61, 0.08); }
+.product-card__toggle[aria-expanded="true"] { transform: rotate(45deg); }
+
+/* Visible by default. With JavaScript off, every grade shows its full detail
+   and the page loses nothing. */
+.product-card__detail {
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--c-rule);
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+}
+.js-cards .product-card__toggle { display: grid; }
+.js-cards .product-card__detail { display: none; }
+.js-cards .product-card__detail[data-open] { display: block; }
+
+/* ==========================================================================
+   Certificates — Figma frame "Certifications" (48:82)
+   Three scans, 480px tall, at their own natural widths (341/364/324).
+   ========================================================================== */
+
+.home-certs { padding-block: var(--section-y); background: var(--c-paper); }
+
+.home-certs__title {
+  font-size: var(--t-sect-title);
+  line-height: 1.1;
+  color: var(--c-mulberry);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Flex, not grid: the Figma sizes each scan to its own aspect ratio rather than
+   to a column. Matching heights and letting widths differ preserves that. */
+.home-certs__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-6);
+  margin-top: var(--s-8);
+}
+
+.home-certs__item {
+  height: clamp(16rem, 33vw, 30rem);   /* 480px at 1440px */
+  width: auto;
+  object-fit: contain;
+  border: 1px solid var(--c-rule);
+  background: var(--c-paper);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   Partner CTA — Figma component "Partner with Tien Yan" (62:155)
+   White ground. The previous build ran this on Deep Mulberry; the redesign
+   moves it to white.
+   ========================================================================== */
+
+.home-partner {
+  padding-block: var(--section-y);
+  background: var(--c-paper);
+  text-align: center;
+}
+
+.home-partner__title {
+  font-size: var(--t-sect-title);
+  line-height: 1.1;
+  color: var(--c-mulberry);
+  text-wrap: balance;
+}
+
+.home-partner__lead {
+  margin: var(--s-5) auto 0;
+  max-width: 52ch;
+  font-size: var(--t-sect-sub);
+  line-height: 1.35;
+  color: var(--c-ink);
+}
+
+.home-partner__cta { margin-top: var(--s-7); }
+
+/* ==========================================================================
+   Arrow links — "View All Products", "View All Certifications"
+   ========================================================================== */
+
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--t-link-arrow);
+  color: var(--c-mulberry);
+  text-decoration: none;
+}
+.arrow-link:hover { color: var(--c-fuchsia); }
+.arrow-link__row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--s-7);
+}
+.arrow-link__icon {
+  width: 52px;                    /* Figma arrow, exact */
+  flex: none;
+  transition: transform var(--d-ui) var(--e-out);
+}
+.arrow-link:hover .arrow-link__icon { transform: translateX(6px); }
+
+/* Underline the label rather than relying on colour alone (SC 1.4.1). */
+.arrow-link span { text-underline-offset: 0.25em; }
+.arrow-link:hover span { text-decoration: underline; }
+
+/* ==========================================================================
+   Footer — Figma component "Footer" (1:368)
+   Scoped --v2 so the four pages not yet ported keep the existing footer.
+   ========================================================================== */
+
+.site-footer--v2 {
+  background: var(--c-mulberry);
+  color: var(--c-on-dark);
+  padding-block: var(--s-8) var(--s-5);
+}
+
+.footer-v2__grid {
+  display: grid;
+  gap: var(--s-7);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 48rem) {
+  .footer-v2__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 68rem) {
+  /* Brand block is wider than the four link columns, as in the Figma. */
+  .footer-v2__grid {
+    grid-template-columns: 1.6fr repeat(3, 0.85fr) 1.3fr;
+    gap: var(--s-6);
+  }
+}
+
+.footer-v2__logo { width: 66px; height: auto; }
+
+.footer-v2__slogan {
+  margin-top: var(--s-5);
+  font-size: 0.875rem;            /* 14px */
+  line-height: 1.6;
+  color: var(--c-on-dark);
+}
+.footer-v2__slogan .cn { display: block; }
+
+.footer-v2__blurb {
+  margin-top: var(--s-5);
+  max-width: 34ch;
+  /* Figma sets this at 12px. Raised to 13px: 12px reverse-on-mulberry is the
+     smallest text on the page and the site holds a WCAG 2.2 AA commitment. */
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--c-on-dark-soft);
+}
+
+.footer-v2__heading {
+  font-family: var(--font-body);
+  font-size: 1rem;                /* 16px */
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  /* Figma uses #f3dbb3. The brand guide's Champagne Cream is #f1e4b2 and the
+     token wins — a 2-step difference, invisible side by side. Logged. */
+  color: var(--c-cream);
+}
+
+.footer-v2__list {
+  margin-top: var(--s-4);
+  padding: 0;
+  list-style: none;
+}
+.footer-v2__list li { margin-bottom: var(--s-2); max-width: none; }
+.footer-v2__list a {
+  font-size: 0.8125rem;
+  color: var(--c-on-dark);
+  text-decoration: none;
+}
+.footer-v2__list a:hover,
+.footer-v2__list a:focus-visible { color: var(--c-cream); text-decoration: underline; }
+
+/* Contact column — icon + value rows */
+.footer-v2__contact { margin-top: var(--s-4); padding: 0; list-style: none; }
+.footer-v2__contact li {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: var(--s-3);
+  align-items: start;
+  margin-bottom: var(--s-4);
+  max-width: none;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.footer-v2__contact img { width: 1rem; height: auto; margin-top: 0.2em; }
+.footer-v2__contact a { color: var(--c-on-dark); text-decoration: none; }
+.footer-v2__contact a:hover { color: var(--c-cream); text-decoration: underline; }
+
+.footer-v2__social {
+  display: flex;
+  gap: var(--s-4);
+  justify-content: flex-start;
+  margin-top: var(--s-6);
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 68rem) {
+  .footer-v2__social { justify-content: flex-end; }
+}
+.footer-v2__social li { margin: 0; max-width: none; }
+.footer-v2__social a {
+  display: grid;
+  place-items: center;
+  width: 44px;                    /* SC 2.5.8 target size */
+  height: 44px;
+  margin: -0.6875rem;             /* keeps the visual gap at the Figma's 22px */
+  border-radius: 50%;
+}
+.footer-v2__social img { width: 22px; height: auto; }
+
+.footer-v2__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--c-rule-dark);
+  font-size: 0.75rem;
+  color: var(--c-on-dark-soft);
+}
+.footer-v2__legal ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+  padding: 0;
+  list-style: none;
+}
+.footer-v2__legal li { margin: 0; max-width: none; }
+.footer-v2__legal a { color: var(--c-on-dark-soft); text-underline-offset: 0.2em; }
+.footer-v2__legal a:hover { color: var(--c-cream); }

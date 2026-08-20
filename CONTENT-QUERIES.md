@@ -122,6 +122,96 @@ the `tienyan.com` domain, the guide's own footer on all 33 pages, and the pinyin
 
 ---
 
+# Homepage redesign — queries raised by the Figma frame
+
+Raised 20 Aug 2026 against **Figma "Tien Yan"** `0K2glnwVTs6E7C6yAJlXrz`, frame `1:4 HomePage`,
+supplied by the art director. Nothing below was changed unilaterally; the frame was built as drawn
+and every disagreement is recorded here.
+
+## 9. Navigation labels do not match the pages they open
+
+The frame's primary nav reads **Home · Our Story · Partnership · Products · Enquiry**. The pages
+that exist are `about.html` ("About Us"), `why.html` ("Why Tien Yan"), `products.html`
+("Our Products") and `contact.html` ("Contact Us").
+
+Built with the Figma's labels pointing at the existing pages — so a visitor clicks *Our Story* and
+lands on a page headed *About Us*. Either the labels or the page headings need to move.
+
+Note the frame's own footer disagrees with its own nav: the footer Company column says
+**About Us** and **Why Tien Yan**, the nav says **Our Story** and **Partnership**.
+
+> **Needs a ruling.** Which set of names is correct?
+
+## 10. The withheld phone number is published in this frame
+
+The previous build withheld **+65 9800 7226** from the footer and disabled the WhatsApp action,
+both marked *pending sign-off*. The supplied frame prints the number in the footer contact column.
+
+Taken as sign-off and published, in the footer and on the hero's *WhatsApp Us* action
+(`https://wa.me/6598007226`).
+
+> **Confirm this was intended.** If the number is not meant to be public, or WhatsApp is a
+> different line, both need reverting before launch.
+
+## 11. Product card descriptions are placeholder text
+
+All three cards read **"lorem ipsum"**. Rendered verbatim and marked `data-placeholder="true"`
+so they are greppable; the expandable detail panels read "Grade detail to be supplied."
+
+> **Needs copy** for Tien Yan Royal, Tien Yan Noble and Tien Yan Imperial.
+
+## 12. Every grade is priced identically, and pricing is public
+
+All three cards show **$100/kg**. Three different grades at one price is almost certainly
+placeholder, but the larger question is prior to it: the rest of the site is built as a B2B
+supplier record that routes buyers to an enquiry form, and published per-kilo pricing is a
+commercial decision, not a design one.
+
+> **Two rulings needed:** should prices appear at all, and if so, what are they?
+
+## 13. The frame is set in Grenda throughout
+
+Every text layer in the frame — headings, body, nav, buttons, footer — specifies
+**Grenda Regular**. Grenda is commercially licensed and not available to this project; see
+FONTS.md. The build uses Cormorant Garamond for display and Karla for body, as established.
+
+This means **the page will not look like the Figma** at the type level until the licence is bought.
+The substitution is a one-line change in `tokens.css`.
+
+> **Decision needed:** buy the Grenda webfont licence, or accept the stand-in and have the AD
+> re-approve the type.
+
+## 14. Chinese is set in a different face than the brand build uses
+
+The frame sets 天赐珍燕，世代传承 in **Microsoft YaHei** (a sans). The build uses **Noto Serif SC**,
+chosen to sit with the serif display face. The frame's choice pairs with Grenda; the build's pairs
+with Cormorant Garamond.
+
+> **Worth confirming with the AD**, and it resolves itself if Q13 is resolved.
+
+## 15. Footer legal links point at three pages that do not exist
+
+The frame's footer carries **Privacy Policy**, **Terms of Use** and **Cookie Policy**. There are no
+such pages, and no copy for them in any supplied document. Built as links to `privacy.html`,
+`terms.html` and `cookies.html`.
+
+> **Blocks launch.** Three dead links. Either the pages get written or the links come out.
+> A cookie policy in particular may be a legal requirement depending on the analytics used.
+
+## 16. The three featured grades do not match the footer's series names
+
+The collection section features **Tien Yan Royal**, **Tien Yan Noble** and **Tien Yan Imperial**
+under the heading "Tien Yan's Signature Raw Nest Collection". The same frame's footer lists the
+product range as **Royal Series**, **Heritage Series** and **Sky Series**.
+
+It is not stated whether the three featured grades are the Royal Series, one from each series, or a
+separate signature tier. `products.html` currently carries twelve grades.
+
+> **Needs clarification** before the *View All Products* link can point anywhere more precise than
+> the products index.
+
+---
+
 ## Internal notes that were deliberately *not* published
 
 The contact form specification in the website content doc contains two parenthetical notes written
