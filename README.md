@@ -3,7 +3,9 @@
 Static marketing site for **Tien Yan Pte. Ltd. 天燕珍品有限公司**, a Singapore-based B2B supplier of
 premium Indonesian edible bird's nest.
 
-Five pages, no build step, no JavaScript dependencies.
+Eight pages — five real, three legal stubs. No build step, no JavaScript dependencies,
+no framework. Every page is rebuilt to the art director's Figma; every deviation from it is
+recorded in CONTENT-QUERIES.md.
 
 > **Pre-launch.** The site is set to `noindex, nofollow` and `robots.txt` disallows everything.
 > See [Going live](#going-live) before sharing publicly.
@@ -23,22 +25,29 @@ Then open <http://localhost:8000>. There is nothing to install and nothing to bu
 ## Structure
 
 ```
-index.html      Home       hero · heritage · collection · certifications · CTA  (Figma redesign)
-about.html      About Us   who we are · vision · story · founding team
-why.html        Why        PT ESTA partnership · 7-step QC process · 9 certifications
-products.html   Products   12 grades
-contact.html    Contact    details · B2B enquiry form
+index.html        Home          hero · heritage · collection · certifications · CTA
+our-story.html    Our Story     1950→2026 timeline · what makes it different · health benefits
+partnership.html  Partnership   hero · value-chain tabs · certificate carousel
+products.html     Products      12 grades, priced
+contact.html      Contact       category cards · enquiry form · get in touch
+privacy.html      Legal         stub — copy pending
+terms.html        Legal         stub — copy pending
+cookies.html      Legal         stub — copy pending
 
 css/tokens.css       Brand variables — the single source of truth
 css/base.css         Reset, typography, layout primitives
 css/components.css   Nav, footer, cards, form, process, certificates
-css/home.css         Homepage only — the Figma redesign. Port target for Wix.
+css/site.css         Shared chrome — header, footer, Partner CTA, buttons, container
+css/home.css         Homepage sections only
+css/pages.css        Interior page sections — Our Story, Partnership, Products, Contact
 css/motion.css       Scroll reveals + reduced-motion
 
 js/nav.js            Sticky header, mobile menu
 js/reveal.js         IntersectionObserver reveals, count-up figures
 js/form.js           Validation + Formspree submission
 js/product-card.js   Homepage product card disclosure ("+")
+js/tabs.js           Partnership value-chain tablist (ARIA APG pattern)
+js/carousel.js       Partnership certificate carousel
 
 assets/logo/         Logo variations (SVG sources in source/)
 assets/hero/         Hero photograph
@@ -147,11 +156,16 @@ Currently pre-launch. To publish:
    still hide it (search for `withheld pending sign-off`). The redesigned homepage already
    publishes it, because the supplied Figma frame does — see CONTENT-QUERIES.md Q10.
 4. Connect the Formspree endpoint (above).
-5. Write `privacy.html`, `terms.html` and `cookies.html`, or remove the three links to them from
-   the homepage footer. They are dead links today — see CONTENT-QUERIES.md Q15.
-6. Resolve the items in **[CONTENT-QUERIES.md](CONTENT-QUERIES.md)** — sixteen now. One is visible
-   to any visitor who reads two pages; four block the homepage (placeholder card copy, the
-   identical `$100/kg` on every grade, the nav labels, and the Grenda licence).
+5. Replace the three legal stubs (`privacy.html`, `terms.html`, `cookies.html`) with real policy
+   copy. They currently say the document is in preparation — honest, but not a policy.
+   See CONTENT-QUERIES.md Q15.
+6. Resolve the items in **[CONTENT-QUERIES.md](CONTENT-QUERIES.md)** — twenty-six now.
+   The ones that matter most: **Q25** (the enquiry form lost nine fields, including the
+   regulatory-compliance questions the client's own document called vital), **Q20** (three of
+   four value-chain tabs have no copy), **Q24** (all twelve product descriptions dropped),
+   **Q19** (the vision statement and founding team dropped), **Q13** (Grenda still unlicensed,
+   so the type does not match the design) and **Q17** (prices are a bare `$` — SGD or USD
+   is undecided).
 
 ---
 

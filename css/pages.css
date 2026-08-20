@@ -700,3 +700,38 @@
   gap: var(--s-5);
   margin-top: var(--s-7);
 }
+
+/* ==========================================================================
+   Legal stubs — privacy / terms / cookies
+
+   These three pages are linked from the footer of all five frames but no copy
+   exists for them in any supplied document, and legal text is not the
+   builder's to write. Each page states plainly that the document is being
+   prepared and routes the reader to a human. That is honest, and it is better
+   than a 404 on every page of the site. CONTENT-QUERIES.md Q15.
+   ========================================================================== */
+
+.legal { padding-block: var(--section-y); }
+
+.legal__body {
+  margin-inline: auto;
+  max-width: 60ch;
+  text-align: center;
+}
+
+.legal__body p {
+  margin-inline: auto;
+  margin-top: var(--s-5);
+  font-size: var(--t-lead);
+  line-height: 1.65;
+  color: var(--c-ink);
+}
+
+.legal__note {
+  margin-top: var(--s-7);
+  padding: var(--s-5);
+  border: 1px solid var(--c-rule-strong);
+  background: var(--c-paper);
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+}
