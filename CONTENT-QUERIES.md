@@ -340,6 +340,38 @@ change. The nine certificate scans in the carousel are full resolution and need 
 
 ---
 
+## 24. The Products redesign drops every product description — **content loss**
+
+The Figma's Products frame shows a photograph, a name and a price per grade. Nothing else. The
+previous build carried a one-line description for all twelve, taken from the client's own content
+document, and the redesign has no room for them.
+
+They are not reproduced on the rebuilt page. Preserved here in full so reinstating them is one
+paragraph per card:
+
+| Grade | Description |
+|---|---|
+| Tien Yan Royal | Tien Yan Royal Nest comes from Kalimantan. A natural beige color with >3.5 cm in height. |
+| Tien Yan Noble | Tien Yan Noble Nest comes from Kalimantan. A natural beige color with 3 cm to 3.5 cm in height. |
+| Royal Oval | Royal Oval comes from Kalimantan. A natural beige color with 3 cm to 5 cm in height. |
+| Celestial | Celestial comes from Kalimantan caves. A natural beige color with 3 cm to 3.5 cm in height. |
+| Heritage Classic | Heritage Classic comes from Kalimantan. A natural beige color with >5 cm in height. |
+| Heritage | Heritage comes from Kalimantan. A natural beige color with 3 cm to 5 cm in height. |
+| Imperial | Imperial comes from Kalimantan. A natural beige color cup shape with >5 cm in height. |
+| Sky Valley | Sky Valley comes from Kalimantan. A natural beige color with size medium to large with >3 cm in height. |
+| Sky River | Sky River comes from Kalimantan. A natural white color in shape of small to big stripes. |
+| Sky Stream | Sky Stream comes from Kalimantan. A natural beige color in shape of small stripes. |
+| Sky Pearl | Smaller pieces of Bird's Nest, these parts of nest are best choice for food & beverage in the market. |
+| Sky Crystal | Sand-like pieces of Bird's Nest, these parts of nest are best choice for cosmetics and supplements in the market. |
+
+> **Recommend reinstating them.** A sourcing manager comparing twelve grades needs the origin and
+> the size range — that is precisely the information that distinguishes a $150 grade from an $85
+> one. Without it the page is twelve photographs and twelve numbers.
+>
+> This is a recommendation, not a change: the page ships as the frame draws it.
+
+---
+
 ---
 
 ## Internal notes that were deliberately *not* published

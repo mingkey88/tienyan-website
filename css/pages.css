@@ -520,3 +520,76 @@
   min-width: 4.5rem;
   text-align: center;
 }
+
+/* ==========================================================================
+   Products — Figma frame 70:375
+
+   Twelve grades, three across at 1440. Unlike the homepage cards these carry
+   no card chrome in the frame: a square photograph, the name, the price. No
+   surface, no border, no radius.
+   ========================================================================== */
+
+/* Three across, explicitly — not auto-fit. The frame lays twelve 380px cards
+   in a 3 x 4 grid, and auto-fit happily fits a fourth column at 1440, which
+   turns the designed 3x4 into a 4x3 and breaks the series groupings. */
+.pgrid {
+  display: grid;
+  gap: var(--s-8) var(--s-6);     /* 48px column gap in the frame */
+  margin-top: var(--s-9);
+  padding: 0;
+  list-style: none;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 40rem) { .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 60rem) { .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.pgrid li { margin: 0; max-width: none; }
+
+.pcard__media {
+  width: 100%;
+  aspect-ratio: 1 / 1;            /* 380 x 380 in the frame */
+  object-fit: cover;
+  background: #131313;            /* the photographs' own ground */
+}
+
+/* Two grades have no photography in any supplied source — see Q4. The slot is
+   filled honestly rather than left blank or padded with a stand-in nest that
+   is not the product. */
+.pcard__media--pending {
+  display: grid;
+  place-items: center;
+  gap: var(--s-3);
+  background: var(--c-mulberry);
+  text-align: center;
+  padding: var(--s-5);
+}
+.pcard__media--pending img { width: 84px; height: auto; opacity: 0.85; }
+.pcard__media--pending span {
+  font-size: var(--t-label);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--c-on-dark-soft);
+}
+
+.pcard__name {
+  margin-top: var(--s-5);
+  font-family: var(--font-display);
+  font-size: var(--t-card-name);  /* 30px */
+  line-height: 1.15;
+  color: var(--c-ink);
+}
+
+/* The frame sets the price at the same 30px as the name. Kept at that size —
+   the hierarchy comes from the face, not the scale: the name is the display
+   serif, the price the body sans. */
+.pcard__price {
+  margin-top: var(--s-2);
+  font-family: var(--font-body);
+  font-size: var(--t-card-name);
+  line-height: 1.2;
+  color: var(--c-mulberry);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Currency is unresolved — see Q17. The unit is rendered exactly as the frame
+   draws it, with no symbol invented. */
