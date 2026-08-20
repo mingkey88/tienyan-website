@@ -379,24 +379,39 @@
   text-wrap: balance;
 }
 
-/* Flex, not grid: the Figma sizes each scan to its own aspect ratio rather than
-   to a column. Matching heights and letting widths differ preserves that. */
+/* Three across, filling the container — as drawn.
+
+   The column ratio is not arbitrary: 341 : 364 : 324 are the three scans'
+   natural widths at a shared height (521/733, 556/733 and 492/728 scaled to
+   480px tall). Because the columns hold that ratio, `width:100%; height:auto`
+   lands all three at an identical height at ANY container width. The Figma's
+   "same height, different widths" relationship therefore falls out of the
+   layout instead of being three numbers to keep in sync. */
 .home-certs__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: var(--s-6);
+  display: grid;
+  grid-template-columns: 341fr 364fr 324fr;
+  align-items: start;
+  gap: clamp(0.75rem, 1.8vw, 26px);   /* 26px at 1440px, as drawn */
   margin-top: var(--s-8);
 }
 
 .home-certs__item {
-  height: clamp(16rem, 33vw, 30rem);   /* 480px at 1440px */
-  width: auto;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
   border: 1px solid var(--c-rule);
   background: var(--c-paper);
   box-shadow: var(--shadow-sm);
+}
+
+/* DERIVED — below 40rem three columns puts each scan under ~110px, where a
+   dense certificate is not evidence of anything. Stacked and capped instead;
+   "View All Certifications" is where they are actually read. */
+@media (max-width: 40rem) {
+  .home-certs__row {
+    grid-template-columns: min(22rem, 100%);
+    justify-content: center;
+    gap: var(--s-6);
+  }
 }
 
 /* ==========================================================================

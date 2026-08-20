@@ -144,7 +144,7 @@ decision is listed so it can be approved or overruled. All of them live in `css/
 | Hero photograph | Full-bleed cover | `object-position: 70%` so the nests stay in frame as the viewport narrows |
 | Heritage | Illustration left, copy right | Single column below 60rem, illustration first |
 | Collection | Three cards across | `auto-fit` from a 17rem floor — three, then two, then one |
-| Certificates | Three scans at their own widths, 480px tall | Equal heights, natural widths, wrapping and centred |
+| Certificates | Three scans at their own widths, 480px tall | Three across, filling the container, down to 40rem; stacked below |
 | Footer | Brand block + four columns | Two columns below 68rem, one below 48rem |
 
 ## Decisions worth challenging
@@ -160,6 +160,13 @@ the Wix build, where it becomes four different section paddings to maintain. One
 **Buttons are pinned to 238px.** Every primary action in the frame is drawn at that width whatever
 the label, and the equal width is what makes the pairs read as a set. Below the point where 238px
 no longer fits beside the gutters they go full width.
+
+**Certificates stay three across.** The column ratio `341fr 364fr 324fr` is the three scans'
+natural widths at a shared height, so `width:100%; height:auto` produces identical heights at any
+container width — the frame's "same height, different widths" relationship becomes a property of
+the layout rather than three numbers to maintain. They fill the container, where the frame leaves
+56px of trailing space; that is a 1.7% size difference at 1440px and the normalisation noted above.
+Below 40rem three columns would put each scan under 110px, so they stack.
 
 **Footer body type raised from 12px to 13px.** The frame's smallest text is 12px reversed on
 Deep Mulberry. The site holds a WCAG 2.2 AA commitment and this is the least legible text on the
