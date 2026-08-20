@@ -372,6 +372,56 @@ paragraph per card:
 
 ---
 
+## 25. The enquiry form loses nine fields — **the most consequential change in the redesign**
+
+The previous form carried thirteen fields, eight of them required. The Figma's Contact frame draws
+four: Full Name, Phone Number, Email, Message.
+
+| Field | In the redesign |
+|---|---|
+| Full Name | kept |
+| Phone Number / WhatsApp / WeChat | kept, shortened to "Phone Number" |
+| Business Email Address | kept, shortened to "Email" |
+| Message / Additional Inquiry | kept, shortened to "Message" |
+| Job Title / Position | **gone** |
+| Company Name | **gone** |
+| Country / Region of Operation | **gone** |
+| Company Website or Social Media Page | **gone** |
+| Business Registration / License Number | **gone** |
+| Type of Business | **gone** |
+| Years in Business | **gone** |
+| Do you currently possess food/agricultural import licenses? | **gone** |
+| Estimated Monthly Order Volume | **gone** |
+
+This matters more than it looks. The client's own website content document specified those fields
+and gave the reason, in a note written to the site owner rather than the visitor:
+
+> *"This is vital since exporting bird's nest, especially to China, requires strict CNCA/GACC
+> regulatory compliance"* — and *"Helps you prioritize high-value leads"*
+
+As drawn, the form cannot tell a licensed importer placing monthly container orders from a
+member of the public who liked the photographs. Every enquiry arrives identical.
+
+Built as the frame draws it. Not changed unilaterally.
+
+> **Strong recommendation to reinstate at least** Company Name, Country/Region, Business
+> Registration, import licences and Estimated Monthly Order Volume. If the four-field form is a
+> deliberate choice to reduce friction, that is a legitimate trade — but it should be a decision
+> someone made, not one the layout made for them.
+
+## 26. The five "Speak with our team about" cards have no icons
+
+The Contact frame draws an icon above each of the five cards. Those assets could not be exported —
+the Figma MCP quota ran out mid-build — so the cards ship with their labels only, vertically
+centred.
+
+No substitutes were used. A generic icon that means something adjacent is worse than none: it
+implies a category the brand has not chosen.
+
+> Same fix as Q22 — export the five icons and drop them in; the markup slot is ready.
+
+---
+
 ---
 
 ## Internal notes that were deliberately *not* published
