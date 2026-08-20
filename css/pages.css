@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Tien Yan — Interior page sections (Figma redesign)
+   Our Story · Partnership · Products · Contact
+
+   Shared chrome is in site.css and loads first. Homepage-only sections are in
+   home.css. This file holds everything unique to the four interior pages.
+
+   Same rules as the rest of the redesign: values trace to the Figma frame or
+   to tokens.css; where the frame is silent — every viewport under 1440px —
+   the decision is marked DERIVED and explained.
+   ========================================================================== */
+
+:root {
+  /* Page 2/3 ground: Champagne Cream at 20%, sampled from the frame. */
+  --c-page-warm:  rgba(243, 219, 179, 0.20);
+  /* Cards on that ground are white at 50% in the frame. */
+  --c-card-wash:  rgba(255, 255, 255, 0.55);
+
+  --t-page-title:  clamp(2.25rem, 1.25rem + 3.20vw, 3.4375rem);  /* 55px */
+  --t-story-band:  clamp(1.375rem, 0.95rem + 1.85vw, 2.375rem);  /* 38px */
+  --t-year:        clamp(1.75rem, 1.35rem + 1.35vw, 2.5rem);     /* 40px */
+  --t-card-title:  clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);    /* 28px */
+  --t-list:        clamp(1rem, 0.9rem + 0.7vw, 1.5rem);          /* 24px */
+}
+
+/* Interior pages sit on the warm wash rather than flat white. */
+.page-ground { background: var(--c-page-warm); }
+
+/* Shared page masthead — "Our Story", "Partnership", "Our Products",
+   "Contact Us" are all set identically in their frames: 55px, mulberry,
+   centred. */
+.page-head { padding-block: var(--section-y) 0; text-align: center; }
+
+.page-head__title {
+  font-size: var(--t-page-title);
+  line-height: 1.1;
+  color: var(--c-mulberry);
+  text-wrap: balance;
+}
+
+/* ==========================================================================
+   Our Story — timeline · Figma frame 47:66
+   ========================================================================== */
+
+.story-art {
+  display: block;
+  width: min(664px, 100%);
+  height: auto;
+  margin: var(--s-7) auto 0;
+}
+
+/* The frame draws a full-bleed hairline at y=681 with a 14px dot above each
+   column. Rebuilt as a border on the row plus a pseudo-element dot, so the
+   rule and the dots cannot drift apart when the columns reflow. */
+.story-timeline {
+  /* An <ol> because 1950 → 2026 is genuinely ordered, but the years carry the
+     sequence visually, so the markers are redundant noise. */
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: var(--s-8);
+  margin-top: var(--s-9);
+  border-top: 1px solid var(--c-rule-strong);
+}
+@media (min-width: 56rem) {
+  .story-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-9); }
+}
+
+.story-era { position: relative; padding-top: var(--s-7); }
+
+.story-era::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--c-mulberry);
+}
+
+.story-era__year {
+  font-family: var(--font-display);
+  font-size: var(--t-year);
+  line-height: 1;
+  color: var(--c-mulberry);
+}
+
+.story-era__name {
+  margin-top: var(--s-2);
+  font-size: 1.5rem;              /* 24px */
+  line-height: 1.3;
+  color: var(--c-fuchsia);
+}
+
+.story-era__body {
+  margin-top: var(--s-5);
+  max-width: 46ch;
+  font-size: 1.25rem;             /* 20px */
+  line-height: 1.55;
+  color: var(--c-ink);
+}
+
+/* The years are the point of this section, so they lead. Order is DOM order —
+   1950 then 2026 — which is also the reading order on a phone. */
+
+/* ==========================================================================
+   Our Story — "Today, Tien Yan…" band · Figma frame 47:67
+   ========================================================================== */
+
+.story-band {
+  /* The frame's warm cream. Not the brand guide's Champagne Cream — see the
+     note on --c-cream-warm in tokens.css. */
+  background: var(--c-cream-warm);
+  padding-block: clamp(3rem, 1.5rem + 6vw, 6rem);
+  text-align: center;
+}
+
+.story-band p {
+  margin-inline: auto;
+  max-width: 30ch;
+  font-family: var(--font-display);
+  font-size: var(--t-story-band);
+  line-height: 1.55;              /* 70/38 tightened for a fluid measure */
+  color: var(--c-mulberry);
+  text-wrap: balance;
+}
+
+/* ==========================================================================
+   Card rows — "What makes Tien Yan different?" (47:68) and
+   "Characteristics of High Quality Bird's Nest" (70:110)
+
+   Both are three 369px cards on the warm ground, white at 50%. The first row
+   carries a title per card, the second does not.
+   ========================================================================== */
+
+.trait-section { padding-block: var(--section-y); }
+
+.trait-section__title {
+  font-size: var(--t-sect-title);
+  line-height: 1.1;
+  color: var(--c-mulberry);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* DERIVED — three across at 1440. The 16rem floor is the width below which a
+   centred two-line card title starts breaking badly. */
+.trait-grid {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-8);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.trait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-7) var(--s-5);
+  background: var(--c-card-wash);
+  text-align: center;
+}
+
+/* The frame gives each card a square-ish footprint (369x369 with a title,
+   369x294 without). Reproduced as a min-height rather than a fixed one so a
+   long line can grow the card instead of overflowing it. */
+.trait--titled { min-height: 23rem; }
+.trait--plain  { min-height: 18.5rem; }
+
+.trait__icon {
+  width: auto;
+  height: 5rem;                   /* ~81px in the frame */
+  object-fit: contain;
+}
+.trait--plain .trait__icon { height: 4.5rem; }
+
+.trait__name {
+  font-size: var(--t-card-title);
+  line-height: 1.2;
+  color: var(--c-ink);
+  text-wrap: balance;
+}
+
+.trait__body {
+  max-width: 34ch;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--c-ink);
+}
+.trait--plain .trait__body { margin-top: auto; }
+
+/* ==========================================================================
+   Our Story — Health Benefits · Figma frame 47:69
+   ========================================================================== */
+
+.benefits {
+  /* Frame: rgba(248,219,225,0.6) — Blush Petal at 60%. */
+  background: color-mix(in srgb, var(--c-blush) 60%, var(--c-paper));
+  padding-block: var(--section-y);
+}
+
+.benefits__grid {
+  display: grid;
+  gap: var(--s-7);
+  align-items: center;
+}
+@media (min-width: 56rem) {
+  .benefits__grid { grid-template-columns: minmax(0, 537fr) minmax(0, 626fr); gap: var(--s-8); }
+}
+
+.benefits__photo {
+  width: 100%;
+  aspect-ratio: 537 / 539;        /* near-square, as drawn */
+  object-fit: cover;
+}
+
+.benefits__title { font-size: var(--t-sect-title); line-height: 1.1; color: var(--c-mulberry); }
+
+.benefits__lead {
+  margin-top: var(--s-4);
+  max-width: 40ch;
+  font-size: var(--t-sect-sub);
+  line-height: 1.35;
+  color: var(--c-ink);
+}
+
+.benefits__list {
+  margin-top: var(--s-6);
+  padding-left: 1.2em;
+  font-size: var(--t-list);
+  line-height: 1.5;
+}
+.benefits__list li { margin-bottom: var(--s-4); max-width: 40ch; color: var(--c-ink); }
+.benefits__list li::marker { color: var(--c-fuchsia); }
+
+/* A health claim needs its qualifier attached to it, not floated away. */
+.benefits__note {
+  margin-top: var(--s-6);
+  max-width: 62ch;
+  font-size: var(--t-small);
+  line-height: 1.5;
+  color: var(--c-ink-soft);
+}

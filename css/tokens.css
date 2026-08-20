@@ -14,6 +14,12 @@
   --c-amber:          #e0a525;  /* Golden Amber      · Pantone 2007 C */
   --c-blush:          #f8dbe1;  /* Blush Petal       · Pantone 705 C  */
   --c-cream:          #f1e4b2;  /* Champagne Cream   · Pantone 7499 C */
+  /* The Figma frames use #f3dbb3 wherever the brand guide would use Champagne
+     Cream — the "Today, Tien Yan…" band and every footer column heading. Side
+     by side they are not interchangeable: #f1e4b2 reads yellow, #f3dbb3 reads
+     tan. The design file wins for these two uses and the divergence from the
+     brand guide is logged as CONTENT-QUERIES.md Q18. */
+  --c-cream-warm:     #f3dbb3;
 
   /* Signature Gold at brand value measures 4.47:1 on white and 3.51:1 on
      cream — both fail WCAG AA for text. --c-gold stays exact for hairlines,

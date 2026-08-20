@@ -243,6 +243,45 @@ so nothing has been assumed either way.
 
 ---
 
+## 18. The frames use a different cream than the brand guide
+
+Two places set what should be Champagne Cream: the "Today, Tien Yan…" band on Our Story, and every
+footer column heading. The frames specify **`#f3dbb3`**; the brand guide's Champagne Cream is
+**`#f1e4b2`** (Pantone 7499 C).
+
+These are not interchangeable. `#f1e4b2` reads yellow, `#f3dbb3` reads tan, and side by side at the
+size of a full-width band the difference is obvious. Built with the frame's value, as `--c-cream-warm`
+in `tokens.css`, since the design file is the more recent client artifact and the instruction was to
+follow it exactly.
+
+> **Worth a ruling from the AD.** Either the brand guide's swatch is wrong, or the Figma drifted.
+> One of the two documents should be corrected so the next build does not have to guess.
+
+## 19. The Our Story redesign drops two sections that exist today — **content loss**
+
+The previous About page carried five sections. The Figma's Our Story frame carries a different five,
+and the overlap is partial:
+
+| Previous About page | Figma "Our Story" |
+|---|---|
+| Our Vision | *(gone)* |
+| Our Story | Our Story — rewritten as a 1950 / 2026 timeline |
+| People Behind Tien Yan | *(gone)* |
+| — | What makes Tien Yan's Bird Nest different? |
+| — | Health Benefits |
+| — | Characteristics of High Quality Bird's Nest |
+
+So **the vision statement and the founding-team section are not in the redesign.** Both were built
+from the supplied content documents and both are still in git history at `a14a8b4:about.html`.
+
+Nothing was merged in unilaterally — the frame was built as drawn.
+
+> **Needs a ruling.** Were these deliberately cut, or did the frame simply not get to them?
+> The founding team in particular is unusual to drop from a heritage brand's story, and the
+> vision statement came from the client's own content document.
+
+---
+
 ---
 
 ## Internal notes that were deliberately *not* published

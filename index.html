@@ -44,6 +44,7 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/motion.css">
 
@@ -76,8 +77,8 @@
 -->
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header site-header--home">
-  <div class="home-wrap site-header__inner">
+<header class="site-header site-header--v2">
+  <div class="page-wrap site-header__inner">
     <a class="site-logo" href="index.html" aria-label="Tien Yan — home">
       <img src="assets/figma/logo-nav.webp" alt="Tien Yan 天燕"
            width="561" height="281" style="width: 107px;">
@@ -88,7 +89,7 @@
          See CONTENT-QUERIES.md Q9 — this mismatch needs a ruling. -->
     <nav class="nav" aria-label="Primary">
       <a class="nav__link" href="index.html" aria-current="page">Home</a>
-      <a class="nav__link" href="about.html">Our Story</a>
+      <a class="nav__link" href="our-story.html">Our Story</a>
       <a class="nav__link" href="why.html">Partnership</a>
       <a class="nav__link" href="products.html">Products</a>
       <a class="btn btn--primary nav__cta" href="contact.html">Enquiry</a>
@@ -103,7 +104,7 @@
   <div class="mobile-nav" id="mobile-nav">
     <ul class="mobile-nav__list">
       <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="about.html">Our Story</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
       <li><a href="why.html">Partnership</a></li>
       <li><a href="products.html">Products</a></li>
       <li><a href="contact.html">Enquiry</a></li>
@@ -122,7 +123,7 @@
          alt="Edible bird's nests resting on driftwood beside a flowering branch"
          width="2560" height="1046" fetchpriority="high" decoding="async">
 
-    <div class="home-wrap">
+    <div class="page-wrap">
       <div class="home-hero__inner">
         <h1 class="home-hero__title" data-reveal>
           Nature's Gift,<br>Beyond Generations
@@ -133,10 +134,10 @@
           hospitality, and wellness partners.
         </p>
         <div class="home-hero__actions" data-reveal>
-          <a class="btn btn--primary" href="products.html">Explore Products</a>
+          <a class="btn btn--primary btn--wide" href="products.html">Explore Products</a>
           <!-- Number taken from the footer of the supplied Figma frame. The
                previous build withheld it pending sign-off — see CONTENT-QUERIES.md Q10. -->
-          <a class="btn btn--primary" href="https://wa.me/6598007226" rel="noopener">
+          <a class="btn btn--primary btn--wide" href="https://wa.me/6598007226" rel="noopener">
             WhatsApp Us
           </a>
         </div>
@@ -146,7 +147,7 @@
 
   <!-- ===================== Heritage · Figma 48:80 ===================== -->
   <section class="home-heritage">
-    <div class="home-wrap">
+    <div class="page-wrap">
       <div class="home-heritage__grid">
         <img class="home-heritage__art" src="assets/figma/shophouse.webp"
              alt="Line drawing of the Singapore shophouse the Tien Yan business was founded in"
@@ -162,7 +163,7 @@
             trusted partnerships.
           </p>
           <div class="home-heritage__cta" data-reveal>
-            <a class="btn btn--primary" href="about.html">Learn Our Story</a>
+            <a class="btn btn--primary btn--wide" href="our-story.html">Learn Our Story</a>
           </div>
         </div>
       </div>
@@ -171,7 +172,7 @@
 
   <!-- ===================== Collection · Figma 66:250 ===================== -->
   <section class="home-collection">
-    <div class="home-wrap">
+    <div class="page-wrap">
       <div class="home-collection__head">
         <h2 class="home-collection__title" data-reveal>Tradition Reimagined</h2>
         <p class="home-collection__sub" data-reveal>Tien Yan's Signature Raw Nest Collection</p>
@@ -260,7 +261,7 @@
 
   <!-- ===================== Certificates · Figma 48:82 ===================== -->
   <section class="home-certs">
-    <div class="home-wrap">
+    <div class="page-wrap">
       <h2 class="home-certs__title" data-reveal>Built on Quality. Backed by Certification.</h2>
 
       <div class="home-certs__row">
@@ -286,14 +287,14 @@
   </section>
 
   <!-- ===================== Partner CTA · Figma 62:155 ===================== -->
-  <section class="home-partner">
-    <div class="home-wrap">
-      <h2 class="home-partner__title" data-reveal>Partner with Tien Yan</h2>
-      <p class="home-partner__lead" data-reveal>
+  <section class="page-partner">
+    <div class="page-wrap">
+      <h2 class="page-partner__title" data-reveal>Partner with Tien Yan</h2>
+      <p class="page-partner__lead" data-reveal>
         For retail, hospitality, wellness, and corporate sourcing enquiries.
       </p>
-      <div class="home-partner__cta" data-reveal>
-        <a class="btn btn--primary" href="contact.html">Contact Us</a>
+      <div class="page-partner__cta" data-reveal>
+        <a class="btn btn--primary btn--wide" href="contact.html">Contact Us</a>
       </div>
     </div>
   </section>
@@ -304,7 +305,7 @@
      Scoped .site-footer--v2 so about/why/products/contact keep the existing
      footer until they are ported too. -->
 <footer class="site-footer site-footer--v2">
-  <div class="home-wrap">
+  <div class="page-wrap">
     <div class="footer-v2__grid">
 
       <div>
@@ -323,7 +324,7 @@
       <div>
         <h2 class="footer-v2__heading">Company</h2>
         <ul class="footer-v2__list">
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="our-story.html">About Us</a></li>
           <li><a href="why.html">Why Tien Yan</a></li>
         </ul>
       </div>
