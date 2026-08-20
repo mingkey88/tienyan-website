@@ -313,7 +313,13 @@ signalled by colour alone.
 > **Flagging, not asking.** The build will not ship text at 2.8:1. If the AD wants a lighter grey,
 > anything at or above 4.5:1 on white is fine.
 
-## 22. Two Partnership photographs are placeholders
+## 22. Two Partnership photographs are placeholders — **RESOLVED 20 Aug 2026**
+
+Both have been replaced with the designer's own exports, downscaled to 2x display size
+(`assets/figma/partnership/hero.webp` and `quality.webp`). The asset URLs captured before the quota
+ran out were still valid, so no further Figma calls were needed. Original note follows.
+
+### Original
 
 The hero (664×562) and the Quality Assurance panel (608×410) need photographs that exist only in
 the Figma. They could not be exported — the Figma MCP quota ran out mid-build — so the nearest
