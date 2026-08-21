@@ -428,39 +428,83 @@
 }
 
 .pt-certs__title {
-  font-size: var(--t-sect-title);
+  font-size: var(--t-sect-title);   /* 48px */
   line-height: 1.1;
-  color: var(--c-mulberry);
+  color: var(--c-gold);
   text-align: center;
   text-wrap: balance;
 }
 
-/* Five certification types, set as a centred two-row list in the frame. */
+/* The frame draws these as a FILTER — four grey #9c9a9a and one in mulberry,
+   an active state — and the client confirmed on 21 Aug 2026 that clicking a
+   type should show its certificates. Built as a real filter. Q27.
+
+   Frame geometry: white pill, 39px tall, 68px radius, 20px label. The grey
+   measures 2.8:1 and fails contrast on a control, so the inactive label uses
+   Ink Soft. The active chip is not signalled by colour alone — it also takes a
+   mulberry border and a tint (SC 1.4.1). */
 .pt-certs__types {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--s-3) var(--s-5);
+  gap: var(--s-3) var(--s-4);
   margin: var(--s-6) auto 0;
-  max-width: 60rem;
+  max-width: 62rem;
   padding: 0;
   list-style: none;
 }
-/* The frame draws these as a FILTER, not as tags: four are grey #9c9a9a and
-   "Batch Quality Verification" is fuchsia — an active state. It is not built as
-   a working filter here because no mapping exists from the nine certificates to
-   these five categories, and guessing which regulatory document belongs to
-   which category is not a guess worth making. Rendered as the factual list of
-   certification types held, at the frame's 20px. See Q27. */
+/* Without JavaScript the list item itself is the pill — a readable statement
+   of the certifications held. Once js/carousel.js promotes it to a button the
+   item becomes a bare wrapper and the button carries the pill. */
 .pt-certs__types li {
   margin: 0;
   max-width: none;
-  padding: var(--s-2) var(--s-4);
+  min-height: 39px;
+  padding: var(--s-2) var(--s-5);
   border: 1px solid var(--c-rule-strong);
-  border-radius: 999px;
-  font-size: 1.25rem;             /* 20px */
-  color: var(--c-ink);
+  border-radius: 68px;
   background: var(--c-paper);
+  font-size: 1.25rem;               /* 20px */
+  line-height: 1.25;
+  color: var(--c-ink-soft);
+}
+.js-cert-filter .pt-certs__types li {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.pt-chip {
+  min-height: 39px;
+  padding: var(--s-2) var(--s-5);
+  border: 1px solid var(--c-rule-strong);
+  border-radius: 68px;
+  background: var(--c-paper);
+  font-family: var(--font-body);
+  font-size: 1.25rem;               /* 20px */
+  line-height: 1.25;
+  color: var(--c-ink-soft);
+  cursor: pointer;
+  transition: color var(--d-fast) var(--e-out),
+              border-color var(--d-fast) var(--e-out),
+              background var(--d-fast) var(--e-out);
+}
+.pt-chip:hover { color: var(--c-ink); border-color: var(--c-mulberry); }
+.pt-chip[aria-pressed="true"] {
+  color: var(--c-mulberry);
+  border-color: var(--c-mulberry);
+  background: color-mix(in srgb, var(--c-mulberry) 8%, var(--c-paper));
+  font-weight: 600;
+}
+
+/* Announced as well as shown — a filter that only changes what is on screen
+   tells a screen reader nothing. */
+.pt-certs__status {
+  margin: var(--s-5) auto 0;
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+  text-align: center;
 }
 
 /* The carousel. Without JavaScript this is a horizontally scrollable row of
@@ -481,12 +525,26 @@
   background: var(--c-rule-strong); border-radius: 3px;
 }
 
+/* Three per view, at the client's request — the frame draws one large
+   certificate. Two across on tablet, one on a phone, because a certificate
+   scan stops being legible below roughly 260px wide. */
 .pt-slide {
   flex: none;
   width: min(432px, 78vw);
   scroll-snap-align: center;
   text-align: center;
 }
+@media (min-width: 48rem) {
+  .pt-slide { width: calc((100% - var(--s-6)) / 2); }
+}
+@media (min-width: 68rem) {
+  .pt-slide { width: calc((100% - 2 * var(--s-6)) / 3); }
+}
+
+/* Filtered-out slides. .pt-slide sets flex but not display, so the UA rule
+   would apply anyway — stated explicitly because the value chain panels had
+   exactly this bug and it is invisible until every slide stays on screen. */
+.pt-slide[hidden] { display: none; }
 
 .pt-slide__img {
   width: 100%;

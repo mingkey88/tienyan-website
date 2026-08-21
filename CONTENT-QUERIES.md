@@ -452,7 +452,7 @@ implies a category the brand has not chosen.
 
 ---
 
-## 27. The certificate "chips" are a filter in the frame, not a list
+## 27. The certificate "chips" are a filter in the frame, not a list — **BUILT 21 Aug 2026, mapping incomplete**
 
 The Partnership certificates section draws five category labels, four in grey `#9c9a9a` and
 **Batch Quality Verification** in Imperial Fuchsia — an active state. It is a filter, not a list of
@@ -615,3 +615,57 @@ The frame greys them to `#9c9a9a`, which measures 2.8:1 on the page ground and
 fails even the 3:1 non-text threshold. Raised to Ink Soft: the same recessive
 reading at 8:1, still clearly behind the current item. This is a deliberate
 deviation from the frame, and the only one on the Partnership page.
+
+---
+
+# Certificate filter — built 21 Aug 2026, mapping still needed
+
+The client asked for the type chips to filter the carousel, and for it to show
+up to three certificates per view. Both are built. The filter is real: clicking
+a type shows the certificates assigned to it, and the count is announced.
+
+**Five of the ten are assigned**, and only where the document's own title names
+its category. Nothing was inferred from context.
+
+| Certificate | Assigned to | Why |
+|---|---|---|
+| Halal Certificate | Halal Certified | The document is a halal certificate |
+| HACCP Certification, based upon SNI CXC 1:1969 | HACCP-Certified Production | Names HACCP |
+| Certificate of Appointment from PT ESTA Indonesia TBK | Certificate of Appointment | Names it |
+| Certificate of Analysis — Finished Product | Batch Quality Verification | A certificate of analysis for batch 002/INV/ESTA/2026 is batch verification, and the frame's own active chip when showing this document is Batch Quality Verification |
+| CNCA of the PRC, Registration No. 002 | China Export Registration | CNCA is China's Certification and Accreditation Administration |
+
+**Five are unassigned** and appear only under "All certifications":
+
+- Bird Nest Authenticity Certificate
+- Decree of Minister of Agriculture of the Republic of Indonesia
+- Certificate from the Agricultural Quarantine Agency
+- Veterinary Control Number Certificate
+- Bird's Nest Credit Alliance Registration and Certification
+
+Each of these is *plausibly* China-export or batch-quality related — a
+veterinary control number and a quarantine certificate are both commonly part
+of a China export dossier — but plausible is not the standard. Assigning a
+regulatory document to a category it does not name puts a compliance claim on
+the page that no document supports.
+
+> **Needed:** which of these five belongs under which type. A certificate may
+> sit under more than one. Adding them is one `data-cert-cats` attribute each
+> in `partnership.html`, about a minute's work once the answer exists.
+
+## A note on the expected counts
+
+The client expected Halal to have around three certificates. **Only one of the
+ten documents in the repository is a halal certificate** — MUI/BPJPH number
+ID00410016946140324, issued to PT ESTA Indonesia. If there are two more, they
+have not been supplied. Worth checking before launch: a filter that shows one
+certificate where the client expects three reads as broken, when in fact it is
+reporting the truth about what it has.
+
+## 34. Three certificates per view is a departure from the frame
+
+The frame draws **one** certificate at 432x639 between the arrows. The client
+asked for up to three per view, so the row now shows three at 1088px and above,
+two on tablet, one on a phone — below roughly 260px wide a certificate scan
+stops being legible. Recorded because it is a deliberate difference from the
+design, made on the client's instruction rather than the builder's judgement.

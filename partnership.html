@@ -182,14 +182,19 @@
     <div class="page-wrap">
       <h2 class="pt-certs__title" data-reveal>Built on Quality, Backed by Certification</h2>
 
-      <ul class="pt-certs__types" data-reveal>
-        <li>Halal Certified</li>
-        <li>HACCP-Certified Production</li>
-        <li>China Export Registration</li>
-        <li>Batch Quality Verification</li>
-        <li>Certificate of Appointment</li>
+      <!-- Ships as a plain list of the certification types held, which is true and
+           useful on its own. js/carousel.js upgrades each item to a filter button
+           once it can actually filter — a chip that cannot filter is a dead
+           control. Same contract as the tab row and the carousel arrows. -->
+      <ul class="pt-certs__types" data-cert-filters data-reveal>
+        <li data-cert-filter="halal">Halal Certified</li>
+        <li data-cert-filter="haccp">HACCP-Certified Production</li>
+        <li data-cert-filter="china">China Export Registration</li>
+        <li data-cert-filter="batch">Batch Quality Verification</li>
+        <li data-cert-filter="appointment">Certificate of Appointment</li>
       </ul>
 
+      <p class="pt-certs__status" data-cert-status role="status" aria-live="polite"></p>
       <div class="pt-carousel" data-reveal>
         <div class="pt-carousel__viewport" tabindex="0" role="group"
              aria-label="Tien Yan certifications, scrollable">
@@ -199,54 +204,54 @@
                Analysis for a finished-product batch — which is what the frame's
                own active filter ("Batch Quality Verification") describes. The
                document's own title is used. See CONTENT-QUERIES.md Q28. -->
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="batch">
             <img class="pt-slide__img" src="assets/figma/partnership/cert-featured.webp"
                  alt="PT ESTA Indonesia Certificate of Analysis for finished product, batch 002/INV/ESTA/2026, recording sialic acid at 10.9 percent and moisture at 17.2 percent"
                  width="864" height="1278" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Certificate of Analysis — Finished Product</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="halal">
             <img class="pt-slide__img" src="assets/certs/01-halal.jpg" alt="Halal Certificate issued to PT ESTA Indonesia, certificate number ID00410016946140324" width="620" height="887" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Halal Certificate</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="appointment">
             <img class="pt-slide__img" src="assets/certs/02-certificate-of-appointment.jpg" alt="Certificate of Appointment from PT ESTA Indonesia TBK" width="620" height="852" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Certificate of Appointment from PT ESTA Indonesia TBK</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="">
             <img class="pt-slide__img" src="assets/certs/03-bird-nest-authenticity.jpg" alt="Bird Nest Authenticity Certificate" width="620" height="935" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Bird Nest Authenticity Certificate</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="">
             <img class="pt-slide__img" src="assets/certs/04-decree-minister-agriculture.jpg" alt="Decree of the Minister of Agriculture of the Republic of Indonesia" width="620" height="862" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Decree of Minister of Agriculture of the Republic of Indonesia</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="">
             <img class="pt-slide__img" src="assets/certs/05-agricultural-quarantine.jpg" alt="Certificate from the Agricultural Quarantine Agency" width="620" height="876" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Certificate from the Agricultural Quarantine Agency</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="">
             <img class="pt-slide__img" src="assets/certs/06-veterinary-control-number.jpg" alt="Veterinary Control Number Certificate" width="620" height="884" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Veterinary Control Number Certificate</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="haccp">
             <img class="pt-slide__img" src="assets/certs/07-haccp.jpg" alt="HACCP Certification based upon SNI CXC 1:1969" width="620" height="863" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">HACCP Certification, based upon SNI CXC 1:1969</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="">
             <img class="pt-slide__img" src="assets/certs/08-bird-nest-credit-alliance.jpg" alt="Bird's Nest Credit Alliance Registration and Certification" width="620" height="525" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">Bird's Nest Credit Alliance Registration and Certification</figcaption>
           </figure>
 
-          <figure class="pt-slide">
+          <figure class="pt-slide" data-cert-cats="china">
             <img class="pt-slide__img" src="assets/certs/09-cnca-registration-002.jpg" alt="Certification and Accreditation Administration of the People's Republic of China, Registration Number 002" width="620" height="445" loading="lazy" decoding="async">
             <figcaption class="pt-slide__caption">CNCA of the People's Republic of China, Registration No. 002</figcaption>
           </figure>
