@@ -452,7 +452,7 @@ implies a category the brand has not chosen.
 
 ---
 
-## 27. The certificate "chips" are a filter in the frame, not a list — **BUILT 21 Aug 2026, mapping incomplete**
+## 27. The certificate "chips" are a filter in the frame, not a list — **RESOLVED 21 Aug 2026**
 
 The Partnership certificates section draws five category labels, four in grey `#9c9a9a` and
 **Batch Quality Verification** in Imperial Fuchsia — an active state. It is a filter, not a list of
@@ -669,3 +669,64 @@ asked for up to three per view, so the row now shows three at 1088px and above,
 two on tablet, one on a phone — below roughly 260px wide a certificate scan
 stops being legible. Recorded because it is a deliberate difference from the
 design, made on the client's instruction rather than the builder's judgement.
+
+---
+
+# Content document v2 — received 21 Aug 2026
+
+The client supplied *Tien Yan - Website - Copy - v2 (with Louise comments)*.
+It closes Q27 outright and raises seven fresh discrepancies against the Figma.
+
+## Q27 closed — the full certificate mapping
+
+| Type | Certificates | n |
+|---|---|---|
+| Halal Certified | Halal Certificate | 1 |
+| HACCP-Certified Production | HACCP Certification, SNI CXC 1:1969 | 1 |
+| China Export Registration | Bird's Nest Credit Alliance Registration · CNCA Registration No. 002 | 2 |
+| Batch Quality Verification | Veterinary Control Number · Bird Nest Authority · Agricultural Quarantine · Decree of Minister of Agriculture · *(Certificate of Analysis — see below)* | 5 |
+| Certificate of Appointment | Endorsement by PT ESTA Indonesia TBK | 1 |
+
+All ten certificates are now assigned. Nothing is inferred.
+
+**Halal holds one certificate, not three.** The expectation of three is not borne
+out by the document — it lists exactly one, matching what is in the repository.
+
+**The document lists nine certificates; the site has ten.** The extra is the
+**Certificate of Analysis — Finished Product** (batch 002/INV/ESTA/2026). It is
+kept under Batch Quality Verification: it is literally a batch analysis, and the
+Figma's own active chip when displaying it is Batch Quality Verification. Flagged
+because it is the one assignment the document does not explicitly make.
+
+**This sharpens Q28 rather than settling it.** The document says *"Bird Nest
+Authority Certificate"*; the repository holds a *"Bird Nest Authenticity
+Certificate"*. Authority and authenticity are different claims. Whether these are
+one document under two names, or two documents of which one is missing, still
+needs answering.
+
+## New conflicts — document v2 against the Figma
+
+Per the standing rule the Figma wins and the difference is logged. **None of the
+copy below was changed.**
+
+| # | Where | Document v2 | Figma / live site |
+|---|---|---|---|
+| 35 | Homepage featured products | Tien Yan Royal · **Royal Oval** · **Celestial** | Tien Yan Royal · **Tien Yan Noble** · Royal Oval |
+| 36 | Homepage certifications button | `[See Our Certifications]` | "View All Certifications" |
+| 37 | Homepage certifications | Carries a sub-line: *"Halal certified. HACCP-Certified Production. Batch quality certification."* | No sub-line |
+| 38 | Partnership → Partner with Tien Yan | `[Whatsapp Us]` | "Contact Us" |
+| 39 | Contact form | Name · Email Address · Message (**3 fields**) | Full Name · Phone Number · Email · Message (**4 fields**) |
+| 40 | Our Story, 2026 paragraph | *"Dato Seri Elliot Lim partnered with PT ESTA Indonesia"* | *"Dato Seri Elliot Lim, **together with Tien Yan's co-founders**, partnered with"* |
+| 41 | Products page | Opens with *"Explore our range of premium Indonesian edible bird's nests."* | No intro line |
+
+**Q35 is the one to settle first.** Which three grades lead the homepage is a
+commercial decision, and the two sources disagree on two of the three.
+
+**Q39 interacts with Q25.** The previous site collected thirteen fields, the
+Figma four, and this document three. The trend is downward, and the CNCA/GACC
+compliance questions are gone from all three. If those were dropped by accident
+rather than decision, this is the moment to catch it.
+
+**Q38 is worth noting for the shared component.** Partner with Tien Yan is one
+Figma component instanced on all five pages, so it cannot say "Contact Us" on the
+homepage and "Whatsapp Us" on Partnership without being split into two.
