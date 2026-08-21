@@ -152,9 +152,14 @@
   <section class="home-heritage">
     <div class="page-wrap">
       <div class="home-heritage__grid">
-        <img class="home-heritage__art" src="assets/figma/shophouse.webp"
-             alt="Line drawing of the Singapore shophouse the Tien Yan business was founded in"
-             width="1199" height="597" loading="lazy" decoding="async" data-reveal="media">
+        <!-- The 21 Aug revision replaces the shophouse line drawing with a
+             photograph of the processing facility. Cropped to the frame's own
+             window and flipped horizontally in the file — the frame applies
+             rotate-180 + scale-y-100, which nets to a horizontal flip. Baked
+             into the asset rather than done in CSS so it survives a port. -->
+        <img class="home-heritage__art" src="assets/figma/heritage.webp"
+             alt="A technician in a hairnet, mask and gloves inspecting a bird's nest with tweezers at a stainless steel bench, with packed boxes alongside"
+             width="1314" height="896" loading="lazy" decoding="async" data-reveal="media">
 
         <div>
           <h2 class="home-heritage__title" data-reveal>

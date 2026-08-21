@@ -106,7 +106,8 @@
 
 /* ==========================================================================
    Heritage — Figma frame "Trusted Heritage. Global Supply." (48:80)
-   Shophouse line illustration left, copy right.
+   Processing-facility photograph left, copy right. The 21 Aug revision
+   replaced the shophouse line illustration that stood here.
    ========================================================================== */
 
 .home-heritage { padding-block: var(--section-y); background: var(--c-paper-warm); }
@@ -126,10 +127,14 @@
 
 .home-heritage__art { width: 100%; height: auto; }
 
+/* Signature Gold, per the frame. Every major section title on the site is
+   #88754b; only the sublines and link labels are mulberry. Gold is used at its
+   exact brand value rather than --c-gold-text because these are all 48px,
+   which clears WCAG's large-text 3:1 threshold. */
 .home-heritage__title {
   font-size: var(--t-sect-title);
   line-height: 1.04;              /* 50/48 */
-  color: var(--c-mulberry);
+  color: var(--c-gold);
   text-wrap: balance;
 }
 
@@ -242,10 +247,14 @@
 
 .home-certs { padding-block: var(--section-y); background: var(--c-paper); }
 
+/* Signature Gold, per the frame. Every major section title on the site is
+   #88754b; only the sublines and link labels are mulberry. Gold is used at its
+   exact brand value rather than --c-gold-text because these are all 48px,
+   which clears WCAG's large-text 3:1 threshold. */
 .home-certs__title {
   font-size: var(--t-sect-title);
   line-height: 1.1;
-  color: var(--c-mulberry);
+  color: var(--c-gold);
   text-align: center;
   text-wrap: balance;
 }

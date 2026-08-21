@@ -14,7 +14,7 @@
   /* Page 2/3 ground: Champagne Cream at 20%, sampled from the frame. */
   --c-page-warm:  rgba(243, 219, 179, 0.20);
   /* Cards on that ground are white at 50% in the frame. */
-  --c-card-wash:  rgba(255, 255, 255, 0.55);
+  --c-card-wash:  rgba(255, 255, 255, 0.50);
 
   --t-page-title:  clamp(2.25rem, 1.25rem + 3.20vw, 3.4375rem);  /* 55px */
   --t-story-band:  clamp(1.375rem, 0.95rem + 1.85vw, 2.375rem);  /* 38px */
@@ -136,10 +136,11 @@
 
 .trait-section { padding-block: var(--section-y); }
 
+/* Gold, like every other 48px section title. Frame 94:1120 / 94:1170. */
 .trait-section__title {
   font-size: var(--t-sect-title);
   line-height: 1.1;
-  color: var(--c-mulberry);
+  color: var(--c-gold);
   text-align: center;
   text-wrap: balance;
 }
@@ -176,16 +177,17 @@
 }
 .trait--plain .trait__icon { height: 4.5rem; }
 
+/* Frame 94:1124/1127/1130: 30px Deep Mulberry, not black. */
 .trait__name {
-  font-size: var(--t-card-title);
+  font-size: clamp(1.25rem, 1.2rem + 0.75vw, 1.875rem);   /* 30px at 1440 */
   line-height: 1.2;
-  color: var(--c-ink);
+  color: var(--c-mulberry);
   text-wrap: balance;
 }
 
 .trait__body {
   max-width: 34ch;
-  font-size: 1rem;
+  font-size: clamp(1rem, 0.935rem + 0.35vw, 1.25rem);     /* 20px at 1440 */
   line-height: 1.55;
   color: var(--c-ink);
 }
