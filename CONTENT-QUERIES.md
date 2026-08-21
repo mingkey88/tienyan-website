@@ -576,7 +576,7 @@ PT ESTA Certificate of Analysis for batch 002/INV/ESTA/2026.
 
 ---
 
-## 31. Is the value chain a tab component or a stacked list? — **new, 21 Aug 2026**
+## 31. Is the value chain a tab component or a stacked list? — **RESOLVED 21 Aug 2026**
 
 The Partnership frame draws a row of four labels with the first in Deep
 Mulberry and the other three in grey `#9c9a9a`, which reads like a tab
@@ -588,9 +588,15 @@ panels sit inside the page flow **ahead of the Partner CTA (y=4356) and the
 footer (y=4589)**. If they were state documentation for a tab component they
 would not push the footer down by two thousand pixels.
 
-> **Needs confirmation.** If it is meant to be a tab component showing one
-> panel at a time, say so and it goes back — the previous build had exactly
-> that, and `js/tabs.js` is one revert away.
+> **RESOLVED — the client confirmed one card at a time.** Rebuilt as an ARIA
+> tablist: arrows move between tabs, Home/End jump to the ends, only the
+> selected tab is in the tab order. Without JavaScript the tab row is hidden
+> and all four panels show under their own headings, so nothing is lost.
+>
+> The stacked layout in the frame is therefore the four states drawn out so
+> each could be specified, not the page layout. Worth remembering for the Wix
+> build: a frame that lays out every state of a component reads as a long page
+> until you ask.
 
 ## 32. The Send button changed from Golden Amber to Imperial Fuchsia
 
