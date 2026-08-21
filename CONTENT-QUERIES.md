@@ -573,3 +573,39 @@ Q25 and Q28 are the two that still carry real risk. The form still collects four
 fields where the previous site collected thirteen, and the featured certificate
 is still captioned "Bird Nest Authority Certificate" when the document is a
 PT ESTA Certificate of Analysis for batch 002/INV/ESTA/2026.
+
+---
+
+## 31. Is the value chain a tab component or a stacked list? — **new, 21 Aug 2026**
+
+The Partnership frame draws a row of four labels with the first in Deep
+Mulberry and the other three in grey `#9c9a9a`, which reads like a tab
+component with one tab selected. It then lays **all four panels out down the
+page** at real coordinates.
+
+Built as a stacked list with the labels as in-page anchor links, because the
+panels sit inside the page flow **ahead of the Partner CTA (y=4356) and the
+footer (y=4589)**. If they were state documentation for a tab component they
+would not push the footer down by two thousand pixels.
+
+> **Needs confirmation.** If it is meant to be a tab component showing one
+> panel at a time, say so and it goes back — the previous build had exactly
+> that, and `js/tabs.js` is one revert away.
+
+## 32. The Send button changed from Golden Amber to Imperial Fuchsia
+
+The previous build set the enquiry form's submit in Golden Amber with black
+text, recorded at the time as "the one action in the whole design that is not
+Imperial Fuchsia". The 21 Aug revision draws it `#d41367` with white text at
+24px, and the label is **"Send"**, not "Send a Message".
+
+Reproduced as drawn. Noting it because a deliberate exception disappearing is
+worth a second look — if the amber submit was intentional and its removal was
+accidental, this is where to catch it.
+
+## 33. The inactive value-chain labels fail contrast — carried over from Q21
+
+The frame greys them to `#9c9a9a`, which measures 2.8:1 on the page ground and
+fails even the 3:1 non-text threshold. Raised to Ink Soft: the same recessive
+reading at 8:1, still clearly behind the current item. This is a deliberate
+deviation from the frame, and the only one on the Partnership page.

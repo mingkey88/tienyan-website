@@ -308,17 +308,3 @@
 .site-footer--v2 .footer-v2__legal a { color: var(--c-on-dark-soft); text-underline-offset: 0.2em; }
 .site-footer--v2 .footer-v2__legal a:hover { color: var(--c-cream); }
 
-/* The Contact form's submit is the one action in the whole design that is not
-   Imperial Fuchsia: the frame draws it in Golden Amber with black text
-   (frame 70:443). Reproduced rather than normalised — a deliberate-looking
-   exception is the designer's to make. Black on #e0a525 measures 10.4:1. */
-.btn--amber {
-  background: var(--c-amber);
-  color: var(--c-ink);
-  border-color: var(--c-amber);
-}
-.btn--amber:hover,
-.btn--amber:focus-visible {
-  background: color-mix(in srgb, var(--c-amber) 84%, #000);
-  color: var(--c-ink);
-}

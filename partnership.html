@@ -104,70 +104,61 @@
     <div class="page-wrap">
       <h2 class="chain__title" id="chain-title" data-reveal>End-to-End Value Chain Advantages</h2>
 
-      <ul class="chain__tabs" data-tabs role="tablist" aria-labelledby="chain-title">
-        <li role="presentation">
-          <button class="chain__tab" type="button" role="tab" id="tab-regulatory"
-                  aria-controls="panel-regulatory" aria-selected="false" tabindex="-1">
-            Regulatory &amp; Export Readiness
-          </button>
-        </li>
-        <li role="presentation">
-          <button class="chain__tab" type="button" role="tab" id="tab-supply"
-                  aria-controls="panel-supply" aria-selected="false" tabindex="-1">
-            Integrated Supply Chain
-          </button>
-        </li>
-        <li role="presentation">
-          <button class="chain__tab" type="button" role="tab" id="tab-quality"
-                  aria-controls="panel-quality" aria-selected="true" tabindex="0">
-            Quality Assurance
-          </button>
-        </li>
-        <li role="presentation">
-          <button class="chain__tab" type="button" role="tab" id="tab-custom"
-                  aria-controls="panel-custom" aria-selected="false" tabindex="-1">
-            Custom Product Solutions
-          </button>
-        </li>
-      </ul>
+      <!-- The frame draws a row of four labels with the first in mulberry and the
+           rest in grey, then lays all four panels out down the page ahead of the
+           Partner CTA and footer. Read as in-page navigation over a stacked list,
+           not a tab component: state documentation would not push the footer down
+           by 2000px. The labels are anchor links; the current one is tracked on
+           scroll. Logged as CONTENT-QUERIES Q31. -->
+      <nav class="chain__nav" aria-labelledby="chain-title">
+        <ul class="chain__nav-list">
+          <li><a class="chain__nav-link" href="#chain-regulatory">Regulatory &amp; Export Readiness</a></li>
+          <li><a class="chain__nav-link" href="#chain-supply">Integrated Supply Chain</a></li>
+          <li><a class="chain__nav-link" href="#chain-quality">Quality Assurance</a></li>
+          <li><a class="chain__nav-link" href="#chain-custom">Custom Product Solutions</a></li>
+        </ul>
+      </nav>
 
-      <!-- Only the Quality Assurance panel has copy in the supplied frame. The
-           other three are built as real panels with their content supplied
-           in the 21 Aug 2026 revision. All four now carry real copy. -->
-
-      <div class="chain__panel" id="panel-regulatory" role="tabpanel" aria-labelledby="tab-regulatory" tabindex="0">
-        <div>
+      <article class="chain__panel" id="chain-regulatory" data-reveal>
+        <div class="chain__panel-copy">
           <h3 class="chain__panel-title">Regulatory &amp; Export Readiness</h3>
           <p class="chain__panel-body">Benefit from reliable international supply through one of Indonesia&rsquo;s leading legal exporters of edible bird&rsquo;s nests.</p>
         </div>
-      </div>
+        <img class="chain__panel-photo" src="assets/figma/partnership/chain-regulatory.webp"
+             alt="A wide processing hall lined with workers in white coats and caps at long benches"
+             width="1216" height="820" loading="lazy" decoding="async">
+      </article>
 
-      <div class="chain__panel" id="panel-supply" role="tabpanel" aria-labelledby="tab-supply" tabindex="0">
-        <div>
+      <article class="chain__panel" id="chain-supply" data-reveal>
+        <div class="chain__panel-copy">
           <h3 class="chain__panel-title">Integrated Supply Chain</h3>
           <p class="chain__panel-body">Rely on an integrated supply chain that spans swiftlet farmhouses to modern processing facilities, ensuring a consistent and dependable supply.</p>
         </div>
-      </div>
+        <img class="chain__panel-photo" src="assets/figma/partnership/chain-supply.webp"
+             alt="A technician in protective clothing working beside stacked trays in a processing facility"
+             width="1216" height="820" loading="lazy" decoding="async">
+      </article>
 
-      <div class="chain__panel" id="panel-quality" role="tabpanel" aria-labelledby="tab-quality" tabindex="0">
-        <div>
+      <article class="chain__panel" id="chain-quality" data-reveal>
+        <div class="chain__panel-copy">
           <h3 class="chain__panel-title">Quality Assurance</h3>
-          <p class="chain__panel-body">
-            Gain confidence from end-to-end traceability and rigorous quality control, from source
-            to finished product.
-          </p>
+          <p class="chain__panel-body">Gain confidence from end-to-end traceability and rigorous quality control, from source to finished product.</p>
         </div>
-        <img class="chain__panel-photo" src="assets/figma/partnership/quality.webp"
-             alt="Technicians in protective clothing cleaning and grading bird's nests along a production bench"
-             width="1216" height="679" loading="lazy" decoding="async">
-      </div>
+        <img class="chain__panel-photo" src="assets/figma/partnership/chain-quality.webp"
+             alt="A technician in mask and gloves inspecting bird's nests at a stainless steel bench"
+             width="1216" height="820" loading="lazy" decoding="async">
+      </article>
 
-      <div class="chain__panel" id="panel-custom" role="tabpanel" aria-labelledby="tab-custom" tabindex="0">
-        <div>
+      <article class="chain__panel" id="chain-custom" data-reveal>
+        <div class="chain__panel-copy">
           <h3 class="chain__panel-title">Custom Product Solutions</h3>
           <p class="chain__panel-body">Work with us to create premium bird&rsquo;s nest products tailored to your market, brand, and customer requirements.</p>
         </div>
-      </div>
+        <img class="chain__panel-photo" src="assets/figma/partnership/chain-custom.webp"
+             alt="Two technicians working together at a bench preparing bird's nest products"
+             width="1216" height="820" loading="lazy" decoding="async">
+      </article>
+
     </div>
   </section>
 
@@ -363,7 +354,7 @@
 
 <script src="js/nav.js" defer></script>
 <script src="js/reveal.js" defer></script>
-<script src="js/tabs.js" defer></script>
+<script src="js/chain-nav.js" defer></script>
 <script src="js/carousel.js" defer></script>
 </body>
 </html>

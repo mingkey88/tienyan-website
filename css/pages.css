@@ -170,12 +170,23 @@
 .trait--titled { min-height: 23rem; }
 .trait--plain  { min-height: 18.5rem; }
 
+/* Two different kinds of artwork share this class. The "what makes it
+   different" row uses circular certification badges drawn at 128px square;
+   the characteristics row uses line drawings at varied natural sizes
+   (128x59, 68x89, 136x82), so those are capped by height and left to find
+   their own width. */
 .trait__icon {
   width: auto;
-  height: 5rem;                   /* ~81px in the frame */
+  max-width: 100%;
+  height: auto;
+  max-height: 5.5rem;
   object-fit: contain;
 }
-.trait--plain .trait__icon { height: 4.5rem; }
+.trait__icon--badge {
+  width: 8rem;                    /* 128px, as drawn */
+  height: 8rem;
+  max-height: none;
+}
 
 /* Frame 94:1124/1127/1130: 30px Deep Mulberry, not black. */
 .trait__name {
@@ -191,7 +202,12 @@
   line-height: 1.55;
   color: var(--c-ink);
 }
-.trait--plain .trait__body { margin-top: auto; }
+/* The characteristics row sets its body copy at 24px where the traits row
+   uses 20px — frame 94:1164 vs 94:1126. */
+.trait--plain .trait__body {
+  margin-top: auto;
+  font-size: var(--t-list);       /* 24px */
+}
 
 /* ==========================================================================
    Our Story — Health Benefits · Figma frame 47:69
@@ -214,28 +230,30 @@
 
 .benefits__photo {
   width: 100%;
-  aspect-ratio: 537 / 539;        /* near-square, as drawn */
+  aspect-ratio: 545 / 550;        /* the frame's image window */
   object-fit: cover;
 }
 
-.benefits__title { font-size: var(--t-sect-title); line-height: 1.1; color: var(--c-mulberry); }
+/* Gold title, mulberry lead — frame 94:1139 / 94:1140. */
+.benefits__title { font-size: var(--t-sect-title); line-height: 1.1; color: var(--c-gold); }
 
 .benefits__lead {
   margin-top: var(--s-4);
   max-width: 40ch;
-  font-size: var(--t-sect-sub);
+  font-size: clamp(1.25rem, 1.2rem + 0.75vw, 1.875rem);   /* 30px at 1440 */
   line-height: 1.35;
-  color: var(--c-ink);
+  color: var(--c-mulberry);
 }
 
+/* 24px on 50px leading in the frame. Markers are not tinted — they inherit
+   the text colour, so the earlier fuchsia bullet is removed. */
 .benefits__list {
   margin-top: var(--s-6);
   padding-left: 1.2em;
-  font-size: var(--t-list);
-  line-height: 1.5;
+  font-size: var(--t-list);       /* 24px */
+  line-height: 2.08;              /* 50/24 */
 }
-.benefits__list li { margin-bottom: var(--s-4); max-width: 40ch; color: var(--c-ink); }
-.benefits__list li::marker { color: var(--c-fuchsia); }
+.benefits__list li { max-width: 40ch; color: var(--c-ink); }
 
 /* A health claim needs its qualifier attached to it, not floated away. */
 .benefits__note {
@@ -284,108 +302,102 @@
 }
 
 /* ==========================================================================
-   Partnership — End-to-End Value Chain · Figma frame 48:93
+   Partnership — End-to-End Value Chain · Figma frame 48:93 + 85:724-737
 
-   A four-tab interface. Only "Quality Assurance" is populated in the frame —
-   the other three panels have no content at all, so they are built as real
-   tabs with their copy marked pending rather than invented. Q20.
+   NOT a tab interface. The frame draws a label row with the first item in
+   mulberry and the rest in grey, then lays all four panels down the page at
+   real coordinates, ahead of the Partner CTA (y=4356) and footer (y=4589).
+   State documentation would not push the footer down by two thousand pixels,
+   so this reads as in-page navigation over a stacked list. The earlier build
+   guessed tabs; js/tabs.js is gone with it. Logged as Q31.
    ========================================================================== */
 
 .chain { padding-block: var(--section-y); }
 
 .chain__title {
-  font-size: var(--t-sect-title);
+  font-size: var(--t-sect-title);   /* 48px */
   line-height: 1.1;
-  color: var(--c-mulberry);
+  color: var(--c-gold);
   text-align: center;
   text-wrap: balance;
 }
 
-/* DERIVED — the frame lays the four tabs on one 1219px row. Below that they
-   wrap; below 40rem the row scrolls horizontally rather than stacking into a
-   four-line block, which would push the panel off the first screen. */
-.js-tabs .chain__tabs { display: flex; }
-
-.chain__tabs {
-  /* Hidden until js/tabs.js confirms it can switch panels. Without JavaScript
-     every panel is visible and stacked under its own heading, so a tablist
-     that cannot tab would be pure noise. */
-  display: none;
+/* DERIVED — the frame lays the four labels on one 1219px row. Below that they
+   wrap; under 40rem the row scrolls sideways rather than stacking four deep,
+   which would push the first panel off the opening screen. */
+.chain__nav-list {
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--s-4) var(--s-6);
+  gap: var(--s-3) var(--s-6);
   margin-top: var(--s-8);
   padding: 0;
   list-style: none;
 }
 @media (max-width: 40rem) {
-  .chain__tabs {
+  .chain__nav-list {
     flex-wrap: nowrap;
     overflow-x: auto;
-    scroll-snap-type: x proximity;
     justify-content: flex-start;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
   }
-  .chain__tabs li { flex: none; scroll-snap-align: start; }
+  .chain__nav-list li { flex: none; scroll-snap-align: start; }
 }
 
-.chain__tab {
+/* The frame greys the inactive labels to #9c9a9a — 2.8:1 on the page ground,
+   which fails even the 3:1 non-text threshold. Raised to Ink Soft: the same
+   recessive reading at 8:1, and still clearly behind the current item. Q21. */
+.chain__nav-link {
+  display: inline-block;
   padding: var(--s-2) 0;
-  border: 0;
   border-bottom: 2px solid transparent;
-  background: none;
-  font-family: var(--font-body);
-  font-size: 1.25rem;             /* 20px */
+  font-size: 1.25rem;               /* 20px */
   line-height: 1.3;
-  /* The frame greys inactive tabs to #9c9a9a — 2.8:1 on white, which fails
-     even the 3:1 non-text threshold. Raised to Ink Soft: same "recessive"
-     reading, 8:1, and it still sits clearly behind the active tab. Q21. */
   color: var(--c-ink-soft);
-  cursor: pointer;
+  text-decoration: none;
   white-space: nowrap;
   transition: color var(--d-ui) var(--e-out), border-color var(--d-ui) var(--e-out);
 }
-.chain__tab:hover { color: var(--c-ink); }
-.chain__tab[aria-selected="true"] {
-  color: var(--c-ink);
+.chain__nav-link:hover { color: var(--c-ink); }
+.chain__nav-link[aria-current="true"] {
+  color: var(--c-mulberry);
   border-bottom-color: var(--c-fuchsia);
-  font-weight: 600;
 }
 
+/* Panel: warm cream card at 24px radius, copy left, photograph right.
+   Frame geometry at 1208 wide — 52px left inset, copy column 501, photo 608,
+   47px right inset, 35px above and below the 410px photo. */
 .chain__panel {
   display: grid;
   gap: var(--s-6);
   align-items: center;
-  margin-top: var(--s-6);
-  padding: var(--s-7);
+  margin-top: var(--s-7);
+  padding: clamp(1.25rem, 0.6rem + 2.2vw, 2.1875rem);
+  border-radius: 24px;
   background: var(--c-cream-warm);
-  border-radius: 24px;            /* Figma rounded-[24px] */
+  scroll-margin-top: var(--s-8);
 }
 @media (min-width: 60rem) {
-  /* Copy left, photograph right — 1219 panel with a 608 image. Only panels
-     that actually have a photograph get the second column; the three whose
-     copy is still pending would otherwise reserve a large empty gap. */
-  .chain__panel:has(.chain__panel-photo) {
-    /* 1219px panel minus the 608px image and its padding leaves ~550 for the
-       copy. Both tracks must be expressed in the SAME unit — `1fr 608fr` is a
-       1:608 ratio, which crushes the copy to a few pixels. */
-    grid-template-columns: minmax(0, 550fr) minmax(0, 608fr);
-    gap: var(--s-8);
+  .chain__panel {
+    grid-template-columns: minmax(0, 501fr) minmax(0, 608fr);
+    gap: var(--s-7);
+    padding: 2.1875rem 2.9375rem 2.1875rem 3.25rem;
   }
 }
-.chain__panel[hidden] { display: none; }
 
 .chain__panel-title {
-  font-size: clamp(1.375rem, 1.1rem + 1.1vw, 2rem);   /* 32px */
-  line-height: 1.15;
+  font-size: clamp(1.25rem, 1.2rem + 0.75vw, 1.875rem);   /* 30px at 1440 */
+  line-height: 1.2;
   color: var(--c-mulberry);
+  text-wrap: balance;
 }
 
 .chain__panel-body {
   margin-top: var(--s-4);
-  max-width: 38ch;
-  font-size: var(--t-list);       /* 24px */
-  line-height: 1.45;
+  max-width: 40ch;
+  font-size: var(--t-list);         /* 24px */
+  line-height: 1.5;
   color: var(--c-ink);
 }
 
@@ -393,7 +405,7 @@
   width: 100%;
   aspect-ratio: 608 / 410;
   object-fit: cover;
-  border-radius: 26px;            /* Figma rounded-[26px] */
+  border-radius: 26px;
 }
 
 /* ==========================================================================
@@ -632,9 +644,9 @@
   min-height: 14.3rem;            /* 229px in the frame */
   margin: 0;
   padding: var(--s-5) var(--s-4);
-  /* Frame: rgba(248,219,225,0.6) — Blush Petal at 60%, same ground as the
-     Health Benefits band. Not the white wash used on the Our Story cards. */
-  background: color-mix(in srgb, var(--c-blush) 60%, var(--c-paper));
+  /* Frame 70:389 etc: rgba(255,255,255,0.6) — white at 60% over the page's
+     warm ground. An earlier pass read this as Blush Petal 60%; it is not. */
+  background: rgba(255, 255, 255, 0.6);
   text-align: center;
   max-width: none;
 }
@@ -646,10 +658,10 @@
 }
 
 .speak-card__label {
-  font-size: 1.25rem;             /* 20px */
-  line-height: 1.25;              /* 25/20 */
-  color: var(--c-ink);
-  text-wrap: balance;
+  /* Frame: 24px Deep Mulberry on 25px leading. */
+  font-size: clamp(1.0625rem, 1.185rem + 0.35vw, 1.5rem);   /* 24px at 1440 */
+  line-height: 1.05;
+  color: var(--c-mulberry);
 }
 
 /* ==========================================================================
