@@ -53,8 +53,8 @@
 <body>
 <!--
   DIRECTION CONTRACT · homepage · Figma redesign
-  SOURCE: Figma "Tien Yan" 0K2glnwVTs6E7C6yAJlXrz, frame 1:4 "HomePage", supplied
-    by the client's art director. Desktop-only (fixed 1440px, no auto-layout, no
+  SOURCE: Figma "Tien Yan (Copy)" aUoVe8M7d2f92WZdUlhZLj, frame 1:4 "HomePage",
+    revision of 21 Aug 2026. Desktop-only (fixed 1440px, no auto-layout, no
     variables). Every viewport below 1440px is DERIVED here and marked as such in
     css/home.css; those calls need the designer's sign-off, not the builder's.
   THESIS: unchanged from the previous build — a supplier record, not a brochure.
@@ -65,9 +65,12 @@
     · Grenda is specified throughout the frame and is not licensed to this project.
       Cormorant Garamond stands in for display, Karla for body. FONTS.md documents
       the swap.
-    · Card copy reads "lorem ipsum" and every grade is priced "$100/kg" in the
-      frame. Rendered verbatim and marked data-placeholder. Not the builder's to
-      author, and pricing is a commercial decision besides.
+    · The 21 Aug revision replaced the "lorem ipsum" card copy with real grade
+      descriptions and REMOVED every price from the design. Prices are not
+      hidden or pending — they are gone. See CONTENT-QUERIES Q12/Q17.
+    · The revision's third card is Royal Oval, not Tien Yan Imperial, and it
+      reuses Tien Yan Royal's photograph. The Products frame supplies a genuine
+      Royal Oval shot, so that one is used here instead. Logged as Q30.
     · Nav labels (Our Story, Partnership) do not match the page names they point at
       (About Us, Why Tien Yan).
     · The phone number the previous build withheld pending sign-off is published in
@@ -178,76 +181,41 @@
         <p class="home-collection__sub" data-reveal>Tien Yan's Signature Raw Nest Collection</p>
       </div>
 
-      <!-- PLACEHOLDER COPY. Descriptions read "lorem ipsum" and all three grades
-           are priced "$100/kg" in the supplied frame. Rendered verbatim rather
-           than invented; every one is marked data-placeholder so they are
-           greppable before launch. CONTENT-QUERIES.md Q11 and Q12. -->
+      <!-- Real grade copy as of the 21 Aug 2026 revision. These three are rows
+           1, 2 and 3 of the Products page, not separate content — one record
+           shown twice, which is why both pages read from the same asset. -->
       <ul class="home-collection__grid" role="list">
+          <li class="product-card" data-reveal data-reveal-delay="1">
+            <img class="product-card__media" src="assets/figma/products/royal.webp"
+                 alt="Tien Yan Royal raw bird's nest, a dense ivory cup-shaped nest on a black ground"
+                 width="780" height="578" loading="lazy" decoding="async">
+            <div class="product-card__body">
+              <h3 class="product-card__name">Tien Yan Royal</h3>
+              <p class="product-card__desc">Tien Yan Royal Nest comes from Kalimantan. A natural ivory colour with &gt;3.5 cm in height.</p>
+            </div>
+          </li>
 
-        <li class="product-card" data-reveal data-reveal-delay="1">
-          <img class="product-card__media" src="assets/figma/card-royal.webp"
-               alt="Tien Yan Royal raw bird's nest, a dense cup-shaped nest on a dark ground"
-               width="760" height="564" loading="lazy" decoding="async">
-          <div class="product-card__body">
-            <h3 class="product-card__name">Tien Yan Royal</h3>
-            <p class="product-card__desc" data-placeholder="true">lorem ipsum</p>
-            <div class="product-card__foot">
-              <span class="product-card__price" data-placeholder="true">$100/kg</span>
-              <button class="product-card__toggle" type="button"
-                      aria-expanded="false" aria-controls="detail-royal">
-                <span aria-hidden="true">+</span>
-                <span class="visually-hidden">More about Tien Yan Royal</span>
-              </button>
+          <li class="product-card" data-reveal data-reveal-delay="2">
+            <img class="product-card__media" src="assets/figma/products/noble.webp"
+                 alt="Tien Yan Noble raw bird's nest, ivory with visible strand structure, on a black ground"
+                 width="780" height="578" loading="lazy" decoding="async">
+            <div class="product-card__body">
+              <h3 class="product-card__name">Tien Yan Noble</h3>
+              <p class="product-card__desc">Tien Yan Noble Nest comes from Kalimantan. A natural ivory colour with 3-3.5 cm in height.</p>
             </div>
-            <div class="product-card__detail" id="detail-royal" data-placeholder="true">
-              Grade detail to be supplied.
-            </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="product-card" data-reveal data-reveal-delay="2">
-          <img class="product-card__media" src="assets/figma/card-noble.webp"
-               alt="Tien Yan Noble raw bird's nest, a cup-shaped nest with visible strand structure"
-               width="760" height="564" loading="lazy" decoding="async">
-          <div class="product-card__body">
-            <h3 class="product-card__name">Tien Yan Noble</h3>
-            <p class="product-card__desc" data-placeholder="true">lorem ipsum</p>
-            <div class="product-card__foot">
-              <span class="product-card__price" data-placeholder="true">$100/kg</span>
-              <button class="product-card__toggle" type="button"
-                      aria-expanded="false" aria-controls="detail-noble">
-                <span aria-hidden="true">+</span>
-                <span class="visually-hidden">More about Tien Yan Noble</span>
-              </button>
+          <li class="product-card" data-reveal data-reveal-delay="3">
+            <img class="product-card__media" src="assets/figma/products/royal-oval.webp"
+                 alt="Royal Oval raw bird's nest, an ivory oval-shaped nest on a black ground"
+                 width="780" height="578" loading="lazy" decoding="async">
+            <div class="product-card__body">
+              <h3 class="product-card__name">Royal Oval</h3>
+              <p class="product-card__desc">Royal Oval comes from Kalimantan. A natural ivory colour with 3-5cm in height.</p>
             </div>
-            <div class="product-card__detail" id="detail-noble" data-placeholder="true">
-              Grade detail to be supplied.
-            </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="product-card" data-reveal data-reveal-delay="3">
-          <img class="product-card__media" src="assets/figma/card-imperial.webp"
-               alt="Tien Yan Imperial raw bird's nest, a rounded nest with fine open strands"
-               width="760" height="564" loading="lazy" decoding="async">
-          <div class="product-card__body">
-            <h3 class="product-card__name">Tien Yan Imperial</h3>
-            <p class="product-card__desc" data-placeholder="true">lorem ipsum</p>
-            <div class="product-card__foot">
-              <span class="product-card__price" data-placeholder="true">$100/kg</span>
-              <button class="product-card__toggle" type="button"
-                      aria-expanded="false" aria-controls="detail-imperial">
-                <span aria-hidden="true">+</span>
-                <span class="visually-hidden">More about Tien Yan Imperial</span>
-              </button>
-            </div>
-            <div class="product-card__detail" id="detail-imperial" data-placeholder="true">
-              Grade detail to be supplied.
-            </div>
-          </div>
-        </li>
-
-      </ul>
+        </ul>
 
       <div class="arrow-link__row">
         <a class="arrow-link" href="products.html">
@@ -394,6 +362,5 @@
 
 <script src="js/nav.js" defer></script>
 <script src="js/reveal.js" defer></script>
-<script src="js/product-card.js" defer></script>
 </body>
 </html>

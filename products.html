@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://www.tienyan.com/products.html">
 <meta property="og:title" content="Products — Tien Yan">
 <meta property="og:description" content="Twelve grades of premium Indonesian raw edible bird's nest, sourced in Kalimantan.">
-<meta property="og:image" content="https://www.tienyan.com/assets/figma/card-royal.webp">
+<meta property="og:image" content="https://www.tienyan.com/assets/figma/products/royal.webp">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,22 +39,23 @@
 </head>
 <body>
 <!--
-  Figma "Tien Yan" 0K2glnwVTs6E7C6yAJlXrz, frame 70:159 "Products".
+  Figma "Tien Yan (Copy)" aUoVe8M7d2f92WZdUlhZLj, frame 70:159 "Products",
+  revision of 21 Aug 2026. This page changed more than any other.
 
-  Values verified against the frame directly: name 24px black, price 20px Deep
-  Mulberry, 380px square photographs three across. Photography is the
-  designer's own, downscaled to 2x display size.
+  Values verified against the frame directly: card white at 18px radius, photo
+  390 x 289 with a 20px top radius, name 30px Deep Mulberry, description 20px
+  near-black, both centred. Column gap 28px, row gap 86px, three across.
+  Photography is the designer's own, downscaled to 2x display size.
 
-  The frame shows a square photograph, a name and a price per grade, and
-  nothing else. The previous build carried a one-line description for all
-  twelve, taken from the client's content document; the redesign has no room
-  for them and they are NOT reproduced here. All twelve are preserved in
-  CONTENT-QUERIES.md Q24 so reinstating them is a paragraph per card.
-
-  Royal Oval and Celestial have no photography of their own — the long-standing
-  Q4. The frame works around this by reusing Tien Yan Royal's photograph in
-  both slots, which would tell a buyer three different grades look identical.
-  Not reproduced: the slots say "Photography to follow" instead. See Q29.
+  THREE LONG-STANDING QUERIES CLOSED BY THIS REVISION:
+    · Q24 — all twelve grades now carry a written description in the design.
+      They are reproduced verbatim.
+    · Q4/Q29 — Royal Oval and Celestial now have photography of their own.
+      The earlier workaround of reusing Tien Yan Royal's photograph is gone,
+      and so are the honest "Photography to follow" slots that replaced it.
+    · Q12/Q17 — every price has been REMOVED from the design. Not hidden, not
+      pending a currency ruling: no longer part of the page. Nothing here
+      invents one back.
 -->
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -96,103 +97,126 @@
 
     <div class="page-wrap">
       <ul class="pgrid" role="list">
-        <li data-reveal data-reveal-delay="1">
+        <li class="pcard" data-reveal data-reveal-delay="1">
           <img class="pcard__media" src="assets/figma/products/royal.webp"
-               alt="Tien Yan Royal raw bird's nest, a dense cup-shaped nest on a dark ground"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Tien Yan Royal</h2>
-          <p class="pcard__price" data-placeholder="currency">$150</p>
+               alt="Tien Yan Royal raw bird's nest, a dense ivory cup-shaped nest on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Tien Yan Royal</h2>
+            <p class="pcard__desc">Tien Yan Royal Nest comes from Kalimantan. A natural ivory colour with &gt;3.5 cm in height.</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="2">
+        <li class="pcard" data-reveal data-reveal-delay="2">
           <img class="pcard__media" src="assets/figma/products/noble.webp"
-               alt="Tien Yan Noble raw bird's nest with visible strand structure"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Tien Yan Noble</h2>
-          <p class="pcard__price" data-placeholder="currency">$130</p>
-        </li>
-
-        <li data-reveal data-reveal-delay="3">
-          <div class="pcard__media pcard__media--pending">
-            <img src="assets/logo/logo-mark-180.png" alt="" aria-hidden="true" width="180" height="172">
-            <span>Photography to follow</span>
+               alt="Tien Yan Noble raw bird's nest, ivory with visible strand structure, on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Tien Yan Noble</h2>
+            <p class="pcard__desc">Tien Yan Noble Nest comes from Kalimantan. A natural ivory colour with 3-3.5 cm in height.</p>
           </div>
-          <h2 class="pcard__name">Royal Oval</h2>
-          <p class="pcard__price" data-placeholder="currency">$120</p>
         </li>
 
-        <li data-reveal data-reveal-delay="1">
-          <div class="pcard__media pcard__media--pending">
-            <img src="assets/logo/logo-mark-180.png" alt="" aria-hidden="true" width="180" height="172">
-            <span>Photography to follow</span>
+        <li class="pcard" data-reveal data-reveal-delay="3">
+          <img class="pcard__media" src="assets/figma/products/royal-oval.webp"
+               alt="Royal Oval raw bird's nest, an ivory oval-shaped nest on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Royal Oval</h2>
+            <p class="pcard__desc">Royal Oval comes from Kalimantan. A natural ivory colour with 3-5cm in height.</p>
           </div>
-          <h2 class="pcard__name">Celestial</h2>
-          <p class="pcard__price" data-placeholder="currency">$110</p>
         </li>
 
-        <li data-reveal data-reveal-delay="2">
+        <li class="pcard" data-reveal data-reveal-delay="1">
+          <img class="pcard__media" src="assets/figma/products/celestial.webp"
+               alt="Celestial cave bird's nest, ivory with a dense curved form, on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Celestial</h2>
+            <p class="pcard__desc">Celestial comes from Kalimantan caves. A natural ivory colour with 3-3.5cm in height.</p>
+          </div>
+        </li>
+
+        <li class="pcard" data-reveal data-reveal-delay="2">
           <img class="pcard__media" src="assets/figma/products/heritage-classic.webp"
-               alt="Heritage Classic raw bird's nest"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Heritage Classic</h2>
-          <p class="pcard__price" data-placeholder="currency">$100</p>
+               alt="Heritage Classic raw bird's nest, a large ivory nest on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Heritage Classic</h2>
+            <p class="pcard__desc">Heritage Classic comes from Kalimantan. A natural ivory colour with &gt;5 cm in height.</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="3">
+        <li class="pcard" data-reveal data-reveal-delay="3">
           <img class="pcard__media" src="assets/figma/products/heritage.webp"
-               alt="Heritage raw bird's nest"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Heritage</h2>
-          <p class="pcard__price" data-placeholder="currency">$90</p>
+               alt="Heritage raw bird's nest, ivory with layered strands, on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Heritage</h2>
+            <p class="pcard__desc">Heritage comes from Kalimantan. A natural ivory colour with 3-5 cm in height.</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="1">
+        <li class="pcard" data-reveal data-reveal-delay="1">
           <img class="pcard__media" src="assets/figma/products/imperial.webp"
-               alt="Imperial raw bird's nest, a rounded nest with fine open strands"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Imperial</h2>
-          <p class="pcard__price" data-placeholder="currency">$85</p>
+               alt="Imperial raw bird's nest, a large ivory cup-shaped nest on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Imperial</h2>
+            <p class="pcard__desc">Imperial comes from Kalimantan. A natural ivory colour cup shape with &gt;5 cm in height.</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="2">
+        <li class="pcard" data-reveal data-reveal-delay="2">
           <img class="pcard__media" src="assets/figma/products/sky-valley.webp"
-               alt="Sky Valley raw bird's nest"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Sky Valley</h2>
-          <p class="pcard__price" data-placeholder="currency">$80</p>
+               alt="Sky Valley raw bird's nest, a medium to large ivory nest on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Sky Valley</h2>
+            <p class="pcard__desc">Sky Valley comes from Kalimantan. A natural ivory colour with size medium to large with &gt;3 cm in height.</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="3">
+        <li class="pcard" data-reveal data-reveal-delay="3">
           <img class="pcard__media" src="assets/figma/products/sky-river.webp"
-               alt="Sky River bird's nest in natural white stripes"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Sky River</h2>
-          <p class="pcard__price" data-placeholder="currency">$75</p>
+               alt="Sky River bird's nest strips, ivory strands in varied widths, on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Sky River</h2>
+            <p class="pcard__desc">Sky River comes from Kalimantan. A natural ivory colour in the shape of small to big stripes.</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="1">
+        <li class="pcard" data-reveal data-reveal-delay="1">
           <img class="pcard__media" src="assets/figma/products/sky-stream.webp"
-               alt="Sky Stream bird's nest in small natural strips"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Sky Stream</h2>
-          <p class="pcard__price" data-placeholder="currency">$60</p>
+               alt="Sky Stream bird's nest strips, fine ivory strands, on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Sky Stream</h2>
+            <p class="pcard__desc">Sky Stream comes from Kalimantan. A natural ivory colour in shape of small stripes.</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="2">
+        <li class="pcard" data-reveal data-reveal-delay="2">
           <img class="pcard__media" src="assets/figma/products/sky-pearl.webp"
-               alt="Sky Pearl, smaller pieces of bird's nest"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Sky Pearl</h2>
-          <p class="pcard__price" data-placeholder="currency">$55</p>
+               alt="Sky Pearl bird's nest fragments, small ivory pieces, on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Sky Pearl</h2>
+            <p class="pcard__desc">Smaller pieces of Bird's Nest, these parts of nest are best choice for food &amp; beverage in the market</p>
+          </div>
         </li>
 
-        <li data-reveal data-reveal-delay="3">
+        <li class="pcard" data-reveal data-reveal-delay="3">
           <img class="pcard__media" src="assets/figma/products/sky-crystal.webp"
-               alt="Sky Crystal, sand-like pieces of bird's nest"
-               width="760" height="760" loading="lazy" decoding="async">
-          <h2 class="pcard__name">Sky Crystal</h2>
-          <p class="pcard__price" data-placeholder="currency">$50</p>
+               alt="Sky Crystal bird's nest granules, sand-like ivory pieces, on a black ground"
+               width="780" height="578" loading="lazy" decoding="async">
+          <div class="pcard__body">
+            <h2 class="pcard__name">Sky Crystal</h2>
+            <p class="pcard__desc">Sand-like pieces of Bird's Nest, these parts of nest are best choice for cosmetics and supplements in the market.</p>
+          </div>
         </li>
+
       </ul>
     </div>
   </section>

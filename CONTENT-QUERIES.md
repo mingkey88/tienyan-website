@@ -56,7 +56,11 @@ The site uses **"Authority"** on the Why Tien Yan page, following the website co
 
 ---
 
-## 4. Two products have no photography anywhere
+## 4. Two products have no photography anywhere — **RESOLVED 21 Aug 2026**
+
+> **RESOLVED — Figma revision `aUoVe8M7d2f92WZdUlhZLj`, 21 Aug 2026.** See the
+> revision note at the end of this file.
+
 
 **Royal Oval** and **Celestial** are listed in the website content doc but appear in no photograph
 in any supplied file. The sales deck shows only 10 products; the website doc lists 12.
@@ -157,14 +161,22 @@ Taken as sign-off and published, in the footer and on the hero's *WhatsApp Us* a
 > **Confirm this was intended.** If the number is not meant to be public, or WhatsApp is a
 > different line, both need reverting before launch.
 
-## 11. Product card descriptions are placeholder text
+## 11. Product card descriptions are placeholder text — **RESOLVED 21 Aug 2026**
+
+> **RESOLVED — Figma revision `aUoVe8M7d2f92WZdUlhZLj`, 21 Aug 2026.** See the
+> revision note at the end of this file.
+
 
 All three cards read **"lorem ipsum"**. Rendered verbatim and marked `data-placeholder="true"`
 so they are greppable; the expandable detail panels read "Grade detail to be supplied."
 
 > **Needs copy** for Tien Yan Royal, Tien Yan Noble and Tien Yan Imperial.
 
-## 12. Every grade is priced identically, and pricing is public
+## 12. Every grade is priced identically, and pricing is public — **RESOLVED 21 Aug 2026**
+
+> **RESOLVED — Figma revision `aUoVe8M7d2f92WZdUlhZLj`, 21 Aug 2026.** See the
+> revision note at the end of this file.
+
 
 All three cards show **$100/kg**. Three different grades at one price is almost certainly
 placeholder, but the larger question is prior to it: the rest of the site is built as a B2B
@@ -229,7 +241,11 @@ separate signature tier. `products.html` currently carries twelve grades.
 > **Needs clarification** before the *View All Products* link can point anywhere more precise than
 > the products index.
 
-## 17. Is `$` Singapore dollars or US dollars?
+## 17. Is `$` Singapore dollars or US dollars? — **RESOLVED 21 Aug 2026**
+
+> **RESOLVED — Figma revision `aUoVe8M7d2f92WZdUlhZLj`, 21 Aug 2026.** See the
+> revision note at the end of this file.
+
 
 Every price in the Figma is written with a bare `$` — `$150`, `$100/kg`. Tien Yan is a Singapore
 company (`Tien Yan Pte. Ltd.`, 10 Jalan Kilang) selling into export markets, so `$` is genuinely
@@ -282,7 +298,11 @@ Nothing was merged in unilaterally — the frame was built as drawn.
 
 ---
 
-## 20. Three of the four value-chain tabs have no content — **blocks the page**
+## 20. Three of the four value-chain tabs have no content — **RESOLVED 21 Aug 2026**
+
+> **RESOLVED — Figma revision `aUoVe8M7d2f92WZdUlhZLj`, 21 Aug 2026.** See the
+> revision note at the end of this file.
+
 
 The End-to-End Value Chain section (frame 48:93) is a four-tab interface:
 
@@ -346,7 +366,11 @@ change. The nine certificate scans in the carousel are full resolution and need 
 
 ---
 
-## 24. The Products redesign drops every product description — **content loss**
+## 24. The Products redesign drops every product description — **RESOLVED 21 Aug 2026**
+
+> **RESOLVED — Figma revision `aUoVe8M7d2f92WZdUlhZLj`, 21 Aug 2026.** See the
+> revision note at the end of this file.
+
 
 The Figma's Products frame shows a photograph, a name and a price per grade. Nothing else. The
 previous build carried a one-line description for all twelve, taken from the client's own content
@@ -466,7 +490,11 @@ Built with the document's own title, "Certificate of Analysis — Finished Produ
 
 ---
 
-## 29. The frame reuses one photograph for three different grades
+## 29. The frame reuses one photograph for three different grades — **RESOLVED 21 Aug 2026**
+
+> **RESOLVED — Figma revision `aUoVe8M7d2f92WZdUlhZLj`, 21 Aug 2026.** See the
+> revision note at the end of this file.
+
 
 Q4 records that Royal Oval and Celestial have no photography. The Products frame works around it by
 using **Tien Yan Royal's photograph in all three slots** — Tien Yan Royal, Royal Oval and Celestial
@@ -493,3 +521,55 @@ to the site owner, not to the visitor:
 
 These are instructions to whoever builds the form, so they are not shown on the page. The fields
 they describe are both present. Flagging it in case they were meant as visitor-facing helper text.
+
+---
+
+# Revision of 21 Aug 2026 — Figma `aUoVe8M7d2f92WZdUlhZLj`
+
+A revised design file was supplied on 21 Aug 2026. It resolves **seven** logged
+queries and opens **one** new one. Nothing below was inferred; every item is a
+direct reading of the new frames.
+
+## Closed by this revision
+
+| # | Query | How the revision resolves it |
+|---|---|---|
+| Q4 | Royal Oval and Celestial have no photography | Both now have their own photograph on the Products frame. The honest "Photography to follow" placeholders are gone. |
+| Q11 | Card copy reads "lorem ipsum" | All three homepage cards now carry real grade descriptions. |
+| Q12 | Every grade priced identically; is pricing public? | **Every price has been removed from the design.** The question is answered by deletion — pricing is not public. |
+| Q17 | Is `$` SGD or USD? | Moot. There are no prices anywhere in the revision, so no currency needs deciding. |
+| Q20 | Three of four value-chain tabs have no copy | All four stages now have written copy. Reproduced verbatim. |
+| Q24 | Every product description dropped | All twelve grades now carry a description. Reproduced verbatim. |
+| Q29 | One photograph reused for three grades | The Products frame now has twelve distinct photographs. |
+
+**On Q12 and Q17.** These closed by *removal*, which is worth stating plainly: the
+build no longer displays a price, a currency, or a unit anywhere. If the client
+expects prices on the site, the revision has removed them by mistake and this
+needs raising before launch. Nothing in the build invents one back.
+
+## 30. The homepage reuses Royal's photograph for Royal Oval — **new**
+
+The revision's homepage Collection shows Tien Yan Royal, Tien Yan Noble and
+**Royal Oval** (replacing Tien Yan Imperial). Royal Oval's card points at the
+same image fill as Tien Yan Royal's — the same problem Q29 logged, in a new
+place.
+
+It is not reproduced, because this time there is a correct answer available: the
+Products frame in the same file supplies a genuine, distinct Royal Oval
+photograph. The homepage card uses that one. Both pages now read from
+`assets/figma/products/royal-oval.webp`.
+
+> **Needs confirmation:** was the homepage reuse deliberate — a crop the designer
+> preferred — or a leftover from before Royal Oval had its own photograph? If
+> deliberate, say so and it will be reproduced exactly.
+
+## Still open after this revision
+
+Q13 (Grenda licence), Q18 (cream divergence), Q19 (Our Story sections dropped),
+Q25 (enquiry form loses nine fields), Q27 (certificate filter has no category
+mapping), Q28 (featured certificate captioned as the wrong document).
+
+Q25 and Q28 are the two that still carry real risk. The form still collects four
+fields where the previous site collected thirteen, and the featured certificate
+is still captioned "Bird Nest Authority Certificate" when the document is a
+PT ESTA Certificate of Analysis for batch 002/INV/ESTA/2026.

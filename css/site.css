@@ -39,7 +39,7 @@
   --t-sect-title:   clamp(1.875rem, 1.15rem + 2.45vw, 3rem);       /* 48px */
   --t-sect-sub:     clamp(1.125rem, 0.95rem + 0.95vw, 1.75rem);    /* 28px */
   --t-heritage-body: clamp(1rem,    0.90rem + 0.70vw, 1.5rem);     /* 24px */
-  --t-card-name:    clamp(1.25rem,  1.05rem + 0.75vw, 1.875rem);   /* 30px */
+  --t-card-name:    clamp(1.25rem,  1.2rem + 0.75vw, 1.875rem);    /* 30px at 1440 */
   --t-link-arrow:   1.25rem;                                       /* 20px */
 
   /* Grounds sampled from the Figma frame. */

@@ -394,15 +394,6 @@
   border-radius: 26px;            /* Figma rounded-[26px] */
 }
 
-.chain__pending {
-  margin-top: var(--s-4);
-  max-width: 38ch;
-  font-size: var(--t-body);
-  line-height: 1.6;
-  color: var(--c-ink-soft);
-  font-style: italic;
-}
-
 /* ==========================================================================
    Partnership — Certificates carousel · Figma frame 48:96
    ========================================================================== */
@@ -533,19 +524,23 @@
 }
 
 /* ==========================================================================
-   Products — Figma frame 70:375
+   Products — Figma frame 70:159 (revision of 21 Aug 2026)
 
-   Twelve grades, three across at 1440. Unlike the homepage cards these carry
-   no card chrome in the frame: a square photograph, the name, the price. No
-   surface, no border, no radius.
+   The revision changed this section more than any other. Every grade now
+   carries a photograph and a written description, the cards gained chrome —
+   a white surface at 18px radius — and every price was removed. Prices are
+   not hidden or pending: they are no longer part of the design. See Q12/Q17.
    ========================================================================== */
 
-/* Three across, explicitly — not auto-fit. The frame lays twelve 380px cards
+/* Three across, explicitly — not auto-fit. The frame lays twelve 390px cards
    in a 3 x 4 grid, and auto-fit happily fits a fourth column at 1440, which
-   turns the designed 3x4 into a 4x3 and breaks the series groupings. */
+   turns the designed 3x4 into a 4x3 and breaks the series groupings.
+   Frame gaps: 28px between columns, 86px between rows. Both clamps are tuned
+   to reach the frame value exactly at 1440px — the width the frame is drawn
+   at — rather than somewhere past it. */
 .pgrid {
   display: grid;
-  gap: var(--s-8) var(--s-6);     /* 48px column gap in the frame */
+  gap: clamp(2.5rem, 2.5rem + 3.2vw, 5.375rem) clamp(1rem, 0.94rem + 0.9vw, 1.75rem);
   margin-top: var(--s-9);
   padding: 0;
   list-style: none;
@@ -556,52 +551,48 @@
 
 .pgrid li { margin: 0; max-width: none; }
 
+/* Cards stretch to a common height per row, so the photograph sits at a
+   constant position across the row and only the body grows. The frame fixes
+   every card at 516px because its descriptions were set by hand; letting the
+   grid equalise instead survives text the client edits later. */
+.pcard {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-paper);
+  border-radius: 18px;
+  overflow: hidden;               /* clips the photo to the card's top radius */
+}
+
 .pcard__media {
   width: 100%;
-  aspect-ratio: 1 / 1;            /* 380 x 380 in the frame */
+  aspect-ratio: 390 / 289;        /* 390 x 289 in the frame */
   object-fit: cover;
   background: #131313;            /* the photographs' own ground */
 }
 
-/* Two grades have no photography in any supplied source — see Q4. The slot is
-   filled honestly rather than left blank or padded with a stand-in nest that
-   is not the product. */
-.pcard__media--pending {
-  display: grid;
-  place-items: center;
-  gap: var(--s-3);
-  background: var(--c-mulberry);
+.pcard__body {
+  padding: clamp(1.25rem, 0.8rem + 1.5vw, 2.4375rem)
+           clamp(1rem, 0.6rem + 1.3vw, 1.75rem)
+           clamp(1.5rem, 0.9rem + 2vw, 3.3125rem);
   text-align: center;
-  padding: var(--s-5);
-}
-.pcard__media--pending img { width: 84px; height: auto; opacity: 0.85; }
-.pcard__media--pending span {
-  font-size: var(--t-label);
-  letter-spacing: var(--tr-label);
-  text-transform: uppercase;
-  color: var(--c-on-dark-soft);
 }
 
+/* Frame values: name 30px Deep Mulberry, description 20px near-black. */
 .pcard__name {
-  margin-top: var(--s-5);
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 1rem + 0.55vw, 1.5rem);   /* 24px */
+  font-size: clamp(1.375rem, 1.1rem + 1.05vw, 1.875rem);   /* 30px */
   line-height: 1.15;
-  color: var(--c-ink);
-}
-
-/* Frame values: name 24px black, price 20px Deep Mulberry. */
-.pcard__price {
-  margin-top: var(--s-2);
-  font-family: var(--font-body);
-  font-size: 1.25rem;             /* 20px */
-  line-height: 1.2;
   color: var(--c-mulberry);
-  font-variant-numeric: tabular-nums;
 }
 
-/* Currency is unresolved — see Q17. The unit is rendered exactly as the frame
-   draws it, with no symbol invented. */
+.pcard__desc {
+  margin-top: clamp(0.75rem, 0.45rem + 1.1vw, 1.375rem);
+  font-size: clamp(1rem, 0.935rem + 0.35vw, 1.25rem);    /* 20px */
+  line-height: 1.4;
+  color: var(--c-ink);
+  max-width: 21rem;
+  margin-inline: auto;
+}
 
 /* ==========================================================================
    Contact — "Speak with our team about" · Figma frame 70:442

@@ -154,9 +154,13 @@
 
 .home-collection__head { text-align: center; }
 
+/* This section inverts the usual pairing: the frame sets the title in
+   Signature Gold and the subline in Deep Mulberry, where every other section
+   leads in mulberry. Gold is used at its exact brand value rather than the
+   text-safe variant because 48px clears WCAG's large-text 3:1 threshold. */
 .home-collection__title {
-  font-size: var(--t-sect-title);
-  color: var(--c-mulberry);
+  font-size: var(--t-sect-title);   /* 48px */
+  color: var(--c-gold);
   line-height: 1.1;
 }
 
@@ -164,20 +168,25 @@
   margin-top: var(--s-3);
   margin-inline: auto;
   max-width: 32ch;
-  font-size: var(--t-sect-sub);
+  /* 30px here, not the shared --t-sect-sub's 28px: this frame sets it larger
+     than the other section sublines. */
+  font-size: clamp(1.25rem, 1.2rem + 0.75vw, 1.875rem);   /* 30px at 1440 */
   line-height: 1.3;
-  color: var(--c-ink);
+  color: var(--c-mulberry);
 }
 
 /* DERIVED — three across at 1440px in the Figma. Two across on tablet, one on
-   phone. minmax with a 17rem floor means the cards never compress below the
-   width at which the product photograph stops reading. */
+   phone. Explicit counts, not auto-fit: at the 78rem container a 17rem floor
+   leaves room for a fourth column, which would silently turn the designed
+   three-card row into four. The Products grid had the same bug. */
 .home-collection__grid {
   display: grid;
-  gap: var(--s-6);
+  gap: clamp(1.5rem, 1rem + 1.6vw, 28px);
   margin-top: var(--s-8);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  grid-template-columns: 1fr;
 }
+@media (min-width: 40rem) { .home-collection__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 60rem) { .home-collection__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 .product-card {
   display: flex;
@@ -203,76 +212,28 @@
 }
 
 .product-card__body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: var(--s-5) var(--s-5) var(--s-4);
+  padding: clamp(1.25rem, 0.8rem + 1.5vw, 2.375rem)
+           clamp(1rem, 0.6rem + 1.3vw, 1.75rem)
+           clamp(1.5rem, 0.9rem + 2vw, 2.75rem);
+  text-align: center;
 }
 
+/* The 21 Aug revision recoloured card names from black to Deep Mulberry and
+   replaced the price line with a written description. */
 .product-card__name {
-  font-size: var(--t-card-name);
+  font-size: var(--t-card-name);  /* 30px */
   line-height: 1.15;
-  color: var(--c-ink);            /* Figma sets card names in black, not fuchsia */
+  color: var(--c-mulberry);
 }
 
 .product-card__desc {
-  margin-top: var(--s-2);
-  font-size: 1rem;
-  color: var(--c-ink-soft);
-}
-
-.product-card__foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-4);
-  margin-top: auto;
-  padding-top: var(--s-6);
-}
-
-.product-card__price {
-  font-size: 1.25rem;             /* 20px */
+  margin-top: clamp(0.75rem, 0.45rem + 1.1vw, 1.375rem);
+  margin-inline: auto;
+  max-width: 21rem;
+  font-size: clamp(1rem, 0.935rem + 0.35vw, 1.25rem);   /* 20px */
+  line-height: 1.4;
   color: var(--c-ink);
 }
-
-/* The Figma draws a bare "+" glyph with no target and no stated behaviour.
-   Built as a real button at a 44px minimum target (WCAG 2.2 SC 2.5.8). */
-.product-card__toggle {
-  /* Hidden until js/product-card.js confirms it can operate the panel — a
-     toggle that cannot toggle is a dead control. Same contract as reveal.js. */
-  display: none;
-  place-items: center;
-  flex: none;
-  width: 44px;
-  height: 44px;
-  margin: -0.5rem -0.5rem -0.5rem 0;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--c-mulberry);
-  font-family: var(--font-display);
-  font-size: 2.25rem;             /* 48px in the Figma, optically matched */
-  line-height: 1;
-  cursor: pointer;
-  transition: background var(--d-fast) var(--e-out),
-              transform var(--d-ui) var(--e-out);
-}
-.product-card__toggle:hover { background: rgba(114, 37, 61, 0.08); }
-.product-card__toggle[aria-expanded="true"] { transform: rotate(45deg); }
-
-/* Visible by default. With JavaScript off, every grade shows its full detail
-   and the page loses nothing. */
-.product-card__detail {
-  margin-top: var(--s-4);
-  padding-top: var(--s-4);
-  border-top: 1px solid var(--c-rule);
-  font-size: var(--t-small);
-  color: var(--c-ink-soft);
-}
-.js-cards .product-card__toggle { display: grid; }
-.js-cards .product-card__detail { display: none; }
-.js-cards .product-card__detail[data-open] { display: block; }
 
 /* ==========================================================================
    Certificates — Figma frame "Certifications" (48:82)
