@@ -3,7 +3,7 @@
 
    TO GO LIVE: replace WHATSAPP_NUMBER in the data-wa-number attribute on
    every page with the number in international format, digits only and no
-   plus sign or spaces — e.g. data-wa-number="6598007226".
+   plus sign or spaces — e.g. data-wa-number="6585487226".
 
    Until then the button stays hidden. +65 9800 7226 is currently withheld
    sitewide pending sign-off (see the commented Contact No. block in

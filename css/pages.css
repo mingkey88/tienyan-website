@@ -49,54 +49,51 @@
   margin: var(--s-7) auto 0;
 }
 
-/* The frame draws a full-bleed hairline at y=681 with a 14px dot above each
-   column. Rebuilt as a border on the row plus a pseudo-element dot, so the
-   rule and the dots cannot drift apart when the columns reflow. */
+/* v3 stacks the two eras vertically and centres them, with a short 74px rule
+   between rather than the full-bleed hairline and dots of the two-column
+   version. Frame 94:1102 / 148:144. */
 .story-timeline {
   /* An <ol> because 1950 → 2026 is genuinely ordered, but the years carry the
      sequence visually, so the markers are redundant noise. */
   list-style: none;
   padding-left: 0;
   display: grid;
-  gap: var(--s-8);
-  margin-top: var(--s-9);
-  border-top: 1px solid var(--c-rule-strong);
-}
-@media (min-width: 56rem) {
-  .story-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-9); }
+  justify-items: center;
+  gap: var(--s-7);
+  margin-top: var(--s-8);
+  text-align: center;
 }
 
-.story-era { position: relative; padding-top: var(--s-7); }
+.story-era { max-width: 76ch; }
 
-.story-era::before {
+/* The rule sits between the eras, so it belongs to the second one. */
+.story-era + .story-era::before {
   content: "";
-  position: absolute;
-  top: -7px;
-  left: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--c-mulberry);
+  display: block;
+  width: 1px;
+  height: 74px;
+  margin: 0 auto var(--s-7);
+  background: var(--c-rule-strong);
 }
 
 .story-era__year {
   font-family: var(--font-display);
-  font-size: var(--t-year);
+  font-size: var(--t-year);       /* 40px */
   line-height: 1;
   color: var(--c-mulberry);
 }
 
 .story-era__name {
   margin-top: var(--s-2);
-  font-size: 1.5rem;              /* 24px */
+  font-size: clamp(1.25rem, 1.2rem + 0.75vw, 1.875rem);   /* 30px at 1440 */
   line-height: 1.3;
   color: var(--c-fuchsia);
 }
 
 .story-era__body {
   margin-top: var(--s-5);
-  max-width: 46ch;
-  font-size: 1.25rem;             /* 20px */
+  margin-inline: auto;
+  font-size: var(--t-list);       /* 24px */
   line-height: 1.55;
   color: var(--c-ink);
 }
@@ -164,6 +161,18 @@
   text-align: center;
 }
 
+/* v3 turns the characteristics row into photographs on solid white cards,
+   where the traits row keeps its badges on the 50% wash. Frame 94:1160. */
+.trait--plain { background: var(--c-paper); }
+
+.trait__photo {
+  width: 100%;
+  max-width: 282px;               /* 282 x 210 inside a 389px card */
+  aspect-ratio: 282 / 210;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
 /* The frame gives each card a square-ish footprint (369x369 with a title,
    369x294 without). Reproduced as a min-height rather than a fixed one so a
    long line can grow the card instead of overflowing it. */
@@ -228,10 +237,31 @@
   .benefits__grid { grid-template-columns: minmax(0, 537fr) minmax(0, 626fr); gap: var(--s-8); }
 }
 
-.benefits__photo {
+/* v3 replaces the single bowl photograph with two ambassador portraits,
+   named beneath. Frame 141:1215 / 141:1216 — 253x363 and 258x363, 14px apart,
+   names 20px beneath. Both carry rotate-180 + scale-y-100, baked into the
+   files as a horizontal flip. */
+.benefits__people {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 0.4rem + 1vw, 14px);
+  margin: 0;
+}
+
+.benefits__person { display: flex; flex-direction: column; }
+
+.benefits__portrait {
   width: 100%;
-  aspect-ratio: 545 / 550;        /* the frame's image window */
+  aspect-ratio: 256 / 363;
   object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.benefits__name {
+  margin-top: var(--s-4);
+  font-size: 1.25rem;             /* 20px */
+  line-height: 1.2;
+  color: var(--c-ink);
 }
 
 /* Gold title, mulberry lead — frame 94:1139 / 94:1140. */
@@ -280,18 +310,21 @@
   .pt-hero__grid { grid-template-columns: minmax(0, 474fr) minmax(0, 664fr); gap: var(--s-8); }
 }
 
+/* v3 splits this in two: a 55px mulberry page title ("Partnerships") above,
+   and this as a 48px gold section heading — matching every other section
+   heading on the site. Frame 42:286. */
 .pt-hero__title {
-  font-size: var(--t-page-title);
-  line-height: 1.12;
-  color: var(--c-mulberry);
+  font-size: var(--t-sect-title);   /* 48px */
+  line-height: 1.25;                /* 60/48 */
+  color: var(--c-gold);
   text-wrap: balance;
 }
 
 .pt-hero__body {
   margin-top: var(--s-6);
   max-width: 40ch;
-  font-size: var(--t-sect-sub);
-  line-height: 1.25;              /* 35/28 */
+  font-size: clamp(1.25rem, 1.2rem + 0.75vw, 1.875rem);   /* 30px at 1440 */
+  line-height: 1.27;              /* 38/30 */
   color: var(--c-ink);
 }
 
@@ -681,8 +714,10 @@
 
 .speak { padding-block: var(--section-y) 0; }
 
+/* v3 raises this from 28px to 48px — the text node goes 352x39 to 611x67,
+   and 67px is the height every other 48px heading occupies. Frame 70:382. */
 .speak__title {
-  font-size: var(--t-sect-sub);   /* 28px */
+  font-size: var(--t-sect-title);   /* 48px */
   line-height: 1.3;
   color: var(--c-ink);
   text-align: center;

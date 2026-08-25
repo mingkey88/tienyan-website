@@ -730,3 +730,70 @@ rather than decision, this is the moment to catch it.
 **Q38 is worth noting for the shared component.** Partner with Tien Yan is one
 Figma component instanced on all five pages, so it cannot say "Contact Us" on the
 homepage and "Whatsapp Us" on Partnership without being split into two.
+
+---
+
+# Figma revision v3 — `HNjJcPRP5tuzVxqPOtX2JR`, 25 Aug 2026
+
+A third design file. Applied throughout; three items are logged rather than
+built, and one correction is worth reading first.
+
+## A pairing error in v2 that v3 fixes
+
+The "what makes Tien Yan different" badges were **mismatched in v2 and therefore
+on the live site**: Naturally Pure carried the EBF 10+ badge and EBF 10+ Quality
+Standard carried GMO Free. v3 swaps them into the right order and the site now
+matches. Worth knowing because the live site was making a wrong claim visually
+for four days.
+
+## 42. "BIrd's Nest" — a capitalisation typo in six product descriptions
+
+Six of the twelve v3 product descriptions read **"BIrd's Nest"** with a capital
+I. Reproduced as supplied, per the standing rule and the precedent set in Q2,
+but this one is visible on a live page six times over and reads as broken rather
+than as a style choice.
+
+> **Needs a ruling.** One line to fix once confirmed. The affected grades are
+> Tien Yan Royal, Tien Yan Noble, Heritage Classic, Heritage, Imperial and
+> Sky Valley.
+
+Also note the Products page uses "BIrd's Nest **comes from** Kalimantan" for two
+grades and "**from** Kalimantan" for the rest, while the homepage uses "from"
+throughout. Both reproduced as drawn.
+
+## 43. The Download Catalogue button has no catalogue — **not built**
+
+v3 adds a 280x50 fuchsia **Download Catalogue** button at the foot of the
+Products page. No catalogue file exists in the repository or has been supplied,
+so the button would 404 on click.
+
+Not built. A download button that downloads nothing is a dead control, the same
+reasoning that keeps the certificate chips a plain list without JavaScript.
+
+> **Needed:** the catalogue PDF. The button is ten minutes once it exists.
+
+## 44. The footer's Downloads column has nothing to link to — **not built**
+
+v3 restructures the footer to **Our Story · Partnerships · Products · Downloads ·
+Contact Us**, where Downloads lists "Product Catalogues" and "Videos". Neither
+exists.
+
+The column headings are a structural change worth making; the two items under
+Downloads are not, for the same reason as Q43. The footer is unchanged pending
+those files, so its columns still read Company · Products · Quality · Contact Us.
+
+> **Needed:** the catalogue and video assets, or a decision to drop the column.
+
+## Applied from v3
+
+Phone corrected to **+65 8548 7226** across all pages · badges re-paired ·
+15 product descriptions reworded · Partnership gains a "Partnerships" page title
+with the hero heading recoloured gold at 48px and its body at 30px · Custom
+Product Solutions reworded · EBF line drops "competitive" · Our Story timeline
+restructured to a centred vertical stack with the archive photograph of
+19 North Canal Road replacing the line drawing · Health Benefits replaces the
+bowl photograph with Louise Thean and Lena Thean · Characteristics replaces line
+icons with photographs on solid white cards · heritage, partnership hero and the
+three homepage certificates all replaced · Partner with Tien Yan removed from
+Our Story, Products and Contact · full stops added to six headings ·
+"Speak with our team about:" raised to 48px.

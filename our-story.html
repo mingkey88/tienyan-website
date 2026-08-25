@@ -82,9 +82,9 @@
   <section class="page-ground">
     <div class="page-wrap page-head">
       <h1 class="page-head__title" data-reveal>Our Story</h1>
-      <img class="story-art" src="assets/figma/shophouse.webp"
-           alt="Line drawing of the Singapore shophouse row where Hoo Ann Bird's Nest traded"
-           width="1199" height="597" data-reveal="media">
+      <img class="story-art" src="assets/figma/story/shophouse-photo.webp"
+           alt="Archive photograph of the shophouse at 19 North Canal Road, Singapore, where Hoo Ann Bird's Nest traded"
+           width="760" height="587" data-reveal="media">
     </div>
 
     <div class="page-wrap">
@@ -131,7 +131,7 @@
       <ul class="trait-grid" role="list">
         <li class="trait trait--titled" data-reveal data-reveal-delay="1">
           <img class="trait__icon trait__icon--badge" src="assets/figma/story/badge-pure.webp"
-                 alt="EBF 10+ sialic acid content badge" width="256" height="256" loading="lazy" decoding="async">
+                 alt="100% natural, GMO free, no additional additives badge" width="256" height="256" loading="lazy" decoding="async">
           <h3 class="trait__name">Naturally Pure</h3>
           <p class="trait__body">Free from GMOs and no added food additives.</p>
         </li>
@@ -146,10 +146,10 @@
         </li>
         <li class="trait trait--titled" data-reveal data-reveal-delay="3">
           <img class="trait__icon trait__icon--badge" src="assets/figma/story/badge-ebf.webp"
-                 alt="100% natural, GMO free, no additional additives badge" width="256" height="256" loading="lazy" decoding="async">
+                 alt="EBF 10+ sialic acid content badge" width="256" height="256" loading="lazy" decoding="async">
           <h3 class="trait__name">EBF 10+ Quality Standard</h3>
           <p class="trait__body">
-            Every product meets Tien Yan's EBF 10+ standard, ensuring consistent competitive
+            Every product meets Tien Yan's EBF 10+ standard, ensuring consistent
             nutritional value of sialic acid.
           </p>
         </li>
@@ -161,9 +161,18 @@
   <section class="benefits">
     <div class="page-wrap">
       <div class="benefits__grid">
-        <img class="benefits__photo" src="assets/figma/story/benefits.webp"
-             alt="A woman smiling as she eats prepared bird's nest from a white bowl at a sunlit table"
-             width="1090" height="1093" loading="lazy" decoding="async" data-reveal="media">
+        <figure class="benefits__people" data-reveal="media">
+          <div class="benefits__person">
+            <img class="benefits__portrait" src="assets/figma/story/ambassador-louise.webp"
+                 alt="Louise Thean" width="760" height="1013" loading="lazy" decoding="async">
+            <figcaption class="benefits__name">Louise Thean</figcaption>
+          </div>
+          <div class="benefits__person">
+            <img class="benefits__portrait" src="assets/figma/story/ambassador-lena.webp"
+                 alt="Lena Thean" width="760" height="1089" loading="lazy" decoding="async">
+            <figcaption class="benefits__name">Lena Thean</figcaption>
+          </div>
+        </figure>
 
         <div>
           <h2 class="benefits__title" data-reveal>Health Benefits</h2>
@@ -190,22 +199,25 @@
   <!-- ============== Characteristics · Figma 70:110 ============== -->
   <section class="trait-section page-ground">
     <div class="page-wrap">
-      <h2 class="trait-section__title" data-reveal>Characteristics of High Quality Bird's Nest</h2>
+      <h2 class="trait-section__title" data-reveal>Characteristics of High Quality Bird's Nest.</h2>
 
       <ul class="trait-grid" role="list">
         <li class="trait trait--plain" data-reveal data-reveal-delay="1">
-          <img class="trait__icon" src="assets/figma/story/char-colour.webp"
-                 alt="" aria-hidden="true" width="300" height="138" loading="lazy" decoding="async">
+          <img class="trait__photo" src="assets/figma/story/char-colour.webp"
+                 alt="Raw bird's nests in their natural ivory colour, showing variation in shape and texture"
+                 width="564" height="421" loading="lazy" decoding="async">
           <p class="trait__body">Naturally ivory in colour, with slight variations in shape and texture.</p>
         </li>
         <li class="trait trait--plain" data-reveal data-reveal-delay="2">
-          <img class="trait__icon" src="assets/figma/story/char-expand.webp"
-                 alt="" aria-hidden="true" width="300" height="178" loading="lazy" decoding="async">
+          <img class="trait__photo" src="assets/figma/story/char-expand.webp"
+                 alt="Bird's nest soaking in a bowl of water, expanded and showing its natural strands"
+                 width="564" height="421" loading="lazy" decoding="async">
           <p class="trait__body">Expands two to three times after soaking while retaining its natural strands.</p>
         </li>
         <li class="trait trait--plain" data-reveal data-reveal-delay="3">
-          <img class="trait__icon" src="assets/figma/story/char-aroma.webp"
-                 alt="" aria-hidden="true" width="300" height="394" loading="lazy" decoding="async">
+          <img class="trait__photo" src="assets/figma/story/char-aroma.webp"
+                 alt="A serving of prepared bird's nest being lifted from a bowl with a spoon"
+                 width="564" height="421" loading="lazy" decoding="async">
           <p class="trait__body">
             Has a light egg-white aroma. House Bird's Nest have a soft and delicate texture while
             Cave Bird's Nest are crunchy and chewier in texture.
@@ -216,19 +228,8 @@
   </section>
 
   <!-- ============== Partner CTA · Figma component 62:155 ============== -->
-  <section class="page-partner">
-    <div class="page-wrap">
-      <h2 class="page-partner__title" data-reveal>Partner with Tien Yan</h2>
-      <p class="page-partner__lead" data-reveal>
-        For retail, hospitality, wellness, and corporate sourcing enquiries.
-      </p>
-      <div class="page-partner__cta" data-reveal>
-        <a class="btn btn--primary btn--wide" href="contact.html">Contact Us</a>
-      </div>
-    </div>
-  </section>
 
-</main>
+  </main>
 
 <footer class="site-footer site-footer--v2">
   <div class="page-wrap">
@@ -281,7 +282,7 @@
           </li>
           <li>
             <img src="assets/figma/icons/phone.webp" alt="" aria-hidden="true" width="15" height="16">
-            <a href="tel:+6598007226">+65 9800 7226</a>
+            <a href="tel:+6585487226">+65 8548 7226</a>
           </li>
           <li>
             <img src="assets/figma/icons/pin.webp" alt="" aria-hidden="true" width="12" height="16">
