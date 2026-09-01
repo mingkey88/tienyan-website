@@ -18,7 +18,7 @@
 
   --t-page-title:  clamp(2.25rem, 1.25rem + 3.20vw, 3.4375rem);  /* 55px */
   --t-story-band:  clamp(1.375rem, 0.95rem + 1.85vw, 2.375rem);  /* 38px */
-  --t-year:        clamp(1.75rem, 1.35rem + 1.35vw, 2.5rem);     /* 40px */
+  --t-year:        clamp(1.875rem, 1.15rem + 2.45vw, 3rem);       /* 48px at 1440 */
   --t-card-title:  clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);    /* 28px */
   --t-list:        clamp(1rem, 0.9rem + 0.7vw, 1.5rem);          /* 24px */
 }
@@ -78,7 +78,7 @@
 
 .story-era__year {
   font-family: var(--font-display);
-  font-size: var(--t-year);       /* 40px */
+  font-size: var(--t-year);       /* 48px */
   line-height: 1;
   color: var(--c-mulberry);
 }
@@ -306,8 +306,12 @@
   align-items: center;
 }
 @media (min-width: 60rem) {
-  /* 474 : 664 in the frame. */
-  .pt-hero__grid { grid-template-columns: minmax(0, 474fr) minmax(0, 664fr); gap: var(--s-8); }
+  /* v4 flips this: photograph left, copy right — 676 : 474 in the frame.
+     Ordered with grid-column rather than by moving the DOM, so the copy stays
+     first in reading order for screen readers and stacks first on a phone. */
+  .pt-hero__grid { grid-template-columns: minmax(0, 676fr) minmax(0, 474fr); gap: var(--s-8); }
+  .pt-hero__grid > div  { grid-column: 2; grid-row: 1; }
+  .pt-hero__photo       { grid-column: 1; grid-row: 1; }
 }
 
 /* v3 splits this in two: a 55px mulberry page title ("Partnerships") above,

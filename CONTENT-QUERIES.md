@@ -797,3 +797,40 @@ icons with photographs on solid white cards · heritage, partnership hero and th
 three homepage certificates all replaced · Partner with Tien Yan removed from
 Our Story, Products and Contact · full stops added to six headings ·
 "Speak with our team about:" raised to 48px.
+
+---
+
+# Figma revision v4 — `ljixYWwtxswpI4xM6BMoK4`, 26 Aug 2026
+
+A small revision after v3. Four changes applied, one deliberately not.
+
+## Applied
+
+| Where | Change |
+|---|---|
+| Homepage hero | The Chinese full stop is removed — 天赐珍燕，世代传承 with no 。 |
+| Partnership hero | **Flipped.** Photograph now left, copy right (676 : 474). Done with grid column order rather than by moving the DOM, so the copy stays first for screen readers and stacks first on a phone. |
+| Our Story timeline | The years 1950 and 2026 grow from 40px to 48px |
+| Contact | "Speak with our team about:" becomes "Speak With Our Team About:" |
+
+## 45. Custom Product Solutions has lost its description — **not applied**
+
+In v3 the fourth value-chain panel read:
+
+> Work with us to create premium ready-to-eat bird's nest tailored to your
+> market requirement.
+
+In v4 that text node is **empty** — `85:737`, renamed to "Text", width 0. The
+frame renders the panel with a title and a photograph and nothing else, and it
+looks visibly unbalanced beside the other three.
+
+**The copy has been left in place.** An empty text node named "Text" at zero
+width reads as content deleted and not yet replaced, not as a designed empty
+state. The standing rule is that supplied copy is not altered unilaterally, and
+deleting a panel's only explanation is an alteration — the asymmetry matters
+here: keeping a sentence that may be revised costs nothing, while removing one
+that was deleted by accident leaves a panel that looks broken and tells a
+sourcing manager nothing about what the service is.
+
+> **Needs a ruling.** Either the replacement copy, or confirmation that the
+> panel is meant to carry no description. One line either way.
