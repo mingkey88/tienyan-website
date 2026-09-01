@@ -294,16 +294,30 @@
   color: var(--c-ink-soft);
 }
 
+/* The catalogue action closes the Products page, centred under the grid.
+   Figma 152:165 sits 77px below the last card row. */
+.pgrid__action { margin-top: var(--s-8); text-align: center; }
+
 /* ==========================================================================
    Partnership — hero · Figma frame 48:92
    ========================================================================== */
 
-.pt-hero { padding-block: var(--section-y); }
+/* Top padding comes from .page-head, which every interior masthead carries.
+   .pt-hero is the only section that wraps a .page-head, so declaring
+   padding-block here as well applied --section-y twice — a 288px gap under
+   the header where the other three pages have 144px. Bottom only. */
+.pt-hero { padding-block: 0 var(--section-y); }
 
 .pt-hero__grid {
   display: grid;
   gap: var(--s-7);
   align-items: center;
+  /* The masthead sits inside this section, and .page-head carries no bottom
+     padding, so without this the photograph's top edge butts straight into
+     the "Partnerships" title. The frame leaves 87px of clear space between
+     the title's descenders and the photograph; 84px here lands the same
+     optical gap, since our line box is tighter than Figma's. */
+  margin-top: clamp(2.5rem, 2.37rem + 3.2vw, 5.25rem);   /* 84px at 1440 */
 }
 @media (min-width: 60rem) {
   /* v4 flips this: photograph left, copy right — 676 : 474 in the frame.

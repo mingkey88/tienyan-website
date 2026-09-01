@@ -761,28 +761,46 @@ Also note the Products page uses "BIrd's Nest **comes from** Kalimantan" for two
 grades and "**from** Kalimantan" for the rest, while the homepage uses "from"
 throughout. Both reproduced as drawn.
 
-## 43. The Download Catalogue button has no catalogue — **not built**
+## 43. The Download Catalogue button has no catalogue — **built, and it 404s**
 
 v3 adds a 280x50 fuchsia **Download Catalogue** button at the foot of the
-Products page. No catalogue file exists in the repository or has been supplied,
-so the button would 404 on click.
+Products page; v4 redraws it at 290x50 (`152:165`). No catalogue file exists in
+the repository or has been supplied.
 
-Not built. A download button that downloads nothing is a dead control, the same
-reasoning that keeps the certificate chips a plain list without JavaScript.
+**Now built anyway, on instruction (1 Sep 2026).** It is drawn exactly as the
+frame has it — 290x50, `#d41367`, square corners, 18px — and points at:
 
-> **Needed:** the catalogue PDF. The button is ten minutes once it exists.
+    assets/docs/tien-yan-catalogue.pdf
 
-## 44. The footer's Downloads column has nothing to link to — **not built**
+That file does not exist, so the button **downloads nothing and 404s on click**
+until the PDF is dropped in at that exact path and filename. The site is still
+`noindex` and behind sign-off, so nobody outside the project can hit it.
+
+> **Needed:** the catalogue PDF, saved as `assets/docs/tien-yan-catalogue.pdf`.
+> No code change required once the file is in place.
+
+## 44. The footer's Downloads column has nothing to link to — **built, and it 404s**
 
 v3 restructures the footer to **Our Story · Partnerships · Products · Downloads ·
-Contact Us**, where Downloads lists "Product Catalogues" and "Videos". Neither
-exists.
+Contact Us**; v4 keeps that (`1:368`). Downloads lists "Product Catalogues" and
+"Videos". Neither file exists.
 
-The column headings are a structural change worth making; the two items under
-Downloads are not, for the same reason as Q43. The footer is unchanged pending
-those files, so its columns still read Company · Products · Quality · Contact Us.
+**Now built, on instruction (1 Sep 2026).** The footer has been flattened to the
+five v4 columns across all eight pages. Our Story, Partnerships and Products are
+now the page links themselves, with no sub-items — which is what the frame
+draws, and which loses nothing, since the old sub-items (Royal / Heritage / Sky
+Series, Certifications, Quality Process) all pointed at the same two pages. The
+two Downloads links point at:
 
-> **Needed:** the catalogue and video assets, or a decision to drop the column.
+    assets/docs/tien-yan-catalogue.pdf
+    assets/video/tien-yan-overview.mp4
+
+Neither exists, so both **404 on click** until the files are supplied at those
+exact paths.
+
+> **Needed:** the catalogue PDF and the video, at the two paths above. If the
+> video is a YouTube or Vimeo link rather than a file, say so and the href
+> becomes that URL instead.
 
 ## Applied from v3
 
@@ -834,3 +852,31 @@ sourcing manager nothing about what the service is.
 
 > **Needs a ruling.** Either the replacement copy, or confirmation that the
 > panel is meant to carry no description. One line either way.
+
+## 46. The footer's postal address is not in the v4 frame — **kept**
+
+The v4 footer (`1:368`) shows only email and phone under Contact Us. The live
+footer also carries:
+
+> 10 Jalan Kilang, #04-06 Bukit Merah Enterprise Centre, Singapore 159410
+
+**Kept.** Removing a company's registered address from a live site is a content
+deletion, and the standing rule is that supplied content is not altered
+unilaterally. The asymmetry is the same as Q45: keeping an address that the
+frame merely omits costs a line of footer; removing one that was dropped by
+accident takes a real business detail off the site.
+
+> **Needs a ruling.** One line to remove if the omission was deliberate.
+
+## 47. Every primary button is 45px tall, the frame draws 50px — **not changed**
+
+`.btn--wide` — Explore Products, WhatsApp Us, Learn Our Story, Contact Us, Send
+and now Download Catalogue — renders 45px tall. Every frame draws these at
+**50px** (238x50, and 290x50 for the catalogue button). Widths match exactly;
+only the height is short, by 5px, on all six buttons across five pages.
+
+Not changed in this pass, because it was found while adding the catalogue button
+and altering every button on the site is a wider change than that fix warranted.
+
+> **Needs a ruling.** One line — `padding-block` on `.btn--wide` — and it
+> affects every primary button on the site at once.

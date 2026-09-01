@@ -65,6 +65,11 @@
   line-height: 1.25;
 }
 
+/* The Products page's Download Catalogue is the one primary action drawn
+   wider than 238px — 290px in the frame, because the label is longer than
+   any other. Same fill, same square corners, same 18px. */
+.btn--wide-lg { min-width: min(290px, 100%); }
+
 /* Shared container for every homepage section. */
 .page-wrap {
   width: 100%;
@@ -197,9 +202,10 @@
 .site-footer--v2 .footer-v2__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width: 68rem) {
-  /* Brand block is wider than the four link columns, as in the Figma. */
+  /* Brand block is wider than the five link columns, as in the Figma. */
 .site-footer--v2 .footer-v2__grid {
-    grid-template-columns: 1.6fr repeat(3, 0.85fr) 1.3fr;
+    /* v4 adds a Downloads column: brand + four link columns + contact. */
+    grid-template-columns: 1.6fr repeat(4, 0.78fr) 1.2fr;
     gap: var(--s-6);
   }
 }
@@ -231,6 +237,19 @@
   letter-spacing: 0.02em;
   /* The frame's warm cream, not Champagne Cream — see --c-cream-warm. */
   color: var(--c-cream-warm);
+}
+
+/* Three of the five headings are the page link itself in v4, with nothing
+   beneath them. Inherit the heading's colour so a linked heading and a plain
+   one are indistinguishable until hover, as drawn. */
+.site-footer--v2 .footer-v2__heading a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-footer--v2 .footer-v2__heading a:hover,
+.site-footer--v2 .footer-v2__heading a:focus-visible {
+  color: var(--c-cream);
+  text-decoration: underline;
 }
 
 .site-footer--v2 .footer-v2__list {
