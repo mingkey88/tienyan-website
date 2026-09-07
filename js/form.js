@@ -21,6 +21,18 @@
   var endpoint = form.getAttribute('action') || '';
   var configured = endpoint.indexOf('FORMSPREE_ID') === -1 && endpoint.indexOf('formspree.io') !== -1;
 
+  // Missing catalogue/video files route here with a specific, editable enquiry.
+  var enquiryType = new URLSearchParams(window.location.search).get('enquiry');
+  var enquiryMessages = {
+    catalogue: 'Please send me the Tien Yan product catalogue.',
+    video: 'Please send me the Tien Yan product overview video.'
+  };
+  var messageInput = form.querySelector('#message');
+  if (messageInput && !messageInput.value && Object.prototype.hasOwnProperty.call(enquiryMessages, enquiryType)) {
+    messageInput.value = enquiryMessages[enquiryType];
+  }
+
+
   /* ---- Validation -------------------------------------------------------- */
 
   function fieldOf(input) { return input.closest('.field'); }

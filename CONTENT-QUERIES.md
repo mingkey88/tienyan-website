@@ -880,3 +880,47 @@ and altering every button on the site is a wider change than that fix warranted.
 
 > **Needs a ruling.** One line — `padding-block` on `.btn--wide` — and it
 > affects every primary button on the site at once.
+
+
+---
+
+# Figma revision — `HcxmNyEHLi69CkMnAOmx9Q`, 7–8 Sep 2026
+
+The user requested continuation of the existing site using this file. Design context was read
+for all five page frames: `1:4`, `94:1024`, `1:313`, `70:159`, and `70:295`.
+
+Applied: serif body/UI typography using the existing Cormorant fallback; 46px section titles;
+50px primary buttons (resolves Q47); warm section grounds; corrected container insets;
+full-width shared chrome with the footer contact divider; updated homepage processing photo,
+Our Story portrait and ivory-nest photo; gold Contact icons, cream form panel, and direct
+WhatsApp/email links; Partnership hero photo and vertical Chinese slogan.
+
+Retained implementation decisions and differences:
+
+- Q31's one-panel-at-a-time tabs and the client's three-certificate carousel remain intact.
+- Grenda and the Chinese display font are still unavailable. Cormorant Garamond and Noto
+  Serif SC remain the substitutes. No font files were acquired.
+- Q46's postal address is preserved under Get In Touch on Contact, instead of repeated in
+  every footer. The existing Cookie Policy link remains available.
+- Q43/Q44's files are still missing. Catalogue/video links now open a prefilled enquiry;
+  the Products action is labelled **Request Catalogue**. This removes the previous 404s.
+- Form labels retain required indicators and visible borders. Send uses a 50px target
+  (the new Contact frame draws it at 40px). Small legal/disclaimer text remains readable
+  rather than reproducing the frame's 7–10px sizes.
+- Responsive layouts below the supplied 1440px frames are derived. Images crop in CSS;
+  newly downloaded source assets are stored as exact exported bytes.
+
+The form endpoint and actual catalogue/video files still need to be supplied before those
+services can be enabled. Pre-launch indexing settings and the legal stubs are unchanged.
+
+Verification: all five pages checked at 1440, 768, 390 and 320px with no missing
+images or page overflow. Menu opening/Escape/focus return, internal navigation,
+catalogue prefill, required-field validation, the unconfigured-form fallback,
+keyboard tab selection and certificate filtering were exercised in the browser.
+The final Partnership slogan has no clipped text at 1440, 768 or 390px.
+
+An existing carousel issue was corrected during verification: centering the second
+certificate while three were already visible could leave Next at the starting position.
+Navigation now measures slide positions relative to the scroller and aligns each
+leading certificate to the left edge. Next, the end boundary and Previous were
+verified at 1440, 768 and 390px. The counter identifies the leading certificate.

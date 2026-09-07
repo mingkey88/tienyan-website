@@ -12,10 +12,12 @@ So the site currently ships a stand-in:
 | Role | Shipping now | Brand guide specifies |
 |---|---|---|
 | Display / headings | Cormorant Garamond (SIL Open Font Licence) | Grenda |
-| Body / UI | Karla (SIL Open Font Licence) | — (guide names only Georgia as web-safe) |
+| Body / UI | Cormorant Garamond (SIL Open Font Licence) | Grenda in the current Figma |
 | Chinese | Noto Serif SC (SIL Open Font Licence) | 方正清刻本悦宋简体 |
 
-All three are free for commercial use and served from Google Fonts.
+Both shipping font families are served from Google Fonts. The 7 Sep 2026 update
+uses the same serif for headings, body text and UI, matching the current Figma.
+Karla is no longer requested.
 
 The guide's own documented web-safe fallbacks (Georgia, Microsoft YaHei, p26–27) are already in the
 CSS font stacks, so the site degrades to a brand-compliant state if webfonts fail to load.
@@ -71,8 +73,8 @@ assets/fonts/grenda-regular.woff     ← only if the vendor supplies it
 --font-display: 'Grenda', 'Cormorant Garamond', Georgia, serif;
 ```
 
-**4.** Remove `Cormorant+Garamond` from the Google Fonts `<link>` in all five HTML files, so the
-browser is not downloading a font it no longer uses. Leave Karla and Noto Serif SC.
+**4.** Remove `Cormorant+Garamond` from the Google Fonts `<link>` in all eight HTML files, so the
+browser is not downloading a font it no longer uses. Leave Noto Serif SC. The body font inherits `--font-display`, so it updates too.
 
 **5.** Check every page. Grenda and Cormorant have different metrics, so headings will change
 width. Look especially at the hero on `index.html` and the page titles, which are set largest.

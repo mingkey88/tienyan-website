@@ -33,7 +33,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Karla:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- The hero photograph is the LCP element on every viewport. Preloaded so it
      is not discovered late in the parse. -->
@@ -41,12 +41,12 @@
       imagesrcset="assets/figma/hero-bg-1280.webp 1280w, assets/figma/hero-bg-2560.webp 2560w"
       imagesizes="100vw">
 
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/site.css">
-<link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/motion.css">
+<link rel="stylesheet" href="css/tokens.css?v=20260908">
+<link rel="stylesheet" href="css/base.css?v=20260908">
+<link rel="stylesheet" href="css/components.css?v=20260908">
+<link rel="stylesheet" href="css/site.css?v=20260908">
+<link rel="stylesheet" href="css/home.css?v=20260908">
+<link rel="stylesheet" href="css/motion.css?v=20260908">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
 </head>
@@ -84,7 +84,7 @@
   <div class="page-wrap site-header__inner">
     <a class="site-logo" href="index.html" aria-label="Tien Yan — home">
       <img src="assets/figma/logo-nav.webp" alt="Tien Yan 天燕"
-           width="561" height="281" style="width: 107px;">
+           width="561" height="281">
     </a>
 
     <!-- Labels follow the Figma. The hrefs follow the pages that actually exist:
@@ -157,9 +157,11 @@
              window and flipped horizontally in the file — the frame applies
              rotate-180 + scale-y-100, which nets to a horizontal flip. Baked
              into the asset rather than done in CSS so it survives a port. -->
-        <img class="home-heritage__art" src="assets/figma/heritage.webp"
-             alt="A technician in a hairnet, mask and gloves inspecting a bird's nest with tweezers at a stainless steel bench, with packed boxes alongside"
-             width="1314" height="896" loading="lazy" decoding="async" data-reveal="media">
+        <div class="home-heritage__art" data-reveal="media">
+          <img src="assets/figma/heritage-reference.jpg"
+               alt="A technician inspecting bird's nests beside trays in the processing facility"
+               width="2400" height="1792" loading="lazy" decoding="async">
+        </div>
 
         <div>
           <h2 class="home-heritage__title" data-reveal>
@@ -309,33 +311,20 @@
         <h2 class="footer-v2__heading"><a href="products.html">Products</a></h2>
       </div>
 
-      <!-- Neither file has been supplied; both hrefs are the agreed filenames
-           and will 404 until the assets are dropped in. CONTENT-QUERIES Q44. -->
+      <!-- Downloads route to an enquiry until the source files are supplied. -->
       <div>
         <h2 class="footer-v2__heading">Downloads</h2>
         <ul class="footer-v2__list">
-          <li><a href="assets/docs/tien-yan-catalogue.pdf" download>Product Catalogues</a></li>
-          <li><a href="assets/video/tien-yan-overview.mp4" download>Videos</a></li>
+          <li><a href="contact.html?enquiry=catalogue#enquiry-form">Product Catalogues</a></li>
+          <li><a href="contact.html?enquiry=video#enquiry-form">Videos</a></li>
         </ul>
       </div>
 
-      <div>
-        <h2 class="footer-v2__heading">Contact Us</h2>
+      <div class="footer-v2__contact-column">
+        <h2 class="footer-v2__heading"><a href="contact.html">Contact Us</a></h2>
         <ul class="footer-v2__contact">
-          <li>
-            <img src="assets/figma/icons/mail.webp" alt="" aria-hidden="true" width="16" height="11">
-            <a href="mailto:info@tienyan.com">info@tienyan.com</a>
-          </li>
-          <!-- Published in the supplied Figma frame; withheld by the previous
-               build pending sign-off. CONTENT-QUERIES.md Q10. -->
-          <li>
-            <img src="assets/figma/icons/phone.webp" alt="" aria-hidden="true" width="15" height="16">
-            <a href="tel:+6585487226">+65 8548 7226</a>
-          </li>
-          <li>
-            <img src="assets/figma/icons/pin.webp" alt="" aria-hidden="true" width="12" height="16">
-            <span>10 Jalan Kilang<br>#04-06 Bukit Merah Enterprise Centre<br>Singapore 159410</span>
-          </li>
+          <li><a href="mailto:info@tienyan.com">info@tienyan.com</a></li>
+          <li><a href="tel:+6585487226">+65 8548 7226</a></li>
         </ul>
 
         <ul class="footer-v2__social">

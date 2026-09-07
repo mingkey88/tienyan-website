@@ -14,31 +14,34 @@
 .home-hero {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  margin-top: -91px;
   /* 768/1440 = 53.33vw. Floored so the copy never crushes on short viewports,
      capped at the Figma height so it stops growing on wide monitors. */
   min-height: clamp(30rem, 53.33vw, 48rem);
-  padding-block: var(--s-8);
+  padding-block: clamp(10rem, 12.78vw, 11.5rem) var(--s-8);
   overflow: hidden;
   isolation: isolate;
-  background: #e8dccb;  /* matches the photograph's ground; covers the gap
+  background: var(--c-hero-ground);  /* matches the photograph's ground; covers the gap
                            between paint and image decode */
 }
 
 .home-hero__bg {
   position: absolute;
-  inset: 0;
+  top: -1.22%;
+  left: -29.44%;
   z-index: -1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 132.77%;
+  max-width: none;
+  height: 101.74%;
+  object-fit: fill;
   /* The nests and the branch sit in the right third of the photograph. Anchoring
      right keeps the subject in frame as the viewport narrows, and keeps the
      empty ground on the left where the copy sits. */
   object-position: 70% 50%;
 }
 
-.home-hero__inner { max-width: 46rem; }
+.home-hero__inner { max-width: 38rem; }
 
 .home-hero__title {
   font-size: var(--t-hero-title);
@@ -57,8 +60,8 @@
 }
 
 .home-hero__lead {
-  margin-top: var(--s-5);
-  max-width: 34ch;
+  margin-top: var(--s-6);
+  max-width: 35ch;
   font-size: var(--t-hero-lead);
   line-height: 1.25;              /* 35/28 */
   color: var(--c-ink);
@@ -68,7 +71,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-4);
-  margin-top: var(--s-7);
+  margin-top: var(--s-6);
 }
 
 /* DERIVED — the Figma stops at 1440px.
@@ -83,8 +86,9 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
+    margin-top: 0;
     padding-block: var(--s-7) 0;
-    background: #efe6d8;
+    background: var(--c-hero-mobile);
   }
   /* The photograph is first in the DOM because it is the desktop background.
      Ordered below the copy here so the headline and the two actions come first
@@ -94,11 +98,13 @@
     order: 2;
     position: relative;
     inset: auto;
+    width: 100%;
+    object-fit: cover;
     z-index: 0;
     margin-top: var(--s-7);
     aspect-ratio: 4 / 3;
     height: auto;
-    object-position: 60% 50%;
+    object-position: 95% 50%;
   }
   .home-hero > .page-wrap { order: 1; }
   .home-hero__inner { max-width: none; }
@@ -110,7 +116,7 @@
    replaced the shophouse line illustration that stood here.
    ========================================================================== */
 
-.home-heritage { padding-block: var(--section-y); background: var(--c-paper-warm); }
+.home-heritage { padding-block: var(--section-y); background: var(--c-page-warm); }
 
 .home-heritage__grid {
   display: grid;
@@ -119,13 +125,22 @@
 }
 @media (min-width: 60rem) {
   .home-heritage__grid {
-    /* 748:471 in the Figma, rounded to a clean ratio. */
-    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-    gap: var(--s-9);
+    /* Photograph and copy widths from the current Figma frame. */
+    grid-template-columns: minmax(0, 633fr) minmax(0, 499fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
   }
 }
 
-.home-heritage__art { width: 100%; height: auto; }
+.home-heritage__art { position: relative; width: 100%; aspect-ratio: 633 / 427; overflow: hidden; }
+.home-heritage__art img {
+  position: absolute;
+  width: 117%;
+  max-width: none;
+  height: 129.51%;
+  left: -2.56%;
+  top: -21.78%;
+  transform: scaleX(-1);
+}
 
 /* Signature Gold, per the frame. Every major section title on the site is
    #88754b; only the sublines and link labels are mulberry. Gold is used at its
@@ -133,7 +148,7 @@
    which clears WCAG's large-text 3:1 threshold. */
 .home-heritage__title {
   font-size: var(--t-sect-title);
-  line-height: 1.04;              /* 50/48 */
+  line-height: 1.3;              /* 60/46 in the current frame */
   color: var(--c-gold);
   text-wrap: balance;
 }
@@ -188,12 +203,16 @@
   display: grid;
   gap: clamp(1.5rem, 1rem + 1.6vw, 28px);
   margin-top: var(--s-8);
+  padding: 0;
+  list-style: none;
   grid-template-columns: 1fr;
 }
 @media (min-width: 40rem) { .home-collection__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 60rem) { .home-collection__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 .product-card {
+  margin: 0;
+  max-width: none;
   display: flex;
   flex-direction: column;
   background: var(--c-paper);
@@ -213,7 +232,7 @@
   aspect-ratio: 380 / 282;        /* Figma image well */
   width: 100%;
   object-fit: cover;
-  background: #131313;            /* the photographs' own ground */
+  background: var(--c-product-ground);            /* the photographs' own ground */
 }
 
 .product-card__body {
@@ -245,7 +264,7 @@
    Three scans, 480px tall, at their own natural widths (341/364/324).
    ========================================================================== */
 
-.home-certs { padding-block: var(--section-y); background: var(--c-paper); }
+.home-certs { padding-block: var(--section-y); background: var(--c-page-warm); }
 
 /* Signature Gold, per the frame. Every major section title on the site is
    #88754b; only the sublines and link labels are mulberry. Gold is used at its
@@ -292,4 +311,20 @@
     justify-content: center;
     gap: var(--s-6);
   }
+}
+
+@media (min-width: 60rem) {
+  .product-card__body { min-height: 221px; }
+  .home-collection { padding-block: 70px 48px; }
+  .home-collection__sub { max-width: none; }
+  .home-certs__row { max-width: 1111px; margin-inline: auto; }
+}
+@media (min-width: 46rem) and (max-width: 59.999rem) {
+  .home-hero__inner { max-width: 33rem; }
+  .home-hero__cn { font-size: 2rem; }
+  .home-hero__lead { max-width: 30ch; }
+}
+@media (max-width: 36rem) {
+  .home-hero__actions { flex-direction: column; }
+  .home-hero__actions .btn { width: 100%; }
 }

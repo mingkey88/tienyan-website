@@ -28,7 +28,7 @@ Then open <http://localhost:8000>. There is nothing to install and nothing to bu
 index.html        Home          hero · heritage · collection · certifications · CTA
 our-story.html    Our Story     1950→2026 timeline · what makes it different · health benefits
 partnership.html  Partnership   hero · value-chain tabs · certificate carousel
-products.html     Products      12 grades, priced
+products.html     Products      12 grades with descriptions · catalogue request
 contact.html      Contact       category cards · enquiry form · get in touch
 privacy.html      Legal         stub — copy pending
 terms.html        Legal         stub — copy pending
@@ -45,7 +45,6 @@ css/motion.css       Scroll reveals + reduced-motion
 js/nav.js            Sticky header, mobile menu
 js/reveal.js         IntersectionObserver reveals, count-up figures
 js/form.js           Validation + Formspree submission
-js/product-card.js   Homepage product card disclosure ("+")
 js/tabs.js           Partnership value-chain tablist (ARIA APG pattern)
 js/carousel.js       Partnership certificate carousel
 
@@ -56,13 +55,12 @@ assets/process/      8 quality-control photographs
 assets/certs/        9 certificate scans
 ```
 
-Five small CSS files rather than one large one, so `tokens.css` stays the only place brand values
-live. That is what makes the platform migration mechanical rather than archaeological.
+Seven focused CSS files keep shared styling separate from page layouts, with brand values
+and responsive type scales in `tokens.css`.
 
 `home.css` is deliberately separate. The homepage has been rebuilt to the art director's Figma and
 is the pilot for the **Wix Studio** migration; keeping it in one file means the port has a single
-stylesheet to translate rather than a diff against `components.css`. The other four pages are
-untouched and still render from `components.css`.
+stylesheet to translate rather than a diff against `components.css`. The four interior pages use `pages.css`; every page uses the shared header and footer in `site.css`.
 
 ---
 
@@ -79,7 +77,7 @@ Taken verbatim from `Tien Yen_BrandGuide_Final.pdf`. Nothing invented.
 | `--c-blush` | `#f8dbe1` | 705 C | Soft field |
 | `--c-cream` | `#f1e4b2` | 7499 C | Section field, reverse type on mulberry |
 
-Typography: **Cormorant Garamond** (display) · **Karla** (body) · **Noto Serif SC** (Chinese).
+Typography: **Cormorant Garamond** (display, body and UI) · **Noto Serif SC** (Chinese).
 Grenda, the brand guide's primary face, is commercially licensed — see **[FONTS.md](FONTS.md)** for
 how to buy and install it. It is a one-line swap.
 
@@ -150,24 +148,32 @@ the visitor to email `info@tienyan.com` instead.
 
 Currently pre-launch. To publish:
 
-1. Delete `<meta name="robots" content="noindex, nofollow">` from all five HTML files.
+1. Delete `<meta name="robots" content="noindex, nofollow">` from all eight HTML files.
 2. Replace `Disallow: /` with `Allow: /` in `robots.txt`.
-3. Uncomment the phone number blocks in `contact.html` and the footer of the four pages that
-   still hide it (search for `withheld pending sign-off`). The redesigned homepage already
-   publishes it, because the supplied Figma frame does — see CONTENT-QUERIES.md Q10.
+3. Supply the catalogue PDF and overview video. Until then, their links open a prefilled
+   contact enquiry rather than a missing file. The phone number is already displayed.
 4. Connect the Formspree endpoint (above).
 5. Replace the three legal stubs (`privacy.html`, `terms.html`, `cookies.html`) with real policy
    copy. They currently say the document is in preparation — honest, but not a policy.
    See CONTENT-QUERIES.md Q15.
-6. Resolve the items in **[CONTENT-QUERIES.md](CONTENT-QUERIES.md)** — twenty-six now.
-   The ones that matter most: **Q25** (the enquiry form lost nine fields, including the
-   regulatory-compliance questions the client's own document called vital), **Q20** (three of
-   four value-chain tabs have no copy), **Q24** (all twelve product descriptions dropped),
-   **Q19** (the vision statement and founding team dropped), **Q13** (Grenda still unlicensed,
-   so the type does not match the design) and **Q17** (prices are a bare `$` — SGD or USD
-   is undecided).
+6. Review unresolved decisions in **[CONTENT-QUERIES.md](CONTENT-QUERIES.md)**. Earlier
+   entries are historical; the latest revision records the current implementation. The Grenda
+   webfont files and licence confirmation are still outstanding.
 
 ---
+
+## Latest design update — 7–8 Sep 2026
+
+Reference: [Tien Yan (Copy)](https://www.figma.com/design/HcxmNyEHLi69CkMnAOmx9Q/Tien-Yan--Copy-?node-id=1-4).
+The five main pages now use the latest serif styling, revised spacing and warm grounds,
+50px primary buttons, wider shared header/footer, updated imagery and Contact form panel.
+The address is retained on Contact. Existing value-chain tabs and the three-certificate
+carousel behavior are preserved per the recorded client decisions.
+
+Catalogue and video links currently open a contact enquiry with an editable message.
+They do not download a file or send a message automatically. The form still requires its
+Formspree endpoint. Local asset URLs include a revision query so returning visitors receive
+updated styles instead of the previous cached version.
 
 ## Outstanding
 

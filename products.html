@@ -26,14 +26,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Karla:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/site.css">
-<link rel="stylesheet" href="css/pages.css">
-<link rel="stylesheet" href="css/motion.css">
+<link rel="stylesheet" href="css/tokens.css?v=20260908">
+<link rel="stylesheet" href="css/base.css?v=20260908">
+<link rel="stylesheet" href="css/components.css?v=20260908">
+<link rel="stylesheet" href="css/site.css?v=20260908">
+<link rel="stylesheet" href="css/pages.css?v=20260908">
+<link rel="stylesheet" href="css/motion.css?v=20260908">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
 </head>
@@ -62,7 +62,7 @@
 <header class="site-header site-header--v2">
   <div class="page-wrap site-header__inner">
     <a class="site-logo" href="index.html" aria-label="Tien Yan — home">
-      <img src="assets/figma/logo-nav.webp" alt="Tien Yan 天燕" width="561" height="281" style="width: 107px;">
+      <img src="assets/figma/logo-nav.webp" alt="Tien Yan 天燕" width="561" height="281">
     </a>
     <nav class="nav" aria-label="Primary">
       <a class="nav__link" href="index.html">Home</a>
@@ -91,11 +91,11 @@
 
   <!-- ============== Products · Figma 70:375 ============== -->
   <section class="page-ground">
-    <div class="page-wrap page-head">
+    <div class="page-wrap page-wrap--wide page-head">
       <h1 class="page-head__title" data-reveal>Our Products</h1>
     </div>
 
-    <div class="page-wrap">
+    <div class="page-wrap page-wrap--wide">
       <ul class="pgrid" role="list">
         <li class="pcard" data-reveal data-reveal-delay="1">
           <img class="pcard__media" src="assets/figma/products/royal.webp"
@@ -219,12 +219,11 @@
 
       </ul>
 
-      <!-- Figma 152:165/152:166 — 290x50, fuchsia, square. The catalogue
-           itself has not been supplied; the href is the agreed filename and
-           will 404 until the PDF is dropped in. CONTENT-QUERIES.md Q43. -->
+      <!-- Figma 152:165/152:166 — 290x50, fuchsia, square.
+           Until the PDF is supplied, offer a prefilled catalogue enquiry. -->
       <p class="pgrid__action">
         <a class="btn btn--primary btn--wide btn--wide-lg"
-           href="assets/docs/tien-yan-catalogue.pdf" download>Download Catalogue</a>
+           href="contact.html?enquiry=catalogue#enquiry-form">Request Catalogue</a>
       </p>
     </div>
   </section>
@@ -265,31 +264,20 @@
         <h2 class="footer-v2__heading"><a href="products.html">Products</a></h2>
       </div>
 
-      <!-- Neither file has been supplied; both hrefs are the agreed filenames
-           and will 404 until the assets are dropped in. CONTENT-QUERIES Q44. -->
+      <!-- Downloads route to an enquiry until the source files are supplied. -->
       <div>
         <h2 class="footer-v2__heading">Downloads</h2>
         <ul class="footer-v2__list">
-          <li><a href="assets/docs/tien-yan-catalogue.pdf" download>Product Catalogues</a></li>
-          <li><a href="assets/video/tien-yan-overview.mp4" download>Videos</a></li>
+          <li><a href="contact.html?enquiry=catalogue#enquiry-form">Product Catalogues</a></li>
+          <li><a href="contact.html?enquiry=video#enquiry-form">Videos</a></li>
         </ul>
       </div>
 
-      <div>
-        <h2 class="footer-v2__heading">Contact Us</h2>
+      <div class="footer-v2__contact-column">
+        <h2 class="footer-v2__heading"><a href="contact.html">Contact Us</a></h2>
         <ul class="footer-v2__contact">
-          <li>
-            <img src="assets/figma/icons/mail.webp" alt="" aria-hidden="true" width="16" height="11">
-            <a href="mailto:info@tienyan.com">info@tienyan.com</a>
-          </li>
-          <li>
-            <img src="assets/figma/icons/phone.webp" alt="" aria-hidden="true" width="15" height="16">
-            <a href="tel:+6585487226">+65 8548 7226</a>
-          </li>
-          <li>
-            <img src="assets/figma/icons/pin.webp" alt="" aria-hidden="true" width="12" height="16">
-            <span>10 Jalan Kilang<br>#04-06 Bukit Merah Enterprise Centre<br>Singapore 159410</span>
-          </li>
+          <li><a href="mailto:info@tienyan.com">info@tienyan.com</a></li>
+          <li><a href="tel:+6585487226">+65 8548 7226</a></li>
         </ul>
 
         <ul class="footer-v2__social">

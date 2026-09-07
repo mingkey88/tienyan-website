@@ -115,22 +115,16 @@
 
   /* ---- Carousel -------------------------------------------------------- */
 
+  // Measure within the scroller, independent of the page/container inset.
+  function leftOf(slide) {
+    return slide.getBoundingClientRect().left - viewport.getBoundingClientRect().left + viewport.scrollLeft;
+  }
+
   function current() {
-    var max = viewport.scrollWidth - viewport.clientWidth;
-
-    // Clamp at both ends first. "Nearest to the viewport centre" is the right
-    // measure mid-scroll, but not at rest: with three slides in view the
-    // centre falls nearer the SECOND one, so the carousel would open reporting
-    // "2 / 10" with Previous enabled.
-    if (viewport.scrollLeft <= 1) return 0;
-    if (viewport.scrollLeft >= max - 1) return shown.length - 1;
-
-    var mid = viewport.scrollLeft + viewport.clientWidth / 2;
     var best = 0;
     var bestGap = Infinity;
     shown.forEach(function (slide, i) {
-      var c = slide.offsetLeft + slide.offsetWidth / 2;
-      var gap = Math.abs(c - mid);
+      var gap = Math.abs(leftOf(slide) - viewport.scrollLeft);
       if (gap < bestGap) { bestGap = gap; best = i; }
     });
     return best;
@@ -139,15 +133,12 @@
   function go(index) {
     if (!shown.length) return;
     var i = Math.max(0, Math.min(shown.length - 1, index));
-    var slide = shown[i];
-    var left = slide.offsetLeft - (viewport.clientWidth - slide.offsetWidth) / 2;
-    viewport.scrollTo({ left: left, behavior: reduced.matches ? 'auto' : 'smooth' });
+    viewport.scrollTo({ left: leftOf(shown[i]), behavior: reduced.matches ? 'auto' : 'smooth' });
   }
 
   function sync() {
-    // With three slides in view the last two can never reach the centre, so
-    // "at the end" is a scroll-position test, not an index test — otherwise
-    // Next stays enabled with nowhere left to go.
+    // Several slides can be visible, so the end is the scroll boundary,
+    // not the index of the last certificate. The count names the leading slide.
     var max = viewport.scrollWidth - viewport.clientWidth;
     var atStart = viewport.scrollLeft <= 1;
     var atEnd = viewport.scrollLeft >= max - 1 || max <= 1;
