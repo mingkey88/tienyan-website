@@ -943,3 +943,12 @@ widths found no horizontal page overflow or clipped heading/paragraph/button
 text. Story years and names share the page centre; the catalogue button is
 centred, 50px high, with 64px before the footer on desktop. The Grenda webfont
 request returned HTTP 200 and the corrected text uses font weight 400.
+
+## Duplicate certificate removed — 8 Sep 2026
+
+The user confirmed that “Bird Nest Authenticity Certificate” is a second image
+of the same finished-product Certificate of Analysis. Removed the duplicate
+carousel entry and retained the clearer featured scan under its document title,
+“Certificate of Analysis — Finished Product”. The carousel now contains nine
+documents in total and four under Batch Quality Verification. The initial
+counter is updated; JavaScript derives filtered counts from the remaining slides.
