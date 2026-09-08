@@ -1056,3 +1056,40 @@ street scene rather than a scan of an archival photograph, so the alt now
 describes what is shown without asserting provenance. If the image IS an
 archival photograph, say so and the original wording can be restored; if it is
 a recreation, the surrounding page should not imply otherwise either.
+
+## SEO / AEO layer added — 8 Sep 2026
+
+Structured data, a sitemap, an error page and an `llms.txt` were added. The site
+stays pre-launch throughout: every page keeps its `noindex`, and `robots.txt`
+still carries `Disallow: /`. Sign-off is now a two-line change, documented at the
+top of `robots.txt`.
+
+**JSON-LD.** One block per page. `Organization` and `WebSite` are declared once on
+the homepage with stable `@id`s and referenced by `@id` from the other seven
+pages, so the brand is a single node in the graph rather than eight copies that
+drift apart. All 50 references resolve.
+
+**No `FAQPage`, deliberately.** Google requires FAQ structured data to reflect Q&A
+that is *visible on the page*. No page on this site carries FAQ content, so
+emitting it would be fabrication and a structured-data policy breach. If the
+client wants FAQ rich results, the questions and answers have to exist as page
+copy first — worth raising, because it is a cheap win in both search and AI
+answers.
+
+**No `offers` on products, deliberately.** This is a trade catalogue with no public
+pricing. Asserting a price or an availability status to chase a rich result would
+be inventing commercial terms.
+
+QUERY — **`foundingDate` is omitted from `Organization`.** The site says Tien Yan
+"traces its origins to Hoo Ann Bird's Nest, established in 1950", which is not the
+same claim as Tien Yan Pte. Ltd. being founded in 1950. Schema.org `foundingDate`
+on the Tien Yan entity would assert the latter. Confirm which is true — the
+incorporation date of Tien Yan Pte. Ltd., and whether the intended public claim is
+continuous operation since 1950 — and it can be added.
+
+QUERY — **typo in the product copy.** Six of the twelve product descriptions on
+`products.html` open with "BIrd's Nest" (capital I): Tien Yan Royal, Tien Yan
+Noble, Heritage Classic, Heritage, Imperial and Sky Valley. The other six read
+"Bird's Nest" correctly. This is copy, not markup, so it has not been changed
+here. It is now also mirrored into the `Product` JSON-LD, so fixing the page copy
+means re-running `python3 tools/inject-schema.py`.

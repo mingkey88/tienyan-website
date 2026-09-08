@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page Not Found — Tien Yan</title>
+<meta name="description" content="The page you were looking for is not here.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#72253d">
+<link rel="icon" href="assets/logo/logo-mark-32.png" sizes="32x32">
+
+<!--
+  NOT a Figma frame, and deliberately SELF-CONTAINED — no external CSS, no
+  images, no webfont request that must succeed.
+
+  A static host serves this file for ANY missing path while leaving that path in
+  the address bar. On GitHub Pages this site is a project page
+  (mingkey88.github.io/tienyan-website/), so:
+    - root-absolute "/css/base.css" resolves to the wrong origin root, and
+    - relative "css/base.css" breaks as soon as the bad URL is more than one
+      level deep.
+  A 404 page whose own stylesheet 404s is the worst version of this page, so
+  everything it needs is inlined below. The @font-face is the one exception: it
+  is allowed to fail, because Georgia is already the next entry in the real
+  site's stack, so a miss degrades to exactly what the site would render anyway.
+-->
+<style>
+  @font-face {
+    font-family: 'Grenda';
+    src: url('assets/fonts/grenda-regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+  }
+  :root {
+    --c-mulberry: #72253d;
+    --c-gold:     #88754b;
+    --c-ink:      #1a1416;
+    --c-ink-soft: #5c4c52;
+    --c-page:     #fdf8f0;
+    --c-rule:     #e6dcc8;
+    --font:       'Grenda', Georgia, 'Times New Roman', serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 2rem 1.5rem;
+    background: var(--c-page);
+    color: var(--c-ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 34rem; text-align: center; }
+  .code {
+    font-size: 0.8125rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-gold);
+    margin: 0 0 1.25rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 1.4rem + 3vw, 3.25rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--c-mulberry);
+    margin: 0 0 1rem;
+  }
+  p { font-size: 1.0625rem; line-height: 1.6; color: var(--c-ink-soft); margin: 0 auto 2rem; }
+  hr { border: 0; border-top: 1px solid var(--c-rule); margin: 2rem auto; width: 4rem; }
+  nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; justify-content: center; }
+  a { color: var(--c-mulberry); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+  a:hover, a:focus-visible { color: var(--c-gold); }
+  a:focus-visible { outline: 2px solid var(--c-gold); outline-offset: 4px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="code">Error 404</p>
+  <h1>This page could not be found.</h1>
+  <p>
+    The address may be out of date, or the page may have moved. Everything else on
+    the site is still where you left it.
+  </p>
+  <hr>
+  <nav aria-label="Site">
+    <a href="index.html" data-nav>Home</a>
+    <a href="our-story.html" data-nav>Our Story</a>
+    <a href="partnership.html" data-nav>Partnership</a>
+    <a href="products.html" data-nav>Products</a>
+    <a href="contact.html" data-nav>Enquiry</a>
+  </nav>
+</main>
+
+<!--
+  Progressive enhancement, not a dependency. The links above are relative, which
+  is correct when the missing URL is one level deep (the common case: a mistyped
+  page name). If it is deeper, or we are on a GitHub project page, rewrite them
+  against the real site root. With JavaScript off the relative links still work
+  for the common case - this only ever improves the odds.
+-->
+<script>
+(function () {
+  /* The GitHub Pages base path is stated, not inferred. Deriving it by parsing
+     location.pathname looks clever but breaks on a *user* page
+     (user.github.io/typo.html would yield "/typo.html/"). The repository name is
+     a known constant; if the repo is ever renamed, change this one line. */
+  var GITHUB_PAGES_BASE = '/tienyan-website/';
+  var root = /(^|\.)github\.io$/.test(location.hostname) ? GITHUB_PAGES_BASE : '/';
+
+  var links = document.querySelectorAll('a[data-nav]');
+  for (var i = 0; i < links.length; i++) {
+    links[i].setAttribute('href', root + links[i].getAttribute('href'));
+  }
+})();
+</script>
+</body>
+</html>

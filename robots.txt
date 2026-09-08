@@ -1,5 +1,16 @@
 User-agent: *
 Disallow: /
 
-# Pre-launch. Tien Yan brand is not yet public.
-# At sign-off: replace with "Allow: /" and remove the noindex meta from all 5 pages.
+# Pre-launch. The Tien Yan brand is not yet public.
+#
+# At sign-off, this becomes:
+#     User-agent: *
+#     Allow: /
+# and the <meta name="robots" content="noindex, nofollow"> must be removed from
+# the 8 real pages. 404.html KEEPS its noindex - an error page should never be
+# indexed.
+#
+# The sitemap is declared now so that flipping the two lines above is the only
+# launch step. Crawlers ignore a sitemap on a disallowed host, which is correct
+# for the moment.
+Sitemap: https://www.tienyan.com/sitemap.xml
