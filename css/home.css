@@ -15,7 +15,7 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-top: -91px;
+  margin-top: calc(-1 * var(--header-height));
   /* 768/1440 = 53.33vw. Floored so the copy never crushes on short viewports,
      capped at the Figma height so it stops growing on wide monitors. */
   min-height: clamp(30rem, 53.33vw, 48rem);
@@ -75,13 +75,13 @@
 }
 
 /* DERIVED — the Figma stops at 1440px.
-   Below 46rem the photograph's empty left ground is no longer wide enough to
+   Below 60rem the photograph's empty left ground is no longer wide enough to
    hold the copy without it crossing the nests, so the hero stops being an
    overlay and becomes a stack: copy on a flat ground, photograph beneath at a
    fixed ratio. Reversing this (keeping the overlay and darkening the image)
    was rejected — it would put a scrim over the product, and the product is the
    reason the photograph is there. */
-@media (max-width: 46rem) {
+@media (max-width: 59.999rem) {
   .home-hero {
     display: flex;
     flex-direction: column;
@@ -302,17 +302,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* DERIVED — below 40rem three columns puts each scan under ~110px, where a
-   dense certificate is not evidence of anything. Stacked and capped instead;
-   "View All Certifications" is where they are actually read. */
-@media (max-width: 40rem) {
-  .home-certs__row {
-    grid-template-columns: min(22rem, 100%);
-    justify-content: center;
-    gap: var(--s-6);
-  }
-}
-
 @media (min-width: 60rem) {
   .product-card__body { min-height: 221px; }
   .home-collection { padding-block: 70px 48px; }
@@ -320,11 +309,40 @@
   .home-certs__row { max-width: 1111px; margin-inline: auto; }
 }
 @media (min-width: 46rem) and (max-width: 59.999rem) {
-  .home-hero__inner { max-width: 33rem; }
+  /* .home-hero__inner's width for this range is set by the 40-60rem block
+     below; setting it again here would be dead weight. */
   .home-hero__cn { font-size: 2rem; }
   .home-hero__lead { max-width: 30ch; }
 }
 @media (max-width: 36rem) {
   .home-hero__actions { flex-direction: column; }
   .home-hero__actions .btn { width: 100%; }
+}
+
+@media (min-width: 40rem) and (max-width: 59.999rem) {
+  .home-hero__bg { aspect-ratio: 16 / 9; max-height: 26rem; }
+  .home-hero__inner { max-width: 42rem; }
+  .home-collection__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .home-collection__grid > li { grid-column: span 2; }
+  .home-collection__grid > li:last-child { grid-column: 2 / 4; }
+}
+@media (max-width: 39.999rem) {
+  .home-hero { padding-top: var(--s-6); }
+  .home-hero__lead { line-height: 1.45; margin-top: var(--s-5); }
+  .home-hero__bg { margin-top: var(--s-6); }
+  .home-heritage__grid { gap: var(--s-6); }
+  .home-collection__grid, .home-certs__row { margin-top: var(--s-6); }
+  .home-certs__row {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--s-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--s-4);
+  }
+  .home-certs__item {
+    flex: none;
+    width: min(78vw, 20rem);
+    scroll-snap-align: start;
+  }
 }

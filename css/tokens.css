@@ -65,6 +65,7 @@
   --maxw-home:        75rem;
   --maxw-wide:        79.1875rem;
   --maxw-chrome:      84rem;
+  --header-height:    91px;
   --t-hero-title:     clamp(2.25rem, 1.25rem + 3.20vw, 3.4375rem);
   --t-hero-cn:        clamp(1.5rem, 0.95rem + 2.65vw, 3rem);
   --t-hero-lead:      clamp(1.25rem, 0.9rem + 1.35vw, 1.875rem);

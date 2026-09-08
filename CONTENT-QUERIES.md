@@ -968,3 +968,26 @@ the two displayed images with the complete source JPGs from the user's Wix
 site (joseph66643.wixstudio.com/tienyan/services), downloaded unchanged:
 - CNCA: static.wixstatic.com/media/1aae46_371aecdd64cd4544a4bef72a521285e7~mv2.jpg
 - Credit Alliance: static.wixstatic.com/media/1aae46_fbb80f1232a540d3b210e09f9c454932~mv2.jpg
+
+## Phone and tablet pass — 8 Sep 2026
+
+The 1440px frames are the only supplied viewport, so all behaviour below them is
+derived. Three bands were added — phone (≤639px), tablet (640–1023px) and
+compact chrome (≤991px, matching the existing 62rem nav breakpoint). The header
+height became a token so the hero's negative offset tracks it.
+
+Decisions that a reviewer may want to overrule are listed with their rationale
+in DESIGN.md under "Phone and tablet pass". The two most visible: homepage
+certificates become a snapped horizontal scroller on a phone rather than a
+stack, and scroll reveals are switched off below 640px so text is readable while
+swiping.
+
+No copy was changed. Two Contact card labels gained a space before their `<br>`
+so the words stay separated when the break is suppressed on one column.
+
+Verification: all five main pages at 320, 390, 414, 768, 1024 and 1280px. No
+horizontal overflow and no clipped text at any width. Touch targets on phones
+are 44px or larger, including the footer email and telephone links. Form fields
+are 52px at 16px type. At 390px the menu, all four value-chain tabs, all six
+certificate filters, the nine-slide carousel through both boundaries, the China
+two-up pair and empty-form validation were exercised; all homepage images load.

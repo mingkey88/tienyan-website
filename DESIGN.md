@@ -140,16 +140,16 @@ decision is listed so it can be approved or overruled. All of them live in `css/
 | Section | ≥1440px (as drawn) | Derived behaviour below |
 |---|---|---|
 | Container | Insets vary 102–178px per section | Normalised to one 75rem container (120px margins at 1440px) |
-| Hero | Copy overlaid on a full-bleed photograph | Below 46rem: stops being an overlay. Copy on a flat ground, photograph beneath at 4:3 |
+| Hero | Copy overlaid on a full-bleed photograph | Below 60rem: stops being an overlay. Copy on a flat ground, photograph beneath — 16:9 capped at 26rem on tablets, 4:3 on phones |
 | Hero photograph | Full-bleed cover | `object-position: 70%` so the nests stay in frame as the viewport narrows |
 | Heritage | Illustration left, copy right | Single column below 60rem, illustration first |
 | Collection | Three cards across | `auto-fit` from a 17rem floor — three, then two, then one |
-| Certificates | Three scans at their own widths, 480px tall | Three across, filling the container, down to 40rem; stacked below |
+| Certificates | Three scans at their own widths, 480px tall | Three across, filling the container, down to 40rem; a snapped horizontal scroller below |
 | Footer | Brand block + four columns | Two columns below 68rem, one below 48rem |
 
 ## Decisions worth challenging
 
-**The hero stops being an overlay below 46rem.** The alternative was keeping the overlay and
+**The hero stops being an overlay below 60rem.** The alternative was keeping the overlay and
 darkening the photograph behind the copy. Rejected: a scrim would sit over the product, and the
 product is the reason the photograph is there. The cost is that the hero is taller on a phone.
 
@@ -166,7 +166,8 @@ natural widths at a shared height, so `width:100%; height:auto` produces identic
 container width — the frame's "same height, different widths" relationship becomes a property of
 the layout rather than three numbers to maintain. They fill the container, where the frame leaves
 56px of trailing space; that is a 1.7% size difference at 1440px and the normalisation noted above.
-Below 40rem three columns would put each scan under 110px, so they stack.
+Below 40rem three columns would put each scan under 110px, so the row becomes a snapped
+horizontal scroller instead (see the mobile pass below).
 
 **Footer body type raised from 12px to 13px.** The frame's smallest text is 12px reversed on
 Deep Mulberry. The site holds a WCAG 2.2 AA commitment and this is the least legible text on the
@@ -193,3 +194,61 @@ Re-exported from the Figma frame into `assets/figma/`. The originals came out at
 The hero photograph is horizontally flipped, reproducing the `rotate-180 + scale-y-100` transform
 the frame applies to it; without the flip the nests land on the wrong side and the headline sits
 on top of them.
+
+---
+
+# Phone and tablet pass — 8 Sep 2026
+
+**Derived, not drawn.** The Figma file supplies a single 1440px canvas per page, so every rule
+below was decided here. All of it lives in media queries at the foot of `home.css`, `pages.css`,
+`site.css` and `motion.css`, on three bands:
+
+| Band | Width | Intent |
+|---|---|---|
+| Phone | `≤ 39.999rem` (≤ 639px) | One column, tighter rhythm, thumb-sized targets |
+| Tablet | `40rem – 63.999rem` (640–1023px) | Neither the desktop grid nor the phone stack — its own arrangement |
+| Compact chrome | `≤ 61.999rem` (≤ 991px) | Header, menu and footer, matched to the existing 62rem nav breakpoint |
+
+## Decisions worth challenging
+
+**The header height became a token.** `--header-height` (91px desktop, 76px below 62rem) replaces
+the hard-coded 91px in two places. The hero pulls itself up by exactly that amount to sit under
+the transparent header; before, a shorter mobile header would have left a 15px seam.
+
+**Certificates scroll sideways on a phone rather than stacking.** Stacked, three 480px-tall scans
+push the "Partner with Tien Yan" call to action a full screen further down for no gain — nobody
+reads a certificate at that size, and "View All Certifications" is where they are actually read.
+A snapped scroller with the next scan peeking keeps the section one screen tall and still signals
+that there are three. The row takes `tabindex="0"` and a group label so a keyboard can reach it,
+which is required once a scroll container holds content.
+
+**The collection grid is 2-up-then-centred on tablets, not 3-up.** Three 17rem cards do fit at
+768px, but only by dropping each below the width its photograph needs. Two cards across with the
+third centred underneath (a 4-column grid spanning pairs) keeps every card at a usable size.
+
+**Scroll reveals are switched off below 40rem.** The reveal animation blurs and offsets text until
+it enters the viewport. On a phone, where the viewport is short and scrolling is fast, that means
+reading through text that is still arriving. The desktop effect is unchanged.
+
+**Traits become rows on a tablet.** Side by side, each trait card is too narrow for its badge and
+its paragraph; stacked, the badges waste the width. One card per row with the badge beside the
+copy uses the width the tablet actually has.
+
+**Value-chain tabs and certificate filters become 2-column grids on a phone.** As a horizontal
+scroller they hid options off-screen with no affordance. As wrapped chips at 44px+ they are all
+visible at once, which matters because they are the only way to reach the filtered documents.
+
+## Verified in-browser, 8 Sep 2026
+
+Measured across `index`, `our-story`, `products`, `partnership` and `contact` at 320, 390, 414,
+768, 1024 and 1280px:
+
+- **No horizontal overflow** on any page at any of the six widths.
+- **No clipped text** — every heading, paragraph and label renders within its box.
+- **Touch targets ≥ 44px** on phones for every link, button and field, including the footer's
+  email and telephone links.
+- **Form fields are 52px at 16px type**, the size below which iOS Safari zooms on focus.
+- **Interactions exercised at 390px** — menu open/close/Escape, all four value-chain tabs, all six
+  certificate filters, the nine-slide carousel through both boundaries (counter and disabled
+  states track correctly), the China two-up pair, and empty-form validation.
+- **All 14 homepage images load**; none broken at any width.

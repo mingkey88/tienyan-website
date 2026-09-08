@@ -73,6 +73,17 @@
    Reduced motion — collapse everything to its final state.
    ========================================================================== */
 
+/* Phone content stays readable while swiping; no delayed, blurred text. */
+@media (max-width: 39.999rem) {
+  .js-reveal [data-reveal], .js-reveal [data-reveal='media'] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
