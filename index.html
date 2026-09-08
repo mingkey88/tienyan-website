@@ -52,6 +52,84 @@
 <script>document.documentElement.classList.add('js-reveal');</script>
 
 
+
+<!-- Structured data. Organization and WebSite are declared once on the
+     homepage and referenced by @id from every other page, so the brand is
+     one node in the graph rather than eight copies that drift apart. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.tienyan.com/#organization",
+      "name": "Tien Yan",
+      "legalName": "Tien Yan Pte. Ltd.",
+      "alternateName": "天燕",
+      "url": "https://www.tienyan.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.tienyan.com/#logo",
+        "url": "https://www.tienyan.com/assets/logo/logo-horizontal-960.png",
+        "caption": "Tien Yan 天燕"
+      },
+      "image": {
+        "@id": "https://www.tienyan.com/#logo"
+      },
+      "description": "Tien Yan supplies premium Indonesian edible bird's nest to retail, hospitality and wellness partners worldwide. The house traces its origins to Hoo Ann Bird's Nest, established in 1950 at 19 North Canal Road, Singapore, and produces with PT ESTA Indonesia.",
+      "slogan": "Nature's Gift, Beyond Generations",
+      "email": "info@tienyan.com",
+      "telephone": "+65 8548 7226",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "10 Jalan Kilang, #04-06 Bukit Merah Enterprise Centre",
+        "postalCode": "159410",
+        "addressLocality": "Singapore",
+        "addressCountry": "SG"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/tienyan",
+        "https://www.instagram.com/tienyan"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@tienyan.com",
+        "telephone": "+65 8548 7226",
+        "areaServed": "Worldwide",
+        "availableLanguage": [
+          "en",
+          "zh-Hans"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.tienyan.com/#website",
+      "url": "https://www.tienyan.com/",
+      "name": "Tien Yan",
+      "publisher": {
+        "@id": "https://www.tienyan.com/#organization"
+      },
+      "inLanguage": "en-SG"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.tienyan.com/#webpage",
+      "url": "https://www.tienyan.com/",
+      "name": "Tien Yan — Premium Edible Bird's Nest for Trade Partners",
+      "description": "Tien Yan supplies premium Indonesian edible bird's nest to retail, hospitality and wellness partners worldwide. Singapore heritage since 1950, produced with PT ESTA Indonesia.",
+      "isPartOf": {
+        "@id": "https://www.tienyan.com/#website"
+      },
+      "about": {
+        "@id": "https://www.tienyan.com/#organization"
+      },
+      "inLanguage": "en-SG"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <!--

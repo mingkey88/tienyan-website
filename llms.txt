@@ -1,0 +1,43 @@
+# Tien Yan
+
+> Tien Yan (天燕) is a Singapore house supplying premium Indonesian edible bird's
+> nest to retail, hospitality, wellness and premium food gifting partners
+> worldwide. It trades business-to-business: there is no consumer storefront and
+> no public pricing.
+
+Tien Yan Pte. Ltd. traces its origins to Hoo Ann Bird's Nest, established in 1950
+at 19 North Canal Road, Singapore. Production is with PT ESTA Indonesia, whose
+facility holds Halal, HACCP, Indonesian agricultural-quarantine and veterinary
+control certification, along with CNCA registration for export to China.
+
+The product range is raw, cleaned edible bird's nest from Kalimantan, graded by
+form and height rather than by brand tier: whole cup-shaped nests (Royal, Noble,
+Royal Oval, Celestial, Heritage Classic, Heritage, Imperial, Sky Valley), strips
+(Sky River, Sky Stream), fragments (Sky Pearl) and granules (Sky Crystal).
+
+## Pages
+
+- [Home](https://www.tienyan.com/): Company overview, heritage, the product range and certification at a glance.
+- [Our Story](https://www.tienyan.com/our-story.html): The 1950 Hoo Ann origin, what distinguishes high-quality bird's nest, and its traditional health associations.
+- [Partnership](https://www.tienyan.com/partnership.html): The end-to-end value chain — regulatory and export readiness, integrated supply, quality assurance and custom product solutions for B2B partners.
+- [Products](https://www.tienyan.com/products.html): All twelve grades, each with its origin, colour and size specification.
+- [Contact](https://www.tienyan.com/contact.html): Trade enquiries — product catalogues, trade pricing and bulk orders, B2B customisation, wellness gifting and collaboration.
+
+## Facts
+
+- Legal entity: Tien Yan Pte. Ltd.
+- Registered address: 10 Jalan Kilang, #04-06 Bukit Merah Enterprise Centre, Singapore 159410
+- Email: info@tienyan.com
+- Telephone: +65 8548 7226
+- Languages: English, Simplified Chinese
+- Business model: business-to-business supply. Not a direct-to-consumer retailer.
+
+## Notes for machine readers
+
+- Every page carries JSON-LD. The Organization and WebSite nodes are declared
+  once on the homepage and referenced by @id elsewhere, so the brand is a single
+  entity in the graph.
+- Product entries carry no `offers` node. Pricing is quoted per trade enquiry and
+  is not published, so none is asserted.
+- This site is pre-launch. Pages currently carry `noindex` and robots.txt
+  disallows crawling until the brand is public.

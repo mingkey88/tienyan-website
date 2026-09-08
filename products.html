@@ -37,6 +37,281 @@
 <link rel="stylesheet" href="css/motion.css?v=20260908-mobile">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
+
+
+
+<!-- Structured data. Organization and WebSite are declared once on the
+     homepage and referenced by @id from every other page, so the brand is
+     one node in the graph rather than eight copies that drift apart. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.tienyan.com/products.html#webpage",
+      "url": "https://www.tienyan.com/products.html",
+      "name": "Products — Tien Yan",
+      "description": "Twelve grades of premium Indonesian raw edible bird's nest, from Tien Yan Royal to Sky Crystal. Sourced in Kalimantan and produced with PT ESTA Indonesia for retail, hospitality and wellness partners.",
+      "isPartOf": {
+        "@id": "https://www.tienyan.com/#website"
+      },
+      "about": {
+        "@id": "https://www.tienyan.com/#organization"
+      },
+      "inLanguage": "en-SG",
+      "mainEntity": {
+        "@id": "https://www.tienyan.com/products.html#catalogue"
+      },
+      "breadcrumb": {
+        "@id": "https://www.tienyan.com/products.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.tienyan.com/products.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.tienyan.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.tienyan.com/products.html#catalogue",
+      "name": "Tien Yan product range",
+      "numberOfItems": 12,
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#tien-yan-royal",
+            "name": "Tien Yan Royal",
+            "description": "BIrd’s Nest comes from Kalimantan. A natural ivory colour with >3.5 cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/royal.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#tien-yan-noble",
+            "name": "Tien Yan Noble",
+            "description": "BIrd’s Nest comes from Kalimantan. A natural ivory colour with 3-3.5 cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/noble.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#royal-oval",
+            "name": "Royal Oval",
+            "description": "Bird’s Nest from Kalimantan. A natural ivory colour with 3-5cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/royal-oval.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#celestial",
+            "name": "Celestial",
+            "description": "Bird’s Nest from Kalimantan caves. A natural ivory colour with 3-3.5cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/celestial.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#heritage-classic",
+            "name": "Heritage Classic",
+            "description": "BIrd’s Nest from Kalimantan. A natural ivory colour with >5 cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/heritage-classic.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#heritage",
+            "name": "Heritage",
+            "description": "BIrd’s Nest from Kalimantan. A natural ivory colour with 3-5 cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/heritage.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#imperial",
+            "name": "Imperial",
+            "description": "BIrd’s Nest from Kalimantan. A natural ivory colour cup shape with >5 cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/imperial.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#sky-valley",
+            "name": "Sky Valley",
+            "description": "BIrd’s Nest from Kalimantan. A natural ivory colour with size medium to large with >3 cm in height.",
+            "image": "https://www.tienyan.com/assets/figma/products/sky-valley.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#sky-river",
+            "name": "Sky River",
+            "description": "Bird’s Nest from Kalimantan. A natural ivory colour in the shape of small to big stripes.",
+            "image": "https://www.tienyan.com/assets/figma/products/sky-river.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#sky-stream",
+            "name": "Sky Stream",
+            "description": "Bird’s Nest from Kalimantan. A natural ivory colour in shape of small stripes.",
+            "image": "https://www.tienyan.com/assets/figma/products/sky-stream.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#sky-pearl",
+            "name": "Sky Pearl",
+            "description": "Smaller pieces of Bird's Nest, these parts of nest are best choice for food & beverage in the market.",
+            "image": "https://www.tienyan.com/assets/figma/products/sky-pearl.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "Product",
+            "@id": "https://www.tienyan.com/products.html#sky-crystal",
+            "name": "Sky Crystal",
+            "description": "Sand-like pieces of Bird's Nest, these parts of nest are best choice for cosmetics and supplements in the market.",
+            "image": "https://www.tienyan.com/assets/figma/products/sky-crystal.webp",
+            "brand": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "manufacturer": {
+              "@id": "https://www.tienyan.com/#organization"
+            },
+            "category": "Edible bird's nest"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <!--
