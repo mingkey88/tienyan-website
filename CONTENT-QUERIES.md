@@ -952,3 +952,19 @@ carousel entry and retained the clearer featured scan under its document title,
 “Certificate of Analysis — Finished Product”. The carousel now contains nine
 documents in total and four under Batch Quality Verification. The initial
 counter is updated; JavaScript derives filtered counts from the remaining slides.
+
+
+## China Export Registration layout — 8 Sep 2026
+
+Matched the user's Wix screenshot with a centred two-column gallery when the
+China filter is selected: CNCA registration on the left, Credit Alliance on
+the right, each at its natural image ratio with dark 20px captions. The
+screenshot's captions were swapped; the implementation retains correct
+document labels. This pair stacks on phones and needs no carousel controls.
+Other filters retain the carousel; switching filters restores its layout.
+
+The earlier PDF extracts cut off the right edges of both documents. Replaced
+the two displayed images with the complete source JPGs from the user's Wix
+site (joseph66643.wixstudio.com/tienyan/services), downloaded unchanged:
+- CNCA: static.wixstatic.com/media/1aae46_371aecdd64cd4544a4bef72a521285e7~mv2.jpg
+- Credit Alliance: static.wixstatic.com/media/1aae46_fbb80f1232a540d3b210e09f9c454932~mv2.jpg

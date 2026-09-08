@@ -55,6 +55,7 @@
       slide.hidden = key !== 'all' && categoriesOf(slide).indexOf(key) < 0;
     });
     shown = slides.filter(function (s) { return !s.hidden; });
+    root.classList.toggle('pt-carousel--china', key === 'china');
 
     viewport.scrollTo({ left: 0, behavior: 'auto' });
 
