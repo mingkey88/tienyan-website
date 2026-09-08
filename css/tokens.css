@@ -4,6 +4,14 @@
    Values taken verbatim from Tien Yen_BrandGuide_Final.pdf p20 (Brand Colours).
    ========================================================================== */
 
+@font-face {
+  font-family: 'Grenda';
+  src: url('../assets/fonts/grenda-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* ---- Brand palette --------------------------------------------------- */
   /* Primary */
@@ -72,10 +80,8 @@
   --t-list:           clamp(1.125rem, 0.9rem + 0.7vw, 1.5rem);
 
   /* ---- Type ------------------------------------------------------------ */
-  /* The Grenda webfont is not supplied in this project.
-     Cormorant Garamond stands in for display, body and UI. See FONTS.md:
-     it is a one-line change to --font-display. */
-  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  /* Grenda Regular from the supplied webfont package. See FONTS.md. */
+  --font-display: 'Grenda', Georgia, 'Times New Roman', serif;
   --font-body:    var(--font-display);
   --font-cn:      'Noto Serif SC', 'Microsoft YaHei', '微软雅黑', serif;
 

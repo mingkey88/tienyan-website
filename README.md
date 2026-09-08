@@ -77,9 +77,8 @@ Taken verbatim from `Tien Yen_BrandGuide_Final.pdf`. Nothing invented.
 | `--c-blush` | `#f8dbe1` | 705 C | Soft field |
 | `--c-cream` | `#f1e4b2` | 7499 C | Section field, reverse type on mulberry |
 
-Typography: **Cormorant Garamond** (display, body and UI) · **Noto Serif SC** (Chinese).
-Grenda, the brand guide's primary face, is commercially licensed — see **[FONTS.md](FONTS.md)** for
-how to buy and install it. It is a one-line swap.
+Typography: **Grenda Regular** (display, body and UI) · **Noto Serif SC** (Chinese).
+Grenda is self-hosted from the existing webfont package; see **[FONTS.md](FONTS.md)** for its source and configuration.
 
 ---
 
@@ -157,8 +156,7 @@ Currently pre-launch. To publish:
    copy. They currently say the document is in preparation — honest, but not a policy.
    See CONTENT-QUERIES.md Q15.
 6. Review unresolved decisions in **[CONTENT-QUERIES.md](CONTENT-QUERIES.md)**. Earlier
-   entries are historical; the latest revision records the current implementation. The Grenda
-   webfont files and licence confirmation are still outstanding.
+   entries are historical; the latest revision records the current implementation. Font source details are recorded in FONTS.md.
 
 ---
 
@@ -181,7 +179,7 @@ updated styles instead of the previous cached version.
   documents. Nothing was changed unilaterally; every one needs a ruling from whoever owns the copy.
 - **[ASSETS-TODO.md](ASSETS-TODO.md)** — what to request from the Art Director, chiefly vector
   logo originals and photography for two products.
-- **[FONTS.md](FONTS.md)** — how to buy and install the real Grenda webfont.
+- **[FONTS.md](FONTS.md)** — installed Grenda Regular webfont and Chinese fallback.
 
 ---
 

@@ -73,7 +73,7 @@
   line-height: 1.35;
   color: var(--c-ink);
 }
-.page-partner__cta { margin-top: var(--s-7); }
+.page-partner__cta { max-width: none; margin-top: var(--s-7); }
 
 .arrow-link {
   display: inline-flex;

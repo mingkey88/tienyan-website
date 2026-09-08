@@ -80,8 +80,8 @@ Binding, from `Tien Yen_BrandGuide_Final.pdf`:
 - Logo may not be recoloured, distorted, rotated, outlined, shadowed, rearranged, cropped, or
   reconstructed from fonts. Clear space and minimum sizes are specified (vertical 60px digital,
   horizontal 85px display).
-- Primary typeface Grenda is commercially licensed and cannot be self-hosted. The guide's own
-  documented fallbacks are Georgia and Microsoft YaHei.
+- Primary typeface is Grenda Regular, now self-hosted from the existing webfont package.
+  See FONTS.md for its source. The guide documents Georgia and Microsoft YaHei as fallbacks.
 - The gold secondary graphic may be used in any brand colour, black, or white, at 15–100% opacity,
   and may be cropped provided 70% remains visible.
 

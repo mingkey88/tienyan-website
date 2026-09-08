@@ -924,3 +924,22 @@ certificate while three were already visible could leave Next at the starting po
 Navigation now measures slide positions relative to the scroller and aligns each
 leading certificate to the left edge. Next, the end boundary and Previous were
 verified at 1440, 768 and 390px. The counter identifies the leading certificate.
+
+
+## Alignment and font correction — 8 Sep 2026
+
+The user identified off-centre Our Story era names and the Request Catalogue
+button. Both inherited the shared paragraph measure without centring their
+boxes. These elements now span the container, as do the story years and shared
+Partner CTA action. The catalogue action also has bottom spacing above the footer.
+
+Grenda Regular replaces Cormorant across all eight pages, using the existing
+webfont export in the user's Downloads archive. The source file is copied
+unchanged and preloaded; Chinese remains Noto Serif SC. See FONTS.md.
+Stylesheet revision URLs were bumped so returning visitors receive the correction.
+
+Verification: browser checks across the five main pages at desktop and mobile
+widths found no horizontal page overflow or clipped heading/paragraph/button
+text. Story years and names share the page centre; the catalogue button is
+centred, 50px high, with 64px before the footer on desktop. The Grenda webfont
+request returned HTTP 200 and the corrected text uses font weight 400.
