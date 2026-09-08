@@ -1023,3 +1023,36 @@ form, which adds roughly 250px to that section's height.
 Verification: all 8 pages at 320, 390, 414, 768, 1024, 1280 and 1440px. No
 horizontal overflow, no clipped text, no sub-44px targets on phones. Desktop
 alignment confirmed unchanged at 1440px.
+
+## Our Story photographs replaced — 8 Sep 2026
+
+The user supplied three replacements, applied in place:
+
+| Slot | File | Source |
+|---|---|---|
+| Masthead | `story/shophouse-photo.webp` | `image (29).png`, 1234x928 |
+| Characteristics, aroma card | `story/char-aroma.webp` | `image (30).png`, 564x420 |
+| Health Benefits | `story/health-benefits.webp` | `Health Benefits 1.jpg`, 1448x1086 |
+
+The aroma card was identified by composition — the supplied photo is the same
+bowl, spoon and marble surface as the outgoing `char-aroma.webp`, reshot with a
+different hand — and by its 564x420 dimensions matching that slot exactly. The
+other two Characteristics photos are unchanged.
+
+Health Benefits moved from JPG to WebP: the outgoing `health-benefits.jpg` was
+926 KB, the heaviest asset on the site. The three slots together fall from
+1,020 KB to 260 KB, a 742 KB saving, while the masthead and Health Benefits
+photographs both gain resolution. `health-benefits.jpg` was deleted; nothing
+else referenced it.
+
+Declared `width`/`height` were updated to each new file's real intrinsic size so
+no layout shift is introduced. The two files that kept their names carry
+`?v=20260908` — without a new URL, returning visitors would keep the cached
+old photograph.
+
+QUERY — the masthead alt text previously read "Archive photograph of the
+shophouse at 19 North Canal Road". The supplied image is a stylised sepia
+street scene rather than a scan of an archival photograph, so the alt now
+describes what is shown without asserting provenance. If the image IS an
+archival photograph, say so and the original wording can be restored; if it is
+a recreation, the surrounding page should not imply otherwise either.
