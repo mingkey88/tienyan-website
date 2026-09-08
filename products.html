@@ -221,10 +221,15 @@
       </ul>
 
       <!-- Figma 152:165/152:166 — 290x50, fuchsia, square.
-           Until the PDF is supplied, offer a prefilled catalogue enquiry. -->
+           The client asked for the "Download Catalogue" label before the PDF
+           exists, so the href still opens a prefilled catalogue enquiry.
+           WHEN THE PDF ARRIVES: drop it in assets/downloads/ and point this
+           href at it with a `download` attribute — the label already promises
+           a file. The footer's "Product Catalogues" link needs the same swap
+           in all eight pages. -->
       <p class="pgrid__action">
         <a class="btn btn--primary btn--wide btn--wide-lg"
-           href="contact.html?enquiry=catalogue#enquiry-form">Request Catalogue</a>
+           href="contact.html?enquiry=catalogue#enquiry-form">Download Catalogue</a>
       </p>
     </div>
   </section>

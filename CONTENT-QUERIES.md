@@ -991,3 +991,18 @@ are 44px or larger, including the footer email and telephone links. Form fields
 are 52px at 16px type. At 390px the menu, all four value-chain tabs, all six
 certificate filters, the nine-slide carousel through both boundaries, the China
 two-up pair and empty-form validation were exercised; all homepage images load.
+
+## Catalogue button relabelled — 8 Sep 2026
+
+The user asked for the Products action to read **Download Catalogue** rather
+than **Request Catalogue**, and confirmed the PDF will follow once the client
+supplies it.
+
+This supersedes the earlier note under "Applied" that the action is labelled
+"Request Catalogue". Only the label changed; the href still opens a prefilled
+catalogue enquiry on Contact.
+
+OPEN — the label now promises a file that does not exist. When the PDF arrives
+it goes in `assets/downloads/`, the Products button points at it with a
+`download` attribute, and the footer's "Product Catalogues" link needs the same
+swap across all eight pages. Until then, tapping the button reaches a form.
