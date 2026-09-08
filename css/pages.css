@@ -954,7 +954,10 @@
   font-style: normal;
 }
 
-.pt-hero__photo > img {
+/* Descendant, not child: the img sits inside a <picture> for the AVIF/WebP
+   sources, so "> img" would no longer match. The absolute positioning still
+   resolves against .pt-hero__photo, which is the positioned ancestor. */
+.pt-hero__photo img {
   position: absolute;
   width: 111.42%;
   max-width: none;

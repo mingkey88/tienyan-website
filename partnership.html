@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="css/motion.css?v=20260908-mobile">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
+
+
 </head>
 <body>
 <!--
@@ -98,9 +100,26 @@
         </div>
 
         <div class="pt-hero__photo" data-reveal="media">
-          <img src="assets/figma/partnership/hero-reference.jpg"
-               alt="Prepared bird's nest lifted with a spoon from a ceramic bowl"
-               width="1200" height="896" loading="eager" decoding="async">
+          <!-- Masthead photograph: the LCP element on this page, so it stays
+               eager and gains fetchpriority. Measured in the browser: the
+               .pt-hero__photo box is 607px at the 1200px wrap and the img is
+               width:111.42% of it, so it renders at ~677 CSS px. The 1200px master caps the ladder -
+               a 2x desktop render would want ~1506px, which we cannot supply
+               without upscaling. Flagged in tools/build-images.mjs. -->
+          <picture>
+            <source type="image/avif"
+                    srcset="assets/figma/partnership/hero-photo-640.avif 640w,
+                            assets/figma/partnership/hero-photo-960.avif 960w,
+                            assets/figma/partnership/hero-photo-1200.avif 1200w"
+                    sizes="(min-width: 60rem) 680px, 112vw">
+            <img src="assets/figma/partnership/hero-photo-960.webp"
+                 srcset="assets/figma/partnership/hero-photo-640.webp 640w,
+                         assets/figma/partnership/hero-photo-960.webp 960w,
+                         assets/figma/partnership/hero-photo-1200.webp 1200w"
+                 sizes="(min-width: 60rem) 680px, 112vw"
+                 alt="Prepared bird's nest lifted with a spoon from a ceramic bowl"
+                 width="960" height="717" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
           <p class="pt-hero__slogan cn" lang="zh-Hans"><span>天赐珍燕</span><span>世代传承</span></p>
         </div>
       </div>

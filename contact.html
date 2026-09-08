@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="css/motion.css?v=20260908-mobile">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
+
+
 </head>
 <body>
 <!-- Figma HcxmNyEHLi69CkMnAOmx9Q, frame 70:295, 7 Sep 2026.
@@ -84,28 +86,68 @@
       <h2 class="speak__title" data-reveal>Speak With Our Team About:</h2>
       <ul class="speak__grid" role="list">
           <li class="speak-card" data-reveal data-reveal-delay="1">
-            <img class="speak-card__icon" src="assets/figma/contact/catalogue.png"
-                 alt="" aria-hidden="true" width="200" height="136" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/avif"
+                      srcset="assets/figma/contact/catalogue-160.avif 160w,
+                              assets/figma/contact/catalogue-240.avif 240w"
+                      sizes="80px">
+              <img class="speak-card__icon" src="assets/figma/contact/catalogue-160.webp"
+                   srcset="assets/figma/contact/catalogue-160.webp 160w,
+                           assets/figma/contact/catalogue-240.webp 240w"
+                   sizes="80px"
+                   alt="" aria-hidden="true" width="160" height="109" loading="lazy" decoding="async">
+            </picture>
             <p class="speak-card__label">Product <br>Catalogue</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="2">
+            <!-- Deliberately left as a bare img. pricing.png is 444x380 at 8 KB;
+                 flat artwork with alpha that PNG encodes better than lossy AVIF
+                 or WebP. tools/build-images.mjs excludes it and its no-gain
+                 guard is what proved that. -->
             <img class="speak-card__icon" src="assets/figma/contact/pricing.png"
                  alt="" aria-hidden="true" width="200" height="172" loading="lazy" decoding="async">
             <p class="speak-card__label">Trade Pricing <br>and Bulk Orders</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="3">
-            <img class="speak-card__icon" src="assets/figma/contact/custom.png"
-                 alt="" aria-hidden="true" width="200" height="193" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/avif"
+                      srcset="assets/figma/contact/custom-160.avif 160w,
+                              assets/figma/contact/custom-240.avif 240w"
+                      sizes="80px">
+              <img class="speak-card__icon" src="assets/figma/contact/custom-160.webp"
+                   srcset="assets/figma/contact/custom-160.webp 160w,
+                           assets/figma/contact/custom-240.webp 240w"
+                   sizes="80px"
+                   alt="" aria-hidden="true" width="160" height="154" loading="lazy" decoding="async">
+            </picture>
             <p class="speak-card__label">Customization for B2B Partnership</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="4">
-            <img class="speak-card__icon" src="assets/figma/contact/gifting.png"
-                 alt="" aria-hidden="true" width="200" height="215" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/avif"
+                      srcset="assets/figma/contact/gifting-160.avif 160w,
+                              assets/figma/contact/gifting-240.avif 240w"
+                      sizes="80px">
+              <img class="speak-card__icon" src="assets/figma/contact/gifting-160.webp"
+                   srcset="assets/figma/contact/gifting-160.webp 160w,
+                           assets/figma/contact/gifting-240.webp 240w"
+                   sizes="80px"
+                   alt="" aria-hidden="true" width="160" height="172" loading="lazy" decoding="async">
+            </picture>
             <p class="speak-card__label">Premium Wellness Gifting and Seasonal Partnerships</p>
           </li>
           <li class="speak-card" data-reveal data-reveal-delay="5">
-            <img class="speak-card__icon" src="assets/figma/contact/collaboration.png"
-                 alt="" aria-hidden="true" width="200" height="120" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/avif"
+                      srcset="assets/figma/contact/collaboration-160.avif 160w,
+                              assets/figma/contact/collaboration-240.avif 240w"
+                      sizes="80px">
+              <img class="speak-card__icon" src="assets/figma/contact/collaboration-160.webp"
+                   srcset="assets/figma/contact/collaboration-160.webp 160w,
+                           assets/figma/contact/collaboration-240.webp 240w"
+                   sizes="80px"
+                   alt="" aria-hidden="true" width="160" height="95" loading="lazy" decoding="async">
+            </picture>
             <p class="speak-card__label">Collaboration Opportunities</p>
           </li>
       </ul>

@@ -1,0 +1,14 @@
+{
+  "name": "tienyan-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for Tien Yan. Build tooling only - the deployed site is plain HTML/CSS and ships no JavaScript from this package.",
+  "type": "module",
+  "scripts": {
+    "images": "node tools/build-images.mjs",
+    "images:check": "node tools/build-images.mjs --check"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.2"
+  }
+}

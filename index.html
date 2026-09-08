@@ -50,6 +50,8 @@
 <link rel="stylesheet" href="css/motion.css?v=20260908-mobile">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
+
+
 </head>
 <body>
 <!--
@@ -159,9 +161,26 @@
              rotate-180 + scale-y-100, which nets to a horizontal flip. Baked
              into the asset rather than done in CSS so it survives a port. -->
         <div class="home-heritage__art" data-reveal="media">
-          <img src="assets/figma/heritage-reference.jpg"
-               alt="A technician inspecting bird's nests beside trays in the processing facility"
-               width="2400" height="1792" loading="lazy" decoding="async">
+          <!-- Derivatives from tools/build-images.mjs; heritage-reference.jpg is
+               the master and is no longer shipped. The img element carries the WebP
+               ladder and <source> adds AVIF on top, so there is no element for a
+               browser that supports neither - WebP is universal, AVIF is the
+               upgrade. sizes: ~740 CSS px on desktop (633fr of 1132fr in a
+               1200px wrap, x117%), and 117vw once the grid is one column. -->
+          <picture>
+            <source type="image/avif"
+                    srcset="assets/figma/heritage-facility-768.avif 768w,
+                            assets/figma/heritage-facility-1152.avif 1152w,
+                            assets/figma/heritage-facility-1536.avif 1536w"
+                    sizes="(min-width: 60rem) 740px, 117vw">
+            <img src="assets/figma/heritage-facility-1152.webp"
+                 srcset="assets/figma/heritage-facility-768.webp 768w,
+                         assets/figma/heritage-facility-1152.webp 1152w,
+                         assets/figma/heritage-facility-1536.webp 1536w"
+                 sizes="(min-width: 60rem) 740px, 117vw"
+                 alt="A technician inspecting bird's nests beside trays in the processing facility"
+                 width="1152" height="860" loading="lazy" decoding="async">
+          </picture>
         </div>
 
         <div>

@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="css/motion.css?v=20260908-mobile">
 
 <script>document.documentElement.classList.add('js-reveal');</script>
+
+
 </head>
 <body>
 <!--
@@ -198,9 +200,23 @@
       <ul class="trait-grid" role="list">
         <li class="trait trait--plain" data-reveal data-reveal-delay="1">
           <div class="trait__photo trait__photo--crop">
-            <img src="assets/figma/story/characteristics-colour.jpg"
-                 alt="Naturally ivory bird's nests showing their curved shapes and delicate strands"
-                 width="1376" height="768" loading="lazy" decoding="async">
+            <!-- .trait__photo is capped at max-width:282px and the img is
+                 width:150.56%, so this never renders wider than ~425 CSS px on
+                 any viewport. It previously shipped a 954 KB source into that box. -->
+            <picture>
+              <source type="image/avif"
+                      srcset="assets/figma/story/characteristics-colour-448.avif 448w,
+                              assets/figma/story/characteristics-colour-672.avif 672w,
+                              assets/figma/story/characteristics-colour-896.avif 896w"
+                      sizes="425px">
+              <img src="assets/figma/story/characteristics-colour-672.webp"
+                   srcset="assets/figma/story/characteristics-colour-448.webp 448w,
+                           assets/figma/story/characteristics-colour-672.webp 672w,
+                           assets/figma/story/characteristics-colour-896.webp 896w"
+                   sizes="425px"
+                   alt="Naturally ivory bird's nests showing their curved shapes and delicate strands"
+                   width="672" height="375" loading="lazy" decoding="async">
+            </picture>
           </div>
           <p class="trait__body">Naturally ivory in colour, with slight variations in shape and texture.</p>
         </li>
