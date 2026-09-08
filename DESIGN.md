@@ -234,6 +234,17 @@ reading through text that is still arriving. The desktop effect is unchanged.
 its paragraph; stacked, the badges waste the width. One card per row with the badge beside the
 copy uses the width the tablet actually has.
 
+**Copy is centred on a phone, left-aligned from 40rem up.** Added 8 Sep after review. The
+frames already centre most things — section titles, product names and descriptions, story eras,
+trait cards, the partner call to action. The hero, the heritage block, the Partnership hero, the
+Health Benefits list and the Contact cards were the left-aligned exceptions, so scrolling a phone
+crossed an alignment change five times. They now match. The Health Benefits list drops its bullets
+when centred, because hanging markers land at a different x on every item and read as misalignment
+rather than as a list. The Contact cards return to the frame's centred icon-above-label form; that
+costs about 250px of height on that section, which is the price of the consistency. Nothing above
+40rem changed — the desktop measure is long enough that a ragged right edge is the more readable
+choice, and form labels stay left-aligned above their fields at every width.
+
 **Value-chain tabs and certificate filters become 2-column grids on a phone.** As a horizontal
 scroller they hid options off-screen with no affordance. As wrapped chips at 44px+ they are all
 visible at once, which matters because they are the only way to reach the filtered documents.

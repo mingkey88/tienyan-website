@@ -1031,13 +1031,16 @@
   .pgrid { gap: var(--s-6); margin-top: var(--s-6); }
   .pgrid__action { margin-top: var(--s-6); padding-bottom: var(--s-7); }
   .speak__grid { grid-template-columns: minmax(0, 1fr); margin-top: var(--s-5); gap: var(--s-3); }
+  /* Keeps the frame's centred icon-above-label card rather than turning it on
+     its side. The row form was shorter, but it was the only left-aligned block
+     on a page that centres everything else. */
   .speak-card {
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    gap: var(--s-4); min-height: 96px;
-    padding: var(--s-4); text-align: left;
+    min-height: 0;
+    gap: var(--s-3);
+    padding: var(--s-5) var(--s-4);
+    text-align: center;
   }
-  .speak-card__icon { width: 48px; height: 48px; }
+  .speak-card__icon { width: 56px; height: 56px; }
   .speak-card__label { font-size: 1.125rem; line-height: 1.4; overflow-wrap: anywhere; }
   .speak-card__label br { display: none; }
   .enquiry__card { padding: var(--s-6) var(--s-4); }
@@ -1047,4 +1050,29 @@
   .enquiry .field textarea { min-height: 11rem; }
   .enquiry__actions { margin-top: var(--s-5); }
   .touch__actions { flex-direction: column; align-items: center; gap: var(--s-4); }
+
+  /* DERIVED — see the note in home.css. These were the last left-aligned
+     blocks on a phone; the surrounding sections all centre. */
+  .pt-hero__title,
+  .pt-hero__body,
+  .chain__panel-title,
+  .chain__panel-body,
+  .benefits__title,
+  .benefits__lead,
+  .benefits__note { text-align: center; }
+  .pt-hero__body,
+  .benefits__lead,
+  .benefits__note { margin-inline: auto; }
+  .chain__tab,
+  .pt-chip { text-align: center; }
+
+  /* A centred list cannot keep hanging bullets — they land at a different
+     x for every item and read as misalignment rather than as a list. The
+     marker goes; the five phrases are short enough to stand without it. */
+  .benefits__list {
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+  }
+  .benefits__list li { max-width: none; }
 }

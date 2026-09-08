@@ -1006,3 +1006,20 @@ OPEN — the label now promises a file that does not exist. When the PDF arrives
 it goes in `assets/downloads/`, the Products button points at it with a
 `download` attribute, and the footer's "Product Catalogues" link needs the same
 swap across all eight pages. Until then, tapping the button reaches a form.
+
+## Phone copy centred — 8 Sep 2026
+
+The user asked for the mobile copy to be centred so scrolling reads more
+comfortably. The frames already centre most blocks; the hero, heritage,
+Partnership hero, Health Benefits and Contact cards were the exceptions, which
+meant scrolling a phone crossed an alignment change five times. Those five now
+centre below 40rem. Nothing at 40rem and above changed, and form labels stay
+left-aligned above their fields at every width.
+
+Two consequences worth a look: the Health Benefits list loses its bullets when
+centred, and the Contact cards return to the frame's centred icon-above-label
+form, which adds roughly 250px to that section's height.
+
+Verification: all 8 pages at 320, 390, 414, 768, 1024, 1280 and 1440px. No
+horizontal overflow, no clipped text, no sub-44px targets on phones. Desktop
+alignment confirmed unchanged at 1440px.

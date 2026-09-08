@@ -330,6 +330,23 @@
   .home-hero { padding-top: var(--s-6); }
   .home-hero__lead { line-height: 1.45; margin-top: var(--s-5); }
   .home-hero__bg { margin-top: var(--s-6); }
+
+  /* DERIVED — the page already centres its copy on a phone: section titles,
+     product names and descriptions, the partner call to action. The hero and
+     heritage blocks were the two left-aligned holdouts, so scrolling crossed
+     an alignment change twice. Centred to match, which is also how the frame
+     treats display copy. Left alignment stays from 40rem up, where the measure
+     is long enough for a ragged right edge to be the more readable choice. */
+  .home-hero__title,
+  .home-hero__cn,
+  .home-hero__lead,
+  .home-heritage__title,
+  .home-heritage__body { text-align: center; }
+  /* Centring the text inside a box that still hugs the left edge only moves
+     the problem, so the boxes centre too. */
+  .home-hero__lead,
+  .home-heritage__body { margin-inline: auto; }
+  .home-hero__actions { justify-content: center; }
   .home-heritage__grid { gap: var(--s-6); }
   .home-collection__grid, .home-certs__row { margin-top: var(--s-6); }
   .home-certs__row {
