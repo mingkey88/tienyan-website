@@ -85,23 +85,53 @@ size, which is untouched.
 
 ## Motion
 
-One authored idea: elements settle into place the way a sheet settles onto a desk. Rise, fade, and
-a 3px blur clearing — all easing out, nothing easing in on arrival.
+**Rebuilt 9 Sep 2026 on GSAP, ScrollTrigger and Lenis.** The authored idea did not change — elements
+settle into place the way a sheet settles onto a desk; rise, fade, and a 3px blur clearing, all
+easing out, nothing easing in on arrival. What changed is that the scroll itself now carries weight,
+and two of the effects are tied to scroll *position* rather than to a timer that starts when a
+threshold is crossed.
 
 ```css
---d-fast: 140ms;  --d-ui: 220ms;  --d-reveal: 720ms;  --d-slow: 1100ms;
+--d-fast: 140ms;  --d-ui: 220ms;  --d-reveal: 720ms;  --d-slow: 1100ms;  --d-hero: 2400ms;
 --e-out: cubic-bezier(0.16, 1, 0.3, 1);
 ```
 
 Stagger is capped at five steps of 70ms; a longer cascade reads as a loading bug.
 
+`css/motion.css` declares only the states motion moves between. Every duration, distance, drift and
+curve is a token, and `js/motion.js` reads them out of the computed root style rather than
+restating them — including the easing, which it parses back out of the `cubic-bezier()` value. A
+timing change is a one-line edit in `tokens.css`.
+
+**What moves:**
+
+| Effect | Tied to |
+|---|---|
+| Rise, fade and blur-clear on entry | `ScrollTrigger.batch` — whatever crosses the line together arrives together |
+| Hero copy | Page load. It is above the fold and must not wait for a scroll that may not come |
+| Hero photograph settling 1.06 → 1.0 | Page load |
+| Hero photograph drifting behind the page | Scroll position, scrubbed |
+| Heritage and Partnership photographs drifting in their frames | Scroll position, scrubbed |
+| Our Story photographs uncovering (`clip-path`) | Scroll position, scrubbed — the masthead, being above the fold, wipes on load instead |
+| The rule between 1950 and 2026 drawing itself | Scroll position, scrubbed |
+| Header tucking away and returning | Scroll direction |
+
 **Rules the build holds to:**
 
-- Content is visible by default. `js/reveal.js` adds `.js-reveal` only when it can also remove it,
-  so a JS failure never hides the page.
-- No layout properties are animated. The header condenses via `transform` on the logo plus
-  background and rule changes; the mobile menu uses `grid-template-rows: 0fr → 1fr`.
-- `prefers-reduced-motion: reduce` collapses every effect to its final state.
+- Content is visible by default. The `.js-reveal` class that hides anything is added by a guard in
+  each page's `<head>`, and only once GSAP and ScrollTrigger have both loaded. A blocked CDN leaves
+  every page readable and static. A second guard removes the class if `js/motion.js` has not taken
+  over within four seconds, so a script error cannot leave the page blank either.
+- No layout properties are animated. Transform, opacity, filter and `clip-path` only. The header
+  tucks by `transform` and keeps its height, so nothing below it reflows.
+- Smooth scroll is wheel-only. On a touch screen Lenis is not started at all — the platform's own
+  scroll physics are better than anything imposed on them.
+- Motion is reduced on phones, not removed: half the travel, no blur, and no scrubbed parallax,
+  which is the part that costs frames on a small device.
+- Anchors and keyboard focus are handled explicitly. In-page links are handed to Lenis and then
+  move focus; a tab to something below the fold resyncs the scroll rather than snapping back.
+- `prefers-reduced-motion: reduce` collapses every effect to its final state: no Lenis, no scrub,
+  no parallax, and nothing hidden in the first place.
 
 ## Accessibility
 
@@ -117,8 +147,12 @@ lose contrast.
 
 ## Constraints this system must keep
 
-1. **Webflow-portable.** No dependency, no build step, no effect without a native Webflow
-   Interactions equivalent.
+1. **No build step.** The site is served as it is written; there is nothing to compile. Motion is
+   the one place with runtime dependencies — GSAP, ScrollTrigger and Lenis, each pinned to an exact
+   version, loaded from a CDN and checked against a hash. The client superseded the
+   builder-portability rule for motion on 9 Sep 2026: the scroll layer is a real build, and the Wix
+   migration **rebuilds** it in that platform's own terms rather than porting it. Everything else —
+   layout, type, colour, components — stays portable.
 2. **`tokens.css` is the only place brand values live.** A colour or font hard-coded elsewhere is a
    defect.
 3. **Never fabricate evidence.** No testimonial, client logo, case study, figure or certification
@@ -229,6 +263,11 @@ third centred underneath (a 4-column grid spanning pairs) keeps every card at a 
 **Scroll reveals are switched off below 40rem.** The reveal animation blurs and offsets text until
 it enters the viewport. On a phone, where the viewport is short and scrolling is fast, that means
 reading through text that is still arriving. The desktop effect is unchanged.
+
+> **Superseded 9 Sep 2026.** Switching the reveals off entirely was the wrong correction — the
+> travel and the blur were what made them unreadable, not the fact of motion. Phones now get the
+> same reveal at half the travel with no blur, and no scrubbed parallax at all, which is the effect
+> that actually costs frames on a small device. See [Motion](#motion).
 
 **Traits become rows on a tablet.** Side by side, each trait card is too narrow for its badge and
 its paragraph; stacked, the badges waste the width. One card per row with the badge beside the

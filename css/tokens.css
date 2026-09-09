@@ -130,7 +130,28 @@
   --e-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
   --e-inout:    cubic-bezier(0.65, 0, 0.35, 1);
 
-  --reveal-shift: 1.25rem;
+  /* The scroll layer reads these at run time — js/motion.js parses the values
+     below out of the computed root style rather than restating them, so a
+     timing change here changes the built animation with no edit to the script.
+     Durations are in ms, distances in CSS length, drifts in per cent of the
+     moving element's own height. */
+  --d-hero:   2400ms;   /* the hero photograph settling once, on load */
+  --d-header:  420ms;   /* the header tucking away and returning */
+
+  --reveal-shift:        1.25rem;   /* how far a block rises into place */
+  --reveal-shift-media:  0.75rem;   /* large photographs travel less */
+  --reveal-shift-phone:  0.5rem;    /* and less again on a phone */
+  --reveal-blur:         3px;       /* the blur that burns off on arrival */
+  --reveal-blur-phone:   0px;       /* never on a phone — it costs frames */
+  --reveal-stagger:      70ms;      /* one step of a cascade */
+  --reveal-stagger-cap:  5;         /* longer than five reads as a loading bug */
+
+  --hero-settle: 1.06;   /* the scale the hero photograph settles down from */
+  --drift-hero:  8;      /* hero photograph drift, % of its own height */
+  --drift-media: 4;      /* a framed photograph drifting inside its window */
+  --draw-scrub:  0.4;    /* seconds a scrubbed draw lags the scroll */
+
+  --scroll-lerp: 0.1;    /* smooth-scroll weight; higher is more immediate */
 
   /* ---- Depth — offset + soft blur, never a zero-offset halo ------------- */
   --shadow-sm: 0 1px 2px rgba(26, 20, 22, 0.05),

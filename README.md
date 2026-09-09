@@ -3,9 +3,10 @@
 Static marketing site for **Tien Yan Pte. Ltd. 天燕珍品有限公司**, a Singapore-based B2B supplier of
 premium Indonesian edible bird's nest.
 
-Eight pages — five real, three legal stubs. No build step, no JavaScript dependencies,
-no framework. Every page is rebuilt to the art director's Figma; every deviation from it is
-recorded in CONTENT-QUERIES.md.
+Eight pages — five real, three legal stubs. No build step and no framework. The one runtime
+dependency is the motion layer (GSAP, ScrollTrigger, Lenis, pinned and loaded from a CDN); if it
+fails to load the site renders complete and static. Every page is rebuilt to the art director's
+Figma; every deviation from it is recorded in CONTENT-QUERIES.md.
 
 > **Pre-launch.** The site is set to `noindex, nofollow` and `robots.txt` disallows everything.
 > See [Going live](#going-live) before sharing publicly.
@@ -49,10 +50,10 @@ css/components.css   Nav, footer, cards, form, process, certificates
 css/site.css         Shared chrome — header, footer, Partner CTA, buttons, container
 css/home.css         Homepage sections only
 css/pages.css        Interior page sections — Our Story, Partnership, Products, Contact
-css/motion.css       Scroll reveals + reduced-motion
+css/motion.css       Reveal states, Lenis rules, reduced-motion collapse
 
 js/nav.js            Sticky header, mobile menu
-js/reveal.js         IntersectionObserver reveals, count-up figures
+js/motion.js         GSAP + ScrollTrigger + Lenis — reveals, parallax, scrubbed draws
 js/form.js           Validation + Formspree submission
 js/tabs.js           Partnership value-chain tablist (ARIA APG pattern)
 js/carousel.js       Partnership certificate carousel
@@ -70,6 +71,9 @@ and responsive type scales in `tokens.css`.
 `home.css` is deliberately separate. The homepage has been rebuilt to the art director's Figma and
 is the pilot for the **Wix Studio** migration; keeping it in one file means the port has a single
 stylesheet to translate rather than a diff against `components.css`. The four interior pages use `pages.css`; every page uses the shared header and footer in `site.css`.
+
+The layout, type and colour layers are what the migration ports. The motion layer is not — see
+[Motion](#motion) below; it is now a GSAP build that Wix rebuilds rather than translates.
 
 ---
 
@@ -108,27 +112,44 @@ alt text on all evidential imagery, and every animation collapsed under `prefers
 ## Motion
 
 Restrained by intent — the audience is a sourcing manager comparing suppliers, and restraint reads
-as confidence in this category. Everything is `IntersectionObserver` + CSS transitions; there are no
-libraries.
+as confidence in this category. Slower and smaller, never bouncier.
 
-No effect depends on JavaScript for its meaning, which is what makes the set portable to a visual
-builder. Each one is a standard primitive rather than something bespoke:
+**This is the one part of the site with runtime dependencies.** Rebuilt 9 Sep 2026 on
+[GSAP 3.13.0 and ScrollTrigger](https://gsap.com) with [Lenis 1.3.11](https://lenis.darkroom.engineering)
+carrying the scroll. Each is pinned to an exact version, loaded from a CDN and checked against a
+Subresource Integrity hash; there is still nothing to install and nothing to build. `js/motion.js`
+is the whole of it and replaces the old `js/reveal.js`.
 
-| Effect | What the target platform needs to provide |
+| Effect | Tied to |
 |---|---|
-| Staggered rise + fade on entry | Scroll-into-view trigger with a per-element delay |
-| Hero photograph settling on load | Page-load animation |
-| Quality-control rail drawing top→bottom | Scroll-into-view trigger on a scaled element |
-| Product card "+" disclosure | Toggle / accordion interaction |
-| Count-up on 1950 / 12 / 9 | Custom code — no builder does this natively |
-| Header condensing on scroll | Scroll-position trigger |
-| Secondary graphic rotating | Looping animation |
+| Staggered rise, fade and blur-clear on entry | `ScrollTrigger.batch` — a row of cards arrives as a row |
+| Hero copy | Page load, not a scroll trigger |
+| Hero photograph settling 1.06 → 1.0 | Page load |
+| Hero photograph drifting behind the page | Scrubbed scroll position |
+| Heritage and Partnership photographs drifting in their frames | Scrubbed scroll position |
+| Our Story photographs uncovering | Scrubbed `clip-path`; the masthead wipes on load instead, being above the fold |
+| The rule between 1950 and 2026 drawing itself | Scrubbed scroll position |
+| Header tucking away and returning | Scroll direction |
+| Product card "+" disclosure, value-chain tabs, certificate carousel | Their own scripts, unchanged |
 
-The exact Wix Studio equivalents are confirmed in Phase 2 of the migration, not assumed here.
-Anything Wix cannot reproduce gets reported rather than silently dropped.
+The **Wix Studio migration rebuilds this layer rather than porting it.** The client superseded the
+builder-portability constraint for motion on 9 Sep 2026, after weighing it against what the scroll
+should feel like. Everything else in the build stays portable, and the two constraints that still
+hold — no build step, and `tokens.css` as the only home for brand values — hold here too: no
+duration, distance or curve is written in `motion.css` or `motion.js`, both read them from tokens.
 
-Content is visible by default. `js/reveal.js` only hides elements once it has confirmed it can also
-show them again, so a JavaScript failure never leaves a blank page.
+Content is visible by default, and that inversion survived the rebuild. A guard in each page's
+`<head>` adds the class that hides revealable elements *only* once GSAP and ScrollTrigger have both
+loaded, and removes it again if `js/motion.js` has not taken over within four seconds. A blocked
+CDN, a failed hash or a script error leaves every page complete and static — verified by blocking
+cdnjs and jsDelivr and reloading all nine pages.
+
+Motion is reduced on phones rather than switched off: half the travel, no blur, and no scrubbed
+parallax. Lenis is not started on a touch screen at all, so native scrolling is untouched.
+`prefers-reduced-motion: reduce` collapses everything — no smooth scroll, no scrub, nothing hidden.
+
+`404.html` is the deliberate exception. It stays self-contained, with a CSS-only entrance inlined
+alongside its own stylesheet: an error page must not depend on a CDN.
 
 ---
 

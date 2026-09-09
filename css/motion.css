@@ -1,88 +1,150 @@
 /* ==========================================================================
    Tien Yan — Motion
+
    One authored moment: elements settle into place the way a sheet of paper
    settles onto a desk. Everything eases OUT on arrival; nothing eases in.
-   Content is visible by default — JS adds .js-reveal only when it can
-   also remove it, so a JS failure never hides content.
+
+   This file declares only the states motion moves BETWEEN. The movement
+   itself is driven by GSAP + ScrollTrigger in js/motion.js, which reads its
+   durations, distances and easings out of tokens.css. No timing value is
+   written here.
+
+   THE SAFETY INVERSION — do not break it.
+   Content is visible by default. Nothing below applies until `.js-reveal` is
+   on <html>, and that class is added by an inline guard in each page's <head>
+   ONLY once GSAP and ScrollTrigger have both parsed and defined their globals.
+   A blocked CDN, a bad hash, an offline visitor: the class is never added and
+   every page renders complete and static. A second guard in the same script
+   removes the class if js/motion.js has not signalled ready shortly after, so
+   an error inside the script cannot leave the page blank either.
    ========================================================================== */
 
-/* Set by js/reveal.js on <html>. Without it, nothing below applies. */
+/* ==========================================================================
+   Lenis — the four rules the smooth-scroll layer needs.
+
+   Inlined from the library's own stylesheet rather than fetched, so the
+   page never blocks on a third-party CSS request. These are behavioural,
+   not brand: no value here belongs in tokens.css.
+   ========================================================================== */
+
+html.lenis,
+html.lenis body { height: auto; }
+
+/* base.css sets scroll-behavior:smooth for the no-JS case. With Lenis mounted
+   that would run a second, native animation against this one on every anchor
+   and every tab-to-focus, so it is off for as long as Lenis is running. The
+   library's own stylesheet scopes this to .lenis-smooth, which is only present
+   *during* a smooth scroll — too late to prevent the fight. */
+html.lenis { scroll-behavior: auto !important; }
+
+.lenis.lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+/* An iframe swallows the wheel event and the page stops under the cursor. */
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ==========================================================================
+   The reveal state
+
+   The hidden state is declared in CSS, not by script, so it is in force at
+   first paint and nothing is ever seen to jump. GSAP reads these computed
+   values as its start values and animates to the natural state — which is
+   why there is no `transition` here. A transition would fight the tween.
+   ========================================================================== */
+
 .js-reveal [data-reveal] {
   opacity: 0;
   transform: translate3d(0, var(--reveal-shift), 0);
-  transition:
-    opacity var(--d-reveal) var(--e-out),
-    transform var(--d-reveal) var(--e-out),
-    filter var(--d-reveal) var(--e-out);
-  filter: blur(3px);
+  filter: blur(var(--reveal-blur));
   will-change: opacity, transform;
 }
 
-.js-reveal [data-reveal].is-revealed {
-  opacity: 1;
-  transform: none;
-  filter: none;
-}
-
-/* Staggering. The delay is small and capped — a long cascade reads as a
-   loading bug rather than as craft. */
-.js-reveal [data-reveal-delay='1'] { transition-delay: 70ms; }
-.js-reveal [data-reveal-delay='2'] { transition-delay: 140ms; }
-.js-reveal [data-reveal-delay='3'] { transition-delay: 210ms; }
-.js-reveal [data-reveal-delay='4'] { transition-delay: 280ms; }
-.js-reveal [data-reveal-delay='5'] { transition-delay: 350ms; }
-
-/* A quieter variant for large media: no blur, less travel, slower. */
+/* A quieter variant for large photographs: no blur, less travel, and a
+   fractional scale so the frame reads as settling rather than sliding. */
 .js-reveal [data-reveal='media'] {
   filter: none;
-  transform: translate3d(0, 0.75rem, 0) scale(1.012);
-  transition:
-    opacity var(--d-slow) var(--e-out),
-    transform var(--d-slow) var(--e-out);
+  transform: translate3d(0, var(--reveal-shift-media), 0) scale(1.012);
 }
-.js-reveal [data-reveal='media'].is-revealed { transform: none; }
 
-/* ==========================================================================
-   The quality-control rail draws itself as the sequence enters
-   ========================================================================== */
-
-.js-reveal .process__rail { transform: scaleY(0); transition: transform 1.4s var(--e-out-soft); }
-.js-reveal .process__rail.is-revealed { transform: scaleY(1); }
-
-/* ==========================================================================
-   Secondary graphic — a slow, continuous rotation.
-   Brand guide p18 permits the graphic at 15–100% opacity.
-   ========================================================================== */
-
-@keyframes deco-rotate { to { transform: rotate(360deg); } }
-
-.deco--spin { animation: deco-rotate 96s linear infinite; }
-.deco--spin-reverse { animation: deco-rotate 132s linear infinite reverse; }
-
-/* ==========================================================================
-   Hero: the photograph settles once on load, then holds still.
-   ========================================================================== */
-
-@keyframes hero-settle {
-  from { transform: scale(1.06); }
-  to   { transform: scale(1); }
+/* Legal pages are near-silent. They are documents; motion on them should be
+   noticed only by its absence. */
+.js-reveal .legal [data-reveal] {
+  --reveal-shift: var(--reveal-shift-phone);
+  --reveal-blur: var(--reveal-blur-phone);
 }
-.hero__media img { animation: hero-settle 2.4s var(--e-out) both; }
+
+/* ==========================================================================
+   Header — tucks away on the way down, returns on the way up
+
+   Transform only. The header keeps its height, so nothing below it moves.
+   js/motion.js owns the class and refuses to add it while the mobile menu is
+   open or while focus is inside the header.
+   ========================================================================== */
+
+.js-reveal .site-header {
+  transition: transform var(--d-header) var(--e-out);
+  will-change: transform;
+}
+.js-reveal .site-header.is-tucked { transform: translate3d(0, -100%, 0); }
+
+/* ==========================================================================
+   Scrubbed draws
+
+   Both are hairlines that fill as the visitor scrolls the sequence they
+   belong to, rather than on a timer of their own. `--rail-draw` is animated
+   by GSAP on the list item; the rule itself is a pseudo-element and cannot be
+   a tween target. Its default of 1 means the line is fully drawn with the
+   script absent.
+   ========================================================================== */
+
+.js-reveal .process__rail { transform: scaleY(0); transform-origin: top; }
+
+.js-reveal .story-era + .story-era::before {
+  transform: scaleY(var(--rail-draw, 1));
+  transform-origin: top;
+}
+.js-reveal .story-era + .story-era { --rail-draw: 0; }
+
+/* ==========================================================================
+   Parallax windows
+
+   The two photographs that drift inside their own frame are already oversized
+   and clipped by their wrapper — .home-heritage__art and .pt-hero__photo both
+   set overflow:hidden and size their image past 100%. Nothing is added here
+   but the compositor hint, and only while the script is live.
+   ========================================================================== */
+
+.js-reveal .home-heritage__art img,
+.js-reveal .pt-hero__photo img,
+.js-reveal .home-hero__bg { will-change: transform; }
+
+/* ==========================================================================
+   Phones — reduced, not removed
+
+   The previous build switched every reveal off below 40rem. The effect was
+   right to distrust: a 20px rise with a 3px blur, on a short viewport scrolled
+   fast, means reading text that is still arriving. The travel and the blur
+   were the problem, not the motion. Both are cut here; the parallax scrubs are
+   cut in the script, where the cost actually is.
+   ========================================================================== */
+
+@media (max-width: 39.999rem) {
+  .js-reveal [data-reveal] {
+    --reveal-shift: var(--reveal-shift-phone);
+    --reveal-blur: var(--reveal-blur-phone);
+  }
+  .js-reveal [data-reveal='media'] {
+    --reveal-shift-media: var(--reveal-shift-phone);
+    transform: translate3d(0, var(--reveal-shift-phone), 0);
+  }
+}
 
 /* ==========================================================================
    Reduced motion — collapse everything to its final state.
-   ========================================================================== */
 
-/* Phone content stays readable while swiping; no delayed, blurred text. */
-@media (max-width: 39.999rem) {
-  .js-reveal [data-reveal], .js-reveal [data-reveal='media'] {
-    opacity: 1;
-    transform: none;
-    filter: none;
-    transition: none;
-    will-change: auto;
-  }
-}
+   js/motion.js checks the same query and never starts Lenis, never registers a
+   scrub, and reveals every element in place. This block is the belt to that
+   script's braces, and covers the transitions declared elsewhere in the site.
+   ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -100,8 +162,12 @@
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+    will-change: auto !important;
   }
   .js-reveal .process__rail { transform: scaleY(1) !important; }
-  .deco--spin, .deco--spin-reverse { animation: none !important; }
-  .hero__media img { animation: none !important; }
+  .js-reveal .story-era + .story-era::before { transform: scaleY(1) !important; }
+  .js-reveal .site-header.is-tucked { transform: none !important; }
+  .js-reveal .home-hero__bg,
+  .js-reveal .home-heritage__art img,
+  .js-reveal .pt-hero__photo img { will-change: auto !important; }
 }

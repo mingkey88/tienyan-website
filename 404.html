@@ -73,6 +73,26 @@
   a { color: var(--c-mulberry); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
   a:hover, a:focus-visible { color: var(--c-gold); }
   a:focus-visible { outline: 2px solid var(--c-gold); outline-offset: 4px; border-radius: 2px; }
+
+  /* Motion, on the same terms as the rest of the file: inlined, with nothing
+     to fetch. The site's scroll layer (GSAP + Lenis, css/motion.css) is
+     deliberately NOT loaded here — an error page must not depend on a CDN, and
+     there is nothing to scroll. This is the same authored moment reduced to
+     what a single screen needs: the block settles, once, on arrival.
+
+     Declared the safe way round. The animation only ever runs forward to the
+     natural state, so a browser that ignores it shows the finished page. */
+  @media (prefers-reduced-motion: no-preference) {
+    main > * { animation: settle 720ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+    main > :nth-child(2) { animation-delay: 70ms; }
+    main > :nth-child(3) { animation-delay: 140ms; }
+    main > :nth-child(4) { animation-delay: 210ms; }
+    main > :nth-child(5) { animation-delay: 280ms; }
+  }
+  @keyframes settle {
+    from { opacity: 0; transform: translate3d(0, 10px, 0); }
+    to   { opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body>

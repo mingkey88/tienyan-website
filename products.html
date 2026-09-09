@@ -29,14 +29,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/tokens.css?v=20260908-mobile">
+<link rel="stylesheet" href="css/tokens.css?v=20260909-gsap">
 <link rel="stylesheet" href="css/base.css?v=20260908">
 <link rel="stylesheet" href="css/components.css?v=20260908">
 <link rel="stylesheet" href="css/site.css?v=20260908-mobile">
 <link rel="stylesheet" href="css/pages.css?v=20260908-centred">
-<link rel="stylesheet" href="css/motion.css?v=20260908-mobile">
+<link rel="stylesheet" href="css/motion.css?v=20260909-gsap">
 
-<script>document.documentElement.classList.add('js-reveal');</script>
+<!-- Motion. GSAP and ScrollTrigger are fetched here, before first paint, because
+     the class that hides revealable content must never be added unless both of
+     them are actually present. Pinned to an exact version and checked against a
+     hash: if cdnjs is blocked, stale, or tampered with, these tags fail, the
+     guard below does nothing, and the page renders complete and static.
+     Lenis is deferred — it carries the scroll but nothing is hidden for it, and
+     defer keeps 17 KB off the blocking path while still running before
+     js/motion.js. See css/motion.css. -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+        integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+        integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh"
+        crossorigin="anonymous"></script>
+<!-- Lenis is not on cdnjs; jsDelivr is the pinned mirror. Its failure costs the
+     momentum only — every scroll effect still runs on native scroll. -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"
+        integrity="sha384-kdY9hFBPoAPpxcrLihsO3APivFOxtQwSeYdzFD5CIIfLurwhdMrEHhkQxZJDkxgk"
+        crossorigin="anonymous" defer></script>
+<script>
+(function () {
+  if (!window.gsap || !window.ScrollTrigger) return;   /* CDN gone — stay visible */
+  var r = document.documentElement;
+  r.classList.add('js-reveal');
+  /* And if js/motion.js never takes over — a parse error, a stale cache, a
+     blocked same-origin request — hand the page back rather than hold it. */
+  window.setTimeout(function () {
+    if (!r.hasAttribute('data-motion-ready')) r.classList.remove('js-reveal');
+  }, 4000);
+})();
+</script>
 
 
 
@@ -589,6 +620,6 @@
 </footer>
 
 <script src="js/nav.js" defer></script>
-<script src="js/reveal.js" defer></script>
+<script src="js/motion.js?v=20260909-gsap" defer></script>
 </body>
 </html>
