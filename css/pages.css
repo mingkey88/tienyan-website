@@ -620,17 +620,50 @@
   text-wrap: balance;
 }
 
-/* Controls are injected/revealed by js/carousel.js only once it can drive the
-   viewport. The frame draws bare "<" and ">" glyphs with no target; built at
-   44px minimum (SC 2.5.8). */
-.pt-carousel__controls {
-  display: none;
+/* Controls are revealed by js/carousel.js only once it can drive the viewport.
+   Frame 48:96 sets the arrows outside the certificate on either side rather
+   than in a row beneath it, so once JS is in the carousel becomes a three
+   column grid - arrow, certificates, arrow - with the counter under the middle
+   column. Without JS it stays a plain block and an ordinary scroller. */
+.js-carousel .pt-carousel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "prev viewport next"
+    ".    count    .";
   align-items: center;
-  justify-content: center;
-  gap: var(--s-5);
-  margin-top: var(--s-5);
+  column-gap: var(--s-4);
 }
-.js-carousel .pt-carousel__controls { display: flex; }
+.js-carousel .pt-carousel__viewport { grid-area: viewport; min-width: 0; }
+.js-carousel .pt-carousel__count { grid-area: count; }
+
+/* Aligned to the top of the row, then pushed down half a scan by
+   --cert-arrow-offset, which js/carousel.js measures. Centring on the row
+   instead would track the tallest caption, which the filter keeps changing. */
+.js-carousel .pt-carousel__btn {
+  align-self: start;
+  margin-top: var(--cert-arrow-offset, 0px);
+}
+.js-carousel .pt-carousel__btn--prev { grid-area: prev; }
+.js-carousel .pt-carousel__btn--next { grid-area: next; }
+
+/* Below 48rem a 44px arrow on each side would squeeze the scan past the point
+   it can be read (DESIGN.md), so the arrows drop under the viewport and sit
+   either side of the counter - the arrangement the frame uses at desktop, but
+   folded into one row. */
+@media (max-width: 47.999rem) {
+  .js-carousel .pt-carousel {
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+      "viewport viewport viewport"
+      "prev     count    next";
+    row-gap: var(--s-5);
+  }
+  .js-carousel .pt-carousel__btn { align-self: center; margin-top: 0; }
+  .js-carousel .pt-carousel__btn--prev { justify-self: end; }
+  .js-carousel .pt-carousel__btn--next { justify-self: start; }
+  .js-carousel .pt-carousel__count { margin-top: 0; align-self: center; }
+}
 
 /* China registration documents are landscape: show the complete pair as a
    centred gallery, matching the client's Wix reference. Stack on phones. */
@@ -660,40 +693,49 @@
   line-height: 1.4;
   color: var(--c-ink);
 }
-.js-carousel .pt-carousel--china .pt-carousel__controls { display: none; }
+.js-carousel .pt-carousel--china .pt-carousel__btn,
+.js-carousel .pt-carousel--china .pt-carousel__count { display: none; }
 @media (min-width: 48rem) {
   .pt-carousel--china .pt-carousel__viewport {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* Frame 48:96 draws these as bare 50px glyphs in black with no target behind
+   them. The target is kept at 44px (SC 2.5.8) but made transparent, so the
+   affordance reads as the frame drew it while staying operable. */
 .pt-carousel__btn {
-  display: grid;
+  display: none;
   place-items: center;
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 1px solid var(--c-rule-strong);
-  border-radius: 50%;
-  background: var(--c-paper);
-  /* Frame draws the < > glyphs in Imperial Fuchsia. */
-  color: var(--c-fuchsia);
+  border: 0;
+  background: none;
+  color: var(--c-ink);
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: 3.125rem;   /* 50px */
   line-height: 1;
   cursor: pointer;
-  transition: background var(--d-fast) var(--e-out), color var(--d-fast) var(--e-out);
+  transition: color var(--d-fast) var(--e-out), opacity var(--d-fast) var(--e-out);
 }
-.pt-carousel__btn:hover:not(:disabled) { background: var(--c-fuchsia); color: var(--c-paper); }
-.pt-carousel__btn:disabled { opacity: 0.35; cursor: default; }
+.js-carousel .pt-carousel__btn { display: grid; }
+.pt-carousel__btn:hover:not(:disabled) { color: var(--c-fuchsia); }
+.pt-carousel__btn:disabled { opacity: 0.25; cursor: default; }
 
 .pt-carousel__count {
+  display: none;
+  margin-top: var(--s-5);
   font-size: var(--t-small);
   color: var(--c-ink-soft);
   font-variant-numeric: tabular-nums;
+  /* It is a <p>, so the global measure cap applies and would hold it to ~65ch
+     of the column instead of centring it under the full row. */
+  max-width: none;
   min-width: 4.5rem;
   text-align: center;
 }
+.js-carousel .pt-carousel__count { display: block; }
 
 /* ==========================================================================
    Products — Figma frame 70:159 (revision of 21 Aug 2026)

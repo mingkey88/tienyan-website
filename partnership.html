@@ -32,8 +32,8 @@
 <link rel="stylesheet" href="css/tokens.css?v=20260909-gsap">
 <link rel="stylesheet" href="css/base.css?v=20260908">
 <link rel="stylesheet" href="css/components.css?v=20260908">
-<link rel="stylesheet" href="css/site.css?v=20260908-mobile">
-<link rel="stylesheet" href="css/pages.css?v=20260908-centred">
+<link rel="stylesheet" href="css/site.css?v=20260914-footer">
+<link rel="stylesheet" href="css/pages.css?v=20260914-certs">
 <link rel="stylesheet" href="css/motion.css?v=20260909-gsap">
 
 <!-- Motion. GSAP and ScrollTrigger are fetched here, before first paint, because
@@ -299,6 +299,17 @@
 
       <p class="pt-certs__status" data-cert-status role="status" aria-live="polite"></p>
       <div class="pt-carousel" data-reveal>
+
+        <!-- Frame 48:96 sets the arrows outside the certificate on either side,
+             vertically centred on the scan, as bare glyphs with no target drawn.
+             Kept at a 44px target (SC 2.5.8) on a transparent ground, so they
+             read as the frame's bare "<" and ">" rather than as buttons.
+             Ordered prev / viewport / next so tab order matches what you see. -->
+        <button class="pt-carousel__btn pt-carousel__btn--prev" type="button"
+                data-carousel="prev" aria-label="Previous certificate">
+          <span aria-hidden="true">&lsaquo;</span>
+        </button>
+
         <div class="pt-carousel__viewport" tabindex="0" role="group"
              aria-label="Tien Yan certifications, scrollable">
 
@@ -356,15 +367,14 @@
 
         </div>
 
-        <div class="pt-carousel__controls">
-          <button class="pt-carousel__btn" type="button" data-carousel="prev" aria-label="Previous certificate">
-            <span aria-hidden="true">&lsaquo;</span>
-          </button>
-          <p class="pt-carousel__count" aria-live="polite">1 / 9</p>
-          <button class="pt-carousel__btn" type="button" data-carousel="next" aria-label="Next certificate">
-            <span aria-hidden="true">&rsaquo;</span>
-          </button>
-        </div>
+        <button class="pt-carousel__btn pt-carousel__btn--next" type="button"
+                data-carousel="next" aria-label="Next certificate">
+          <span aria-hidden="true">&rsaquo;</span>
+        </button>
+
+        <!-- The frame draws no counter. Kept because it is the only thing that
+             reports position to a screen reader once the arrows start paging. -->
+        <p class="pt-carousel__count" aria-live="polite">1 / 9</p>
       </div>
     </div>
   </section>
@@ -440,6 +450,6 @@
 <script src="js/nav.js" defer></script>
 <script src="js/motion.js?v=20260909-gsap" defer></script>
 <script src="js/tabs.js" defer></script>
-<script src="js/carousel.js?v=20260908-3" defer></script>
+<script src="js/carousel.js?v=20260914-arrows" defer></script>
 </body>
 </html>

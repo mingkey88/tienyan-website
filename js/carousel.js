@@ -66,6 +66,7 @@
         : n + ' certification' + (n === 1 ? '' : 's') + ' under ' + label;
     }
     sync();
+    alignArrows();
   }
 
   if (list) {
@@ -137,6 +138,20 @@
     viewport.scrollTo({ left: leftOf(shown[i]), behavior: reduced.matches ? 'auto' : 'smooth' });
   }
 
+  /* Frame 48:96 centres the arrows on the certificate itself. The grid row is
+     as tall as the TALLEST caption, though - the China registration runs to
+     four lines - so centring on the row drops the arrows below the scan, and
+     by a different amount every time the filter changes which captions are on
+     screen. No fixed CSS offset can be right for every filter, so the arrows
+     align to the top of the row and are pushed down half a scan here. */
+  function alignArrows() {
+    var img = viewport.querySelector('.pt-slide:not([hidden]) .pt-slide__img');
+    if (!img) return;
+    var half = img.getBoundingClientRect().height / 2;
+    if (!half) return;                       // not laid out yet
+    root.style.setProperty('--cert-arrow-offset', (half - 22) + 'px');
+  }
+
   function sync() {
     // Several slides can be visible, so the end is the scroll boundary,
     // not the index of the last certificate. The count names the leading slide.
@@ -166,6 +181,14 @@
     frame = requestAnimationFrame(function () { frame = null; sync(); });
   }, { passive: true });
 
-  window.addEventListener('resize', sync);
+  window.addEventListener('resize', function () { sync(); alignArrows(); });
+
+  // Scans carry width/height, so layout is stable before decode - but a webfont
+  // swap can still reflow a caption under them. Re-measure once fonts settle.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(alignArrows);
+  }
+
   sync();
+  alignArrows();
 })();
