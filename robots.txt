@@ -7,8 +7,12 @@ Disallow: /
 #     User-agent: *
 #     Allow: /
 # and the <meta name="robots" content="noindex, nofollow"> must be removed from
-# the 8 real pages. 404.html KEEPS its noindex - an error page should never be
-# indexed.
+# the 6 LINKED pages only: index, our-story, partnership, products, contact and
+# privacy. 404.html KEEPS its noindex - an error page should never be indexed.
+#
+# terms.html and cookies.html also KEEP their noindex. The 14 Sep review pulled
+# both out of the footer and the sitemap (no legal counsel appointed yet), so
+# they must not go public until the client signs off on the wording.
 #
 # The sitemap is declared now so that flipping the two lines above is the only
 # launch step. Crawlers ignore a sitemap on a disallowed host, which is correct
