@@ -701,27 +701,34 @@
   }
 }
 
-/* Frame 48:96 draws these as bare 50px glyphs in black with no target behind
-   them. The target is kept at 44px (SC 2.5.8) but made transparent, so the
-   affordance reads as the frame drew it while staying operable. */
+/* Frame 48:96 draws these as bare glyphs with no target behind them. Kept
+   bare at rest, but at 60px - comfortably over the 44px floor (SC 2.5.8) and
+   large enough to read as a control against the blush ground. The circular
+   ground appears only on hover and focus, so the resting state stays the
+   frame's while the affordance is unmistakable once reached. */
 .pt-carousel__btn {
   display: none;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
   padding: 0;
   border: 0;
+  border-radius: 50%;
   background: none;
-  color: var(--c-ink);
-  font-family: var(--font-display);
-  font-size: 3.125rem;   /* 50px */
-  line-height: 1;
+  color: var(--c-mulberry);
   cursor: pointer;
-  transition: color var(--d-fast) var(--e-out), opacity var(--d-fast) var(--e-out);
+  transition: background var(--d-fast) var(--e-out),
+              color var(--d-fast) var(--e-out),
+              opacity var(--d-fast) var(--e-out);
 }
 .js-carousel .pt-carousel__btn { display: grid; }
-.pt-carousel__btn:hover:not(:disabled) { color: var(--c-fuchsia); }
-.pt-carousel__btn:disabled { opacity: 0.25; cursor: default; }
+.pt-carousel__chev { display: block; }
+.pt-carousel__btn:hover:not(:disabled),
+.pt-carousel__btn:focus-visible {
+  background: var(--c-paper);
+  color: var(--c-fuchsia);
+}
+.pt-carousel__btn:disabled { opacity: 0.35; cursor: default; }
 
 .pt-carousel__count {
   display: none;

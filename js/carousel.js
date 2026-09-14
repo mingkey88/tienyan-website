@@ -149,7 +149,10 @@
     if (!img) return;
     var half = img.getBoundingClientRect().height / 2;
     if (!half) return;                       // not laid out yet
-    root.style.setProperty('--cert-arrow-offset', (half - 22) + 'px');
+    // Measured, not assumed: the arrow's own size is a CSS decision and has
+    // changed once already.
+    var btnHalf = prev.getBoundingClientRect().height / 2;
+    root.style.setProperty('--cert-arrow-offset', (half - btnHalf) + 'px');
   }
 
   function sync() {

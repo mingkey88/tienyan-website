@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="css/base.css?v=20260908">
 <link rel="stylesheet" href="css/components.css?v=20260908">
 <link rel="stylesheet" href="css/site.css?v=20260914-footer">
-<link rel="stylesheet" href="css/pages.css?v=20260914-certs">
+<link rel="stylesheet" href="css/pages.css?v=20260914-certs3">
 <link rel="stylesheet" href="css/motion.css?v=20260909-gsap">
 
 <!-- Motion. GSAP and ScrollTrigger are fetched here, before first paint, because
@@ -304,10 +304,16 @@
              vertically centred on the scan, as bare glyphs with no target drawn.
              Kept at a 44px target (SC 2.5.8) on a transparent ground, so they
              read as the frame's bare "<" and ">" rather than as buttons.
-             Ordered prev / viewport / next so tab order matches what you see. -->
+             Ordered prev / viewport / next so tab order matches what you see.
+
+             Drawn as a stroked chevron rather than the &lsaquo; / &rsaquo;
+             glyphs: those sit small and thin inside their em box in Grenda, so
+             they stayed faint however far the font-size was pushed. The frame's
+             arrows are type, not a vector layer, so there is no exported asset
+             to use here. Stroke width is the dial if they need more weight. -->
         <button class="pt-carousel__btn pt-carousel__btn--prev" type="button"
                 data-carousel="prev" aria-label="Previous certificate">
-          <span aria-hidden="true">&lsaquo;</span>
+          <svg class="pt-carousel__chev" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="15 4 7 12 15 20"/></svg>
         </button>
 
         <div class="pt-carousel__viewport" tabindex="0" role="group"
@@ -369,7 +375,7 @@
 
         <button class="pt-carousel__btn pt-carousel__btn--next" type="button"
                 data-carousel="next" aria-label="Next certificate">
-          <span aria-hidden="true">&rsaquo;</span>
+          <svg class="pt-carousel__chev" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 4 17 12 9 20"/></svg>
         </button>
 
         <!-- The frame draws no counter. Kept because it is the only thing that
@@ -450,6 +456,6 @@
 <script src="js/nav.js" defer></script>
 <script src="js/motion.js?v=20260909-gsap" defer></script>
 <script src="js/tabs.js" defer></script>
-<script src="js/carousel.js?v=20260914-arrows" defer></script>
+<script src="js/carousel.js?v=20260914-arrows2" defer></script>
 </body>
 </html>
