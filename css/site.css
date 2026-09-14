@@ -113,8 +113,7 @@
   gap: var(--s-6);
   padding-top: var(--s-7);
 }
-.site-footer--v2 .footer-v2__grid > :first-child,
-.site-footer--v2 .footer-v2__contact-column { grid-column: 1 / -1; }
+.site-footer--v2 .footer-v2__grid > :first-child { grid-column: 1 / -1; }
 .site-footer--v2 .footer-v2__logo { width: 85px; height: auto; }
 .site-footer--v2 .footer-v2__slogan {
   margin-top: var(--s-5);
@@ -141,11 +140,6 @@
 }
 .site-footer--v2 .footer-v2__heading a { color: inherit; text-decoration: none; }
 .site-footer--v2 .footer-v2__heading a:hover { text-decoration: underline; }
-.site-footer--v2 .footer-v2__contact-column .footer-v2__heading { font-size: 1.5rem; }
-.site-footer--v2 .footer-v2__contact { margin-top: var(--s-3); padding: 0; list-style: none; }
-.site-footer--v2 .footer-v2__contact li { margin: 0; max-width: none; font-size: 1.25rem; line-height: 2; }
-.site-footer--v2 .footer-v2__contact a { color: var(--c-paper); text-decoration: none; }
-.site-footer--v2 .footer-v2__contact a:hover { text-decoration: underline; }
 .site-footer--v2 .footer-v2__legal {
   display: flex;
   flex-wrap: wrap;
@@ -163,35 +157,20 @@
 .site-footer--v2 .footer-v2__legal a { color: var(--c-paper); text-underline-offset: 0.2em; }
 .site-footer--v2 :focus-visible { outline-color: var(--c-cream); }
 
-/* contact.html only. Its Contact Us section sits directly above the footer, so
-   the footer's own contact block repeats the same phone and email - the 14 Sep
-   review flagged it on that page specifically. The nav links keep their track
-   positions, so the footer furniture does not shift as you move between pages. */
-.site-footer--v2--lean .footer-v2__contact-column { display: none; }
-
 @media (min-width: 48rem) and (max-width: 74.999rem) {
-  /* Five columns so the five nav links share one row; the logo and contact
-     block split the row above them. Four columns orphaned "Videos". */
+  /* Five columns so the five nav links share one row beneath the logo block. */
   .site-footer--v2 .footer-v2__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .site-footer--v2 .footer-v2__grid > :first-child { grid-column: 1 / 3; }
-  .site-footer--v2 .footer-v2__contact-column { grid-column: 3 / 6; grid-row: 1; }
-  .site-footer--v2--lean .footer-v2__grid > :first-child { grid-column: 1 / -1; }
   .site-footer--v2 .footer-v2__heading { font-size: 1rem; }
 }
 @media (min-width: 75rem) {
   .site-footer--v2 .footer-v2__grid {
-    grid-template-columns: 2.4fr 0.85fr 1fr 0.8fr 1.5fr 0.7fr 2.3fr;
+    grid-template-columns: 2.6fr 1fr 1.2fr 0.95fr 1.6fr 0.9fr;
     gap: var(--s-5);
     padding-top: 0;
     min-height: 250px;
   }
   .site-footer--v2 .footer-v2__grid > div { padding-top: 94px; }
   .site-footer--v2 .footer-v2__grid > :first-child { grid-column: auto; padding-top: var(--s-6); padding-bottom: var(--s-6); }
-  .site-footer--v2 .footer-v2__contact-column {
-    grid-column: auto;
-    border-left: 1px solid var(--c-rule-dark);
-    padding-left: var(--s-7);
-  }
   .site-footer--v2 .footer-v2__legal { margin-top: 0; }
 }
 
@@ -206,7 +185,6 @@
     overscroll-behavior: contain;
   }
   .site-footer--v2 .footer-v2__heading a,
-  .site-footer--v2 .footer-v2__contact a,
   .site-footer--v2 .footer-v2__legal a {
     display: inline-flex;
     align-items: center;
@@ -220,10 +198,6 @@
   .arrow-link__row { justify-content: center; margin-top: var(--s-6); }
   .arrow-link { font-size: 1.25rem; }
   .arrow-link__icon { width: 32px; }
-  .site-footer--v2 .footer-v2__contact-column {
-    border-top: 1px solid var(--c-rule-dark);
-    padding-top: var(--s-5);
-  }
   .site-footer--v2 .footer-v2__grid { gap: var(--s-5); }
   .site-footer--v2 .footer-v2__legal { gap: var(--s-2); }
   .site-footer--v2 .footer-v2__legal ul { gap: var(--s-2) var(--s-4); }
